@@ -26,6 +26,15 @@ public class Point implements Comparable<Point>,Comparator<Point>{
 	public boolean equals(Point p){
 		return x == p.x && y == p.y && z == p.z;
 	}
+	public double scalarProduct(Point p){
+		return x*p.x+y*p.y+z*p.z;
+	}
+
+	public void multiply(int m){
+		x*=m;
+		y*=m;
+		z*=m;
+	}
 	@Override
 	public int compareTo(Point p) {
 		if(p.getZ()<this.getZ()){
