@@ -16,7 +16,12 @@ import exceptions.ExceptionSegment;
 
 public class FileParser {
 
-	private String fileName = "cube.gts";
+	//private String fileName = "sphere20.gts";
+	private String fileName = "x_wing.gts";
+	//private String fileName = "poney.gts";
+	//private String fileName = "horse.gts";
+	//private String fileName = "space_shuttle.gts";
+	
 	private int nbPoint, nbSeg, nbFace;
 	private Double x, y , z;
 	private Point p1,p2;

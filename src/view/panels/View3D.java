@@ -1,5 +1,7 @@
 package view.panels;
 
-public class View3D {
+import javax.swing.JPanel;
+
+public class View3D extends JPanel{
 
 }

@@ -2,11 +2,12 @@ package model.geometric;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 import model.loader.FileParser;
 
 
-public class Item3D {
+public class Item3D extends Observable{
 	private ArrayList<Point> points;
 	private ArrayList<Segment> segments;
 	private ArrayList<Face> faces;
