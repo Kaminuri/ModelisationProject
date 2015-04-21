@@ -40,8 +40,7 @@ public class View3D extends JPanel{
 		for(int j = 0; j < i.getPoints().size(); j++){
 			listeX[j] = (int)(i.getPoints().get(j).getX()*c.getZoomX() + x0 + c.getTransX());
 			listeY[j] = (int)(i.getPoints().get(j).getY()*c.getZoomY() + y0 + c.getTransY());
-			//listeZ[i] = (int)(Const.points.get(i).getZ()*zoom + z0 );
-		}
+					}
 		g.drawPolygon(listeX, listeY, i.getPoints().size());
 	}   
 
