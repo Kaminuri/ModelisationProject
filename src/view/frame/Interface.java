@@ -27,7 +27,7 @@ public class Interface implements Observer{
 		item = i;
 		this.gc = gc;
 		f = new JFrame();
-		
+		view = new View3D(i, gc);
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		screenSize.width -= 42;
 		screenSize.height -= 42;
@@ -35,8 +35,8 @@ public class Interface implements Observer{
 	    f.setPreferredSize(screenSize);
 	    f.setLocation(20, 20);
 	    InternalFrameOption ifo = new InternalFrameOption(gc);
-	    f.add(ifo);
-	    f.getContentPane().add(ifo);
+	    view.add(ifo);
+	    f.setContentPane(view);
 	    
 		menuBar = new MBar();
 		f.setJMenuBar(menuBar);
