@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.SynchronousQueue;
 
 import model.geometric.Face;
 import model.geometric.Point;
@@ -37,12 +38,13 @@ public class FileParser {
 		String sta;
 		String currnt;
 		try(BufferedReader br = new BufferedReader(new FileReader("src/resources/models/"+ fileName))){
-			sta = br.readLine();	
+			sta = br.readLine();
+			initNbs(sta);
 			for(int i = 0 ; i < nbPoint ; i++) {
 				currnt = br.readLine();
-				this.x = 0.0;
-				this.y = 0.0;
-				this.z = 0.0;
+				this.x = null;
+				this.y = null;
+				this.z = null;
 				initPoints(currnt);
 				if(x == null || y == null || z == null) {
 					throw new ExceptionPoint();
