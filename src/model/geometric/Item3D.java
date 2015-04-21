@@ -47,4 +47,13 @@ public class Item3D extends Observable{
 		}
 		return tab;
 	}
+	
+	public ArrayList<Point> getPoints() {
+		return points;
+	}
+
+	public void setPoints(ArrayList<Point> points) {
+		this.points = points;
+	}
+
 }
