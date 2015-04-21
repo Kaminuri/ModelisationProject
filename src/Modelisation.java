@@ -13,7 +13,7 @@ public class Modelisation {
 			
 		}
 		GeometricController gc = new GeometricController(item);
-		Interface inter = new Interface(gc, item);
+		new Interface(gc, item);
 	}
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
