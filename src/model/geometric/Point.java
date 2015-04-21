@@ -19,7 +19,6 @@ public class Point implements Comparable<Point>,Comparator<Point>{
 	public double getY(){
 		return y;
 	}
-
 	public double getZ(){
 		return z;
 	}
