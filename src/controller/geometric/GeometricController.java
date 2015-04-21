@@ -10,8 +10,6 @@ public class GeometricController {
 	private Item3D it;
 	private double zoomX,zoomY,zoom;
 	private int transX,transY;
-	
-
 	private Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 
 	public GeometricController(Item3D item){
@@ -23,18 +21,7 @@ public class GeometricController {
 		zoomY = -zoom;
 	}
 	
-	private void zoomMinus(){
-		
-	}
-	private void zoomPlus(){
-		
-	}
-	private void translation(){
-		
-	}
-	private void rotation(){
-		
-	}
+	
 	public void decreaseZoomY() {
 		// TODO Auto-generated method stub
 		zoomY *= 0.9;
@@ -53,7 +40,7 @@ public class GeometricController {
 	}
 	public void decreaseTransY() {
 		// TODO Auto-generated method stub
-		transY += 15;
+		transY -= 15;
 	}
 	public void decreaseTransX() {
 		// TODO Auto-generated method stub
