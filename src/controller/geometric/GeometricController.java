@@ -23,31 +23,31 @@ public class GeometricController {
 	
 	
 	public void decreaseZoomY() {
-		// TODO Auto-generated method stub
+
 		zoomY *= 0.9;
 	}
 	public void decreaseZoomX() {
-		// TODO Auto-generated method stub
+
 		zoomX *= 0.9;
 	}
 	public void increaseZoomX() {
-		// TODO Auto-generated method stub
+
 		zoomX *= 1.1;
 	}
 	public void increaseZoomY() {
-		// TODO Auto-generated method stub
+
 		zoomY *= 1.1;
 	}
 	public void decreaseTransY() {
-		// TODO Auto-generated method stub
+
 		transY -= 15;
 	}
 	public void decreaseTransX() {
-		// TODO Auto-generated method stub
+
 		transX -= 15;
 	}
 	public void increaseTransY() {
-		// TODO Auto-generated method stub
+
 		transY += 15;
 	}
 	public void increaseTransX() {
@@ -55,7 +55,6 @@ public class GeometricController {
 	}
 
 	public void listPointSort() {
-		// TODO Auto-generated method stub
 		Collections.sort(it.getPoints());
 	}
 	
