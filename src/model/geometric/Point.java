@@ -10,6 +10,9 @@ public class Point implements Comparable<Point>,Comparator<Point>{
 		this.y=y;
 		this.z = z;
 	}
+	public Point() {
+		// TODO Auto-generated constructor stub
+	}
 	public double getX(){
 		return x;
 	}
@@ -19,6 +22,15 @@ public class Point implements Comparable<Point>,Comparator<Point>{
 
 	public double getZ(){
 		return z;
+	}
+	public void setX(double x) {
+		this.x = x;
+	}
+	public void setY(double y) {
+		this.y = y;
+	}
+	public void setZ(double z) {
+		this.z = z;
 	}
 	public String toString(){
 		return "[" +x+ "/" +y+"/" +z +"]";
