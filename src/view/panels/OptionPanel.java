@@ -2,15 +2,10 @@ package view.panels;
 
 
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -18,35 +13,36 @@ import controller.geometric.GeometricController;
 
 
 public class OptionPanel extends JPanel{
-	private JButton nZoom , mZoom , pZoom, rotationG, rotationD, translationH, translationB, translationG, translationD ;
+	
+	private JButton nZoom , pZoom, rotationX, rotationY, translationH, translationB, translationG, translationD ;
 	private GeometricController gc;
 	public OptionPanel(GeometricController gc){
 		this.gc = gc;
-		this.setLayout(new GridLayout(1,8));
+		this.setLayout(new GridLayout(1,7));
 		nZoom = new JButton();
-		mZoom = new JButton();
 		pZoom = new JButton();
-		rotationG = new JButton();
-		rotationD = new JButton();
+		rotationX = new JButton();
+		rotationY = new JButton();
 		translationH = new JButton();
 		translationB = new JButton();
 		translationG = new JButton();
 		translationD = new JButton();
 		initNZoom();
-		initMZoom();
+		
 		initPZoom();
-		initRotationG();
-	//	initRotationD();
 		initTranslationH();
 		initTranslationB();
 		initTranslationD();
 		initTranslationG();
+		rotationX();
+		rotationY();
+		
+		
 
 		add(pZoom);
 		add(nZoom);
-		add(mZoom);
-		add(rotationG);
-		add(rotationD);
+		add(rotationX);
+		add(rotationY);
 		add(translationH);
 		add(translationB);
 		add(translationG);
@@ -55,7 +51,6 @@ public class OptionPanel extends JPanel{
 	}
 
 	private void initNZoom(){
-		//	nZoom.setIcon(new ImageIcon(""));
 		nZoom.setText("-");
 		nZoom.addActionListener(new ActionListener() {
 			
@@ -72,13 +67,11 @@ public class OptionPanel extends JPanel{
 	}
 	private void initPZoom(){
 		pZoom.setText("+");
-		//	pZoom.setIcon(new ImageIcon("/resources/Zoom+.jpg"));
 		pZoom.setSize(new Dimension(10,70));
 		pZoom.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//Quand on clic sur le bouton -> zoom avant
 
 				gc.increaseZoomX();
 				gc.increaseZoomY();
@@ -89,7 +82,7 @@ public class OptionPanel extends JPanel{
 	}
 	
 	private void initTranslationH(){
-		translationH.setText("â†‘");
+		translationH.setText("^");
 		translationH.addActionListener(new ActionListener() {
 			
 			@Override
@@ -98,9 +91,10 @@ public class OptionPanel extends JPanel{
 			}
 		});
 		translationH.setSize(new Dimension(10,70));
+		
 	}
 	private void initTranslationB(){
-		translationB.setText("â†“");
+		translationB.setText("↓");
 		translationB.addActionListener(new ActionListener() {
 			
 			@Override
@@ -111,7 +105,7 @@ public class OptionPanel extends JPanel{
 		translationB.setSize(new Dimension(10,70));
 	}
 	private void initTranslationG(){
-		translationG.setText("â†�");
+		translationG.setText("←");
 		translationG.addActionListener(new ActionListener() {
 			
 			@Override
@@ -123,22 +117,39 @@ public class OptionPanel extends JPanel{
 		translationG.setSize(new Dimension(10,70));
 	}
 	private void initTranslationD(){
-		translationD.setText("â†’");
+		translationD.setText("→");
 		translationD.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				gc.decreaseTransX();
+				gc.increaseTransX();
 			}
 		});
 		translationD.setSize(new Dimension(10,70));
 	}
 
-	private void initMZoom(){
-		nZoom.setIcon(new ImageIcon(""));
+	private void rotationX(){
+		rotationX.setText("Rot X");
+		rotationX.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				gc.rotationX(0.1);
+			}
+		});
 	}
-	private void initRotationG(){
-		nZoom.setIcon(new ImageIcon(""));
+	
+	private void rotationY(){
+		rotationY.setText("Rot Y");
+		rotationY.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				gc.rotationY(0.1);
+			}
+		});
 	}
 	
 }
