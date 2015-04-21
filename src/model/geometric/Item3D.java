@@ -11,7 +11,6 @@ public class Item3D extends Observable{
 	private ArrayList<Point> points;
 	private ArrayList<Segment> segments;
 	private ArrayList<Face> faces;
-	private List<Face> f;
 	public FileParser fp;
 	
 	public Item3D(FileParser fp){
@@ -27,8 +26,7 @@ public class Item3D extends Observable{
 		tab[1] = points.get(0).getX();
 		tab[2] = points.get(0).getY();
 		tab[3] = points.get(0).getY();
-		int i = 0;
-		for (Face f2 : f) {
+		for (Face f2 : faces) {
 			Point[] t = f2.getPoints();
 			for(Point p : t){
 				if(tab[0] > p.getX()){
@@ -49,11 +47,16 @@ public class Item3D extends Observable{
 	}
 	
 	public ArrayList<Point> getPoints() {
+		setChanged();
+		notifyObservers();
 		return points;
+		
 	}
 
 	public void setPoints(ArrayList<Point> points) {
 		this.points = points;
+		setChanged();
+		notifyObservers();
 	}
 
 }
