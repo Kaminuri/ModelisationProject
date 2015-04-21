@@ -4,6 +4,9 @@ import model.geometric.Item3D;
 
 public class GeometricController {
 	private Item3D it;
+	public GeometricController(Item3D item){
+		it = item;
+	}
 	
 	private void zoomMinus(){
 		

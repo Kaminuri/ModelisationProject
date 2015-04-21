@@ -5,13 +5,14 @@ import controller.geometric.GeometricController;
 
 public class Modelisation {
 	public Modelisation(){
-		GeometricController gc = new GeometricController();
+		
 		Item3D item=null;
 		try{
 			item = new Item3D(new FileParser());
 		}catch(Exception e){
 			
 		}
+		GeometricController gc = new GeometricController(item);
 		Interface inter = new Interface(gc, item);
 	}
 	public static void main(String[] args) {
