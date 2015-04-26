@@ -13,11 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ImportFrame extends JFrame{
-	private File f = new File("src/resources/models/cone.gts");
-	private ImportFrame lll;
 	public ImportFrame(File f){
-		lll = this;
-		this.f = f;
 		JPanel contain = new JPanel();
 		//Label
 		JPanel labelContainer = new JPanel();
@@ -66,7 +62,7 @@ public class ImportFrame extends JFrame{
 				if(j.getSelectedFile() != null){
 					//Utilisable pour l'instant par tout le monde
 					File ImportFileTmp = j.getSelectedFile();
-					lll = new ImportFrame(ImportFileTmp);
+					new ImportFrame(ImportFileTmp);
 				}
 				
 			}

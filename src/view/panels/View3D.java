@@ -4,13 +4,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
-import java.util.ArrayList;
-import java.util.Collections;
 
 import javax.swing.JPanel;
 
 import model.geometric.Item3D;
-import model.geometric.Point;
 import controller.geometric.GeometricController;
 
 public class View3D extends JPanel{
