@@ -9,14 +9,14 @@ import model.geometric.Item3D;
 public class GeometricController {
 	private Item3D it;
 	private double zoomX,zoomY,zoom;
-	private int transX,transY;
+	private int transX,transY = -450;
 	private Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 
 	public GeometricController(Item3D item){
 		it = item;
 		zoomX =  d.width/Math.abs(it.extremites()[2]-it.extremites()[3]);
 		zoomY =  d.height/Math.abs(it.extremites()[0]-it.extremites()[1]);
-		zoom = zoomX > zoomY ? zoomY -70 : zoomX;
+		zoom = zoomX > zoomY ? zoomY -50 : zoomX;
 		zoomX = zoom;
 		zoomY = -zoom;
 	}
