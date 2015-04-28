@@ -15,9 +15,9 @@ import exceptions.ExceptionPoint;
 import exceptions.ExceptionSegment;
 
 public class FileParser {
-
+	private String fileName = "cube.gts";
 	//private String fileName = "sphere20.gts";
-	private String fileName = "x_wing.gts";
+	//private String fileName = "x_wing.gts";
 	//private String fileName = "poney.gts";
 	//private String fileName = "horse.gts";
 	//private String fileName = "space_shuttle.gts";
