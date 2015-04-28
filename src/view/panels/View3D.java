@@ -38,7 +38,7 @@ public class View3D extends JPanel{
 		for(int j = 0; j < i.getPoints().size(); j++){
 			listeX[j] = (int)(i.getPoints().get(j).getX()*c.getZoomX() + x0 + c.getTransX());
 			listeY[j] = (int)(i.getPoints().get(j).getY()*c.getZoomY() + y0 + c.getTransY());
-			System.out.println("X > " + i.getPoints().get(j).getX() + " \tY > "+i.getPoints().get(j).getY());
+			System.out.println(j+2+"\tX > " + i.getPoints().get(j).getX() + " \tY > "+i.getPoints().get(j).getY());
 		}
 		g.drawPolygon(listeX, listeY, i.getPoints().size());
 	}   
