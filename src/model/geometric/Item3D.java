@@ -14,7 +14,7 @@ public class Item3D extends Observable{
 	
 	public Item3D(FileParser fp){
 		points = fp.getListPoints();
-		segments = fp.getListSegments();
+		setSegments(fp.getListSegments());
 		faces = fp.getListFaces();
 	}
 	
@@ -56,6 +56,14 @@ public class Item3D extends Observable{
 		this.points = points;
 		setChanged();
 		notifyObservers();
+	}
+
+	public ArrayList<Segment> getSegments() {
+		return segments;
+	}
+
+	public void setSegments(ArrayList<Segment> segments) {
+		this.segments = segments;
 	}
 
 }
