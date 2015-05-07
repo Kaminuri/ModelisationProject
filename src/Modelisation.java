@@ -12,8 +12,9 @@ public class Modelisation {
 		}catch(Exception e){
 			
 		}
+		
 		GeometricController gc = new GeometricController(item);
-		new Interface(gc, item);
+		Interface interfa = new Interface(gc, item);
 	}
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {

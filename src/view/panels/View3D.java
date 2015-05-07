@@ -21,7 +21,6 @@ public class View3D extends JPanel{
 	public View3D(Item3D i,GeometricController c){
 		this.i = i;
 		this.c = c;
-
 		c.listPointSort();
 	}
 	public void paintComponent(Graphics g){
@@ -34,17 +33,10 @@ public class View3D extends JPanel{
 		double x0 = d.width / 2;
 		double y0 = d.height - 60;
 		double z0 = (x0/2)+y0/2;
-		System.out.println("\n\n\n\n\n");
 		for(int j = 0; j < i.getPoints().size(); j++){
 			listeX[j] = (int)(i.getPoints().get(j).getX()*c.getZoomX() + x0 + c.getTransX());
 			listeY[j] = (int)(i.getPoints().get(j).getY()*c.getZoomY() + y0 + c.getTransY());
-			System.out.println(j+2+"\tX > " + i.getPoints().get(j).getX() + " \tY > "+i.getPoints().get(j).getY());
 		}
 		g.drawPolygon(listeX, listeY, i.getPoints().size());
 	}   
-
-
-
-
-
 }
