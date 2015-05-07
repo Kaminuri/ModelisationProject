@@ -2,7 +2,7 @@ package BDD;
 import java.sql.*;
 import java.util.HashMap;
 
-/*
+/**
  * @author Eric Lefebvre 
  */
 
@@ -22,7 +22,7 @@ public class Base  {
 		mdp = null;
 	}
 
-	/*
+	/**
 	 * Renvoie toutes les informations de la Base de donnee
 	 * @return une hasmap de hasmap ayant comme cle le nom du fichier.
 	 */
@@ -51,7 +51,7 @@ public class Base  {
 		return liste;
 	}
 	
-	/*
+	/**
 	 * Pareil que le select() mais avec des mots pour selectionner que les fichier correcpondant
 	 * @return une hasmap de hasmap ayant pour le cle le nom du fichier
 	 */
@@ -100,7 +100,7 @@ public class Base  {
 		return liste;
 	}
 
-	/*
+	/**
 	 * Permet d'inserer un nouveau fichier dans la base de donnees
 	 */
 	public void insert(String nom, String nomfichier, String tag1, String tag2, String tag3, String tag4, int points, int segments, int faces, String des){
@@ -116,7 +116,7 @@ public class Base  {
 		}
 	}
 	
-	/*
+	/**
 	 *Permet de supprimer un fichier de la base de donnee 
 	 */
 	
@@ -133,9 +133,9 @@ public class Base  {
 		}
 	}
 	
-	/*
+	/**
 	 * Permet de verifier si le nom existe deja.
-	 * @return vrai si il existe
+	 * @return vrai si le nom existe
 	 */
 	
 	public boolean estDeja(String nom){
