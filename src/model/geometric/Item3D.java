@@ -66,4 +66,10 @@ public class Item3D extends Observable{
 		this.segments = segments;
 	}
 
+	public ArrayList<Face> getFaces() {
+		setChanged();
+		notifyObservers();
+		return faces;
+	}
+
 }
