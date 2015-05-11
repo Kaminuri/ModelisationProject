@@ -56,7 +56,6 @@ public class OptionPanel extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				gc.decreaseZoomY();
 				gc.decreaseZoomX();			
 			}
@@ -72,7 +71,6 @@ public class OptionPanel extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				gc.increaseZoomX();
 				gc.increaseZoomY();
 			}
@@ -134,7 +132,6 @@ public class OptionPanel extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 				gc.rotationX(0.1);
 			}
 		});
@@ -146,7 +143,6 @@ public class OptionPanel extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 				gc.rotationY(0.1);
 			}
 		});
