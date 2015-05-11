@@ -32,7 +32,6 @@ public class View3D extends JPanel{
 
 		double x0 = d.width / 2;
 		double y0 = d.height - 60;
-		double z0 = (x0/2)+y0/2;
 		for(int j = 0; j < i.getPoints().size(); j++){
 			listeX[j] = (int)(i.getPoints().get(j).getX()*c.getZoomX() + x0 + c.getTransX());
 			listeY[j] = (int)(i.getPoints().get(j).getY()*c.getZoomY() + y0 + c.getTransY());
