@@ -23,7 +23,6 @@ public class GeometricController {
 	
 	
 	public void decreaseZoomY() {
-
 		zoomY *= 0.9;
 	}
 	public void decreaseZoomX() {
@@ -35,19 +34,15 @@ public class GeometricController {
 		zoomX *= 1.1;
 	}
 	public void increaseZoomY() {
-
 		zoomY *= 1.1;
 	}
 	public void decreaseTransY() {
-
 		transY -= 15;
 	}
 	public void decreaseTransX() {
-
 		transX -= 15;
 	}
 	public void increaseTransY() {
-
 		transY += 15;
 	}
 	public void increaseTransX() {
@@ -55,7 +50,7 @@ public class GeometricController {
 	}
 
 	public void listPointSort() {
-		Collections.sort(it.getPoints());
+		Collections.sort(it.getPoints(),Collections.reverseOrder());
 	}
 	
 	public double getZoomX() {
