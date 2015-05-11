@@ -22,13 +22,14 @@ import BDD.Base;
 
 public class ImportFrame extends JFrame{
 	protected Base bdd;
+	private JTextField non,tg, name;
 	public ImportFrame(final File f){
 		JPanel contain = new JPanel();
 		bdd = new Base();
 		//Label
 		JPanel labelContainer = new JPanel();
 		labelContainer.setLayout(new BoxLayout(labelContainer, BoxLayout.Y_AXIS));
-		final JTextField name = new JTextField(f.getName());
+		name = new JTextField(f.getName());
 		JLabel tag = new JLabel("Tags");
 		JLabel desc = new JLabel("Description");
 		labelContainer.add(name);
@@ -39,6 +40,8 @@ public class ImportFrame extends JFrame{
 		JPanel textContainer = new JPanel();
 		textContainer.setLayout(new BoxLayout(textContainer, BoxLayout.Y_AXIS));
 		JButton buttonToChangeFile = new JButton(f.getName());
+		non = new JTextField();
+		tg = new JTextField();
 		buttonToChangeFile.addMouseListener(new MouseListener() {
 			
 			@Override
@@ -69,7 +72,7 @@ public class ImportFrame extends JFrame{
 			public void mouseClicked(MouseEvent arg0) {
 				JFileChooser j = new JFileChooser();
 				j.showOpenDialog(null);
-				if(j.getSelectedFile() != null){
+				if(j.getSelectedFile() != null && !(bdd.estDeja(non.getText()))){
 					//Utilisable pour l'instant par tout le monde
 					File ImportFileTmp = j.getSelectedFile();
 					new ImportFrame(ImportFileTmp);
@@ -77,8 +80,7 @@ public class ImportFrame extends JFrame{
 				
 			}
 		});
-		final JTextField non = new JTextField();
-		final JTextField tg = new JTextField();
+		
 		textContainer.add(buttonToChangeFile);
 		textContainer.add(non);
 		textContainer.add(tg);
