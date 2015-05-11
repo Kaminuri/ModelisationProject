@@ -25,12 +25,9 @@ public class Interface implements Observer{
 	private Item3D item;
 	public Interface(GeometricController gc, Item3D i){
 		item = i;
-		System.out.println("Avant les autres class : " + i.getPoints());
 		this.gc = gc;
 		f = new JFrame();
-		System.out.println("Avant la vue : " + i.getPoints());
 		view = new View3D(i, gc);
-		System.out.println("Après la vue : " + i.getPoints());
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		screenSize.width -= 42;
 		screenSize.height -= 42;
