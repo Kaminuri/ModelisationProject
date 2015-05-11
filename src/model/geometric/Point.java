@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 
 public class Point implements Comparable<Point>,Comparator<Point>{
-	private double x, y , z;
+	private double x, y, z;
 	public Point(double x, double y, double z){
 		this.x = x;
 		this.y = y;
