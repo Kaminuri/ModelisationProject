@@ -14,15 +14,16 @@ import controller.geometric.GeometricController;
 
 public class OptionPanel extends JPanel{
 	
-	private JButton nZoom , pZoom, rotationX, rotationY, translationH, translationB, translationG, translationD ;
+	private JButton nZoom , pZoom, rotationX, rotationY, rotationZ, translationH, translationB, translationG, translationD ;
 	private GeometricController gc;
 	public OptionPanel(GeometricController gc){
 		this.gc = gc;
-		this.setLayout(new GridLayout(1,7));
+		this.setLayout(new GridLayout(1,8));
 		nZoom = new JButton();
 		pZoom = new JButton();
 		rotationX = new JButton();
 		rotationY = new JButton();
+		rotationZ = new JButton();
 		translationH = new JButton();
 		translationB = new JButton();
 		translationG = new JButton();
@@ -36,6 +37,7 @@ public class OptionPanel extends JPanel{
 		initTranslationG();
 		rotationX();
 		rotationY();
+		rotationZ();
 		
 		
 
@@ -43,6 +45,7 @@ public class OptionPanel extends JPanel{
 		add(nZoom);
 		add(rotationX);
 		add(rotationY);
+		add(rotationZ);
 		add(translationH);
 		add(translationB);
 		add(translationG);
@@ -144,6 +147,17 @@ public class OptionPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				gc.rotationY(0.1);
+			}
+		});
+	}
+	
+	private void rotationZ(){
+		rotationZ.setText("Rot Z");
+		rotationZ.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				gc.rotationZ(0.1);
 			}
 		});
 	}
