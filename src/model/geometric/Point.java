@@ -10,7 +10,6 @@ public class Point implements Comparable<Point>,Comparator<Point>{
 		this.y = y;
 		this.z = z;
 	}
-	public Point() {}
 	
 	public double getX(){
 		return x;
