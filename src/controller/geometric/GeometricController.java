@@ -63,7 +63,7 @@ public class GeometricController {
 	
 	public void rotationX(double angle){
 		for(int i = 0;i<it.getPoints().size();i++){
-			int y,z;
+			double y,z;
 			y = it.getPoints().get(i).getY();
 			z = it.getPoints().get(i).getZ();
 			it.getPoints().get(i).setY(y*Math.cos(angle)+z*-Math.sin(angle));
@@ -73,15 +73,21 @@ public class GeometricController {
 	
 	public void rotationY(double angle){
 		for(int i = 0;i<it.getPoints().size();i++){
-			it.getPoints().get(i).setX(it.getPoints().get(i).getX()*Math.cos(angle)+it.getPoints().get(i).getZ()*Math.sin(angle));
-			it.getPoints().get(i).setZ(it.getPoints().get(i).getX()*-Math.sin(angle)+it.getPoints().get(i).getZ()*Math.cos(angle));
-		}
+			double x,z;
+			x = it.getPoints().get(i).getX();
+			z = it.getPoints().get(i).getZ();
+			it.getPoints().get(i).setX(x*Math.cos(angle)+z*-Math.sin(angle));
+			it.getPoints().get(i).setZ(x*Math.sin(angle)+z*Math.cos(angle));}
 	}
 	
 	public void rotationZ(double angle){
 		for(int i = 0;i<it.getPoints().size();i++){
-			it.getPoints().get(i).setX(it.getPoints().get(i).getX()*Math.cos(angle)+it.getPoints().get(i).getY()*Math.sin(angle));
-			it.getPoints().get(i).setY(it.getPoints().get(i).getX()*-Math.sin(angle)+it.getPoints().get(i).getY()*Math.cos(angle));
+			double x,y;
+			x = it.getPoints().get(i).getX();
+			y = it.getPoints().get(i).getY();
+			
+			it.getPoints().get(i).setX(x*Math.cos(angle)+y*Math.sin(angle));
+			it.getPoints().get(i).setY(x*-Math.sin(angle)+y*Math.cos(angle));
 		}
 	}
 
