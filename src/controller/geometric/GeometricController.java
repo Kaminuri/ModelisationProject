@@ -63,8 +63,11 @@ public class GeometricController {
 	
 	public void rotationX(double angle){
 		for(int i = 0;i<it.getPoints().size();i++){
-			it.getPoints().get(i).setY(it.getPoints().get(i).getY()*Math.cos(angle)+it.getPoints().get(i).getZ()*-Math.sin(angle));
-			it.getPoints().get(i).setZ(it.getPoints().get(i).getY()*Math.sin(angle)+it.getPoints().get(i).getZ()*Math.cos(angle));
+			int y,z;
+			y = it.getPoints().get(i).getY();
+			z = it.getPoints().get(i).getZ();
+			it.getPoints().get(i).setY(y*Math.cos(angle)+z*-Math.sin(angle));
+			it.getPoints().get(i).setZ(y*Math.sin(angle)+z*Math.cos(angle));
 		}
 	}
 	
