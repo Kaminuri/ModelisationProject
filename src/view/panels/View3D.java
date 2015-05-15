@@ -34,10 +34,6 @@ public class View3D extends JPanel{
 		
 		double x0 = d.width / 2;
 		double y0 = d.height - 60;
-		/*for(int j = 0; j < i.getPoints().size(); j++){
-			listeX[j] = (int)(i.getPoints().get(j).getX()*c.getZoomX() + x0 + c.getTransX());
-			listeY[j] = (int)(i.getPoints().get(j).getY()*c.getZoomY() + y0 + c.getTransY());
-		}*/
 		
 		for (Face f : i.getFaces()) {
 			Point[] tab = f.getPoints();
@@ -53,8 +49,8 @@ public class View3D extends JPanel{
         Point ab = new Point(b.getX()-a.getX(),b.getY()-a.getY(),b.getZ()-a.getZ()); //on calcule le vecteur ab directeur du plan
         Point ac = new Point(c.getX()-a.getX(),c.getY()-a.getY(),c.getZ()-a.getZ()); //on calcule le vecteur ac directeur du plan
         Point normal = new Point((ab.getY()*ac.getZ()-ab.getZ()*ac.getY()),-(ab.getX()*ac.getZ()-ab.getZ()*ac.getX()),(ab.getX()*ac.getY()-ab.getY()*ac.getX())); //vecteur normal au plan
-/* un point comporte trois coordonnée x y z comme un vecteur donc je ne redéfini pas une classe vecteur comme elle est
-identique à la classe point.*/
+        /* un point comporte trois coordonnée x y z comme un vecteur donc je ne redéfini pas une classe vecteur comme elle est
+		identique à la classe point.*/
         Point lumiere = new Point(0,0,-1); //vecteur directeur des rayons de lumière lumière
         double percent = normal.getX() * lumiere.getX() + normal.getY() * lumiere.getY() + normal.getZ() * lumiere.getZ();
         double normen = Math.sqrt(normal.getX() * normal.getX() + normal.getY() * normal.getY() + normal.getZ() * normal.getZ());
