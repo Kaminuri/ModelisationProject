@@ -136,7 +136,7 @@ public class OptionPanel extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				gc.rotationX(0.1);
+				gc.rotationX(Math.PI/8);
 			}
 		});
 	}
@@ -147,7 +147,7 @@ public class OptionPanel extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				gc.rotationY(0.1);
+				gc.rotationY(Math.PI/8);
 			}
 		});
 	}
@@ -158,7 +158,7 @@ public class OptionPanel extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				gc.rotationZ(0.1);
+				gc.rotationZ(Math.PI/8);
 			}
 		});
 	}
