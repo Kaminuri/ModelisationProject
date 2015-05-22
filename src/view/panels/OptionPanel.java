@@ -84,7 +84,7 @@ public class OptionPanel extends JPanel{
 	}
 	
 	private void initTranslationH(){
-		translationH.setText("");
+		translationH.setText("↑");
 		translationH.addActionListener(new ActionListener() {
 			
 			@Override
