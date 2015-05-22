@@ -41,8 +41,8 @@ public class View3D extends JPanel{
 		listeX = new int[3];
 		listeY = new int[3];
 		
-		double x0 = d.width / 2;
-		double y0 = d.height - 60;
+		double x0 = d.width / 2; //Permet d'aligner la figure sur l'axe des x
+		double y0 = d.height - 60; //permet d'aligner la figure sur l'axe des y
 		
 		for (Face f : i.getFaces()) {
 			Point[] tab = f.getPoints();
