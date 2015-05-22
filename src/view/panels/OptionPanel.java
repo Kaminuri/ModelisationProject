@@ -12,14 +12,15 @@ import javax.swing.JPanel;
 import controller.geometric.GeometricController;
 
 
+@SuppressWarnings("serial")
 public class OptionPanel extends JPanel{
 	
-	private JButton nZoom , pZoom, rotationX, rotationY, rotationZ, translationH, translationB, translationG, translationD ;
+	private JButton mZoom , pZoom, rotationX, rotationY, rotationZ, translationH, translationB, translationG, translationD ;
 	private GeometricController gc;
 	public OptionPanel(GeometricController gc){
 		this.gc = gc;
 		this.setLayout(new GridLayout(1,8));
-		nZoom = new JButton();
+		mZoom = new JButton();
 		pZoom = new JButton();
 		rotationX = new JButton();
 		rotationY = new JButton();
@@ -42,7 +43,7 @@ public class OptionPanel extends JPanel{
 		
 
 		add(pZoom);
-		add(nZoom);
+		add(mZoom);
 		add(rotationX);
 		add(rotationY);
 		add(rotationZ);
@@ -54,8 +55,8 @@ public class OptionPanel extends JPanel{
 	}
 
 	private void initNZoom(){
-		nZoom.setText("-");
-		nZoom.addActionListener(new ActionListener() {
+		mZoom.setText("-");
+		mZoom.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -63,7 +64,7 @@ public class OptionPanel extends JPanel{
 				gc.decreaseZoomX();			
 			}
 		});
-		nZoom.setSize(new Dimension(10,70));
+		mZoom.setSize(new Dimension(10,70));
 
 
 	}
@@ -83,7 +84,7 @@ public class OptionPanel extends JPanel{
 	}
 	
 	private void initTranslationH(){
-		translationH.setText("^");
+		translationH.setText("");
 		translationH.addActionListener(new ActionListener() {
 			
 			@Override
