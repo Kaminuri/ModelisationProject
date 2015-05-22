@@ -36,7 +36,6 @@ public class Interface implements Observer{
 		menuBar = new MBar();
 		f.setJMenuBar(menuBar);
 		f.pack();
-	    //this.setLocationRelativeTo(null);
 	    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    f.setVisible(true);
 	    i.addObserver(this);
