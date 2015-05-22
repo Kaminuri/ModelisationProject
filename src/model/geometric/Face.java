@@ -22,7 +22,7 @@ public class Face {
 		if(tab[0].equals(s2.getP1()) || tab[1].equals(s2.getP1())){
 			tab[2] = s2.getP1();
 		}
-		else if(tab[0].equals(s2.getP2()) || tab[1].equals(s2.getP2())){
+		else{
 			tab[2] = s2.getP2();
 		}
 		return tab;
