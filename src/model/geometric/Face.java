@@ -17,10 +17,6 @@ public class Face {
 		s2.getP2();
 	}
 
-	/*public Point barycenter(){
-		float x = 0, y =0, z = 0;
-		return new Point(x, y, z);
-	}*/
 	
 	/**
 	 * Retourne un tableau contenant les points composant la face
