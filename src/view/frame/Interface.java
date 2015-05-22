@@ -8,7 +8,6 @@ import java.util.Observer;
 import javax.swing.JFrame;
 
 import model.geometric.Item3D;
-import model.loader.FileParser;
 import view.frame.tools.InternalFrameOption;
 import view.frame.tools.MBar;
 import view.panels.View3D;
@@ -18,14 +17,10 @@ import controller.geometric.GeometricController;
 
 public class Interface implements Observer{
 	private MBar menuBar;
-	private GeometricController gc;
 	private View3D view;
 	private JFrame f;
 	private Dimension screenSize;
-	private Item3D item;
 	public Interface(GeometricController gc, Item3D i){
-		item = i;
-		this.gc = gc;
 		f = new JFrame();
 		view = new View3D(i, gc);
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -40,7 +35,6 @@ public class Interface implements Observer{
 	    
 		menuBar = new MBar();
 		f.setJMenuBar(menuBar);
-		//this.setResizable(true);
 		f.pack();
 	    //this.setLocationRelativeTo(null);
 	    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
