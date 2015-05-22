@@ -19,12 +19,21 @@ public class View3D extends JPanel{
 	int[] listeX,listeY;
 	Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 
+	/**
+	 * Cree un View3D a partir d'un item3D et d'un GeometricController
+	 * @param i l'item3D contenant le modele
+	 * @param c le GeometricController permettant de controler le modele
+	 */
 	public View3D(Item3D i,GeometricController c){
 		this.i = i;
 		this.c = c;
 
-		c.listPointSort();
+		//c.listPointSort();
 	}
+	
+	/**
+	 * Permet d'afficher la figure
+	 */
 	public void paintComponent(Graphics g){
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, d.width+50,d.height);
@@ -39,12 +48,14 @@ public class View3D extends JPanel{
 			Point[] tab = f.getPoints();
 			for(int j=0;j<3;j++){
 				listeX[j] = (int)(tab[j].getX()*c.getZoomX() +x0 + c.getTransX());
-				listeY[j] = (int)(tab[j].getY()*c.getZoomY() +x0 + c.getTransY());
+				listeY[j] = (int)(tab[j].getY()*c.getZoomY() +y0 + c.getTransY());
 			}
 			g.setColor(setColor(Color.gray, tab[0], tab[1], tab[2]));
 			g.drawPolygon(listeX, listeY, 3);
 		}
 	}
+	
+	
 	public Color setColor(Color col, Point a, Point b, Point c){
         Point ab = new Point(b.getX()-a.getX(),b.getY()-a.getY(),b.getZ()-a.getZ()); //on calcule le vecteur ab directeur du plan
         Point ac = new Point(c.getX()-a.getX(),c.getY()-a.getY(),c.getZ()-a.getZ()); //on calcule le vecteur ac directeur du plan
@@ -56,7 +67,7 @@ public class View3D extends JPanel{
         double normen = Math.sqrt(normal.getX() * normal.getX() + normal.getY() * normal.getY() + normal.getZ() * normal.getZ());
         double normel = Math.sqrt(lumiere.getX() * lumiere.getX() + lumiere.getY() * lumiere.getY() + lumiere.getZ() * lumiere.getZ());
         percent = percent / (normen * normel); //on divise par la multiplication des deux normes pour un résultat compris entre 0 et 1
-        System.out.println(normen);
+        //System.out.println(normen);
         float[] hsbCol = new float[]{col.getRed(), col.getGreen(), col.getBlue()}; //on utilise un autre format pour définir une couleur
         hsbCol[2] = (float) percent; //la colonne 2 permet de jouer sur la brillance de la couleur on peux jour sur la saturation avec la 1 colonne
        /* System.out.println(hsbCol[0]);
