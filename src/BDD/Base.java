@@ -8,9 +8,9 @@ import java.util.HashMap;
  */
 
 public class Base  {
-	public String nomfichier, url, mdp, nom;
-	public Connection con;
-
+	protected String url, mdp, nom;
+	protected Connection con;
+	
 	public Base(String Fichier){
 		con = null;
 		try{
@@ -29,6 +29,26 @@ public class Base  {
 		url = "jdbc:sqlite:src/resources/bdd/"+Fichier;
 		nom = null;
 		mdp = null;
+	}
+	
+	public String getUrl(){
+		return url;
+	}
+	
+	public String getMdp(){
+		return mdp;
+	}
+	
+	public String getNom(){
+		return nom;
+	}
+	
+	public Connection getCon(){
+		return con;
+	}
+	
+	public void setCon(Connection c){
+		con = c;
 	}
 
 	/**
@@ -50,7 +70,7 @@ public class Base  {
 					String nameColone = metadata.getColumnName(i+1);
 					valeur.put(nameColone, rs.getString(nameColone));
 				}
-				liste.put(metadata.getColumnName(1), valeur);
+				liste.put(valeur.get("nom"), valeur);
 			} 	
 		}
 		catch(Exception e){System.out.println(e.getMessage());}
@@ -99,7 +119,7 @@ public class Base  {
 					String nameColone = metadata.getColumnName(i+1);
 					valeur.put(nameColone, rs.getString(nameColone));
 				}
-				liste.put(metadata.getColumnName(1), valeur);
+				liste.put(valeur.get("nom"), valeur);
 			} 	
 		}
 		catch(Exception e){System.out.println(e.getMessage());}
