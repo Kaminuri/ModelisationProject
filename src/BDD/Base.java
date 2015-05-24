@@ -1,4 +1,5 @@
 package BDD;
+import java.io.File;
 import java.sql.*;
 import java.util.HashMap;
 
@@ -7,17 +8,25 @@ import java.util.HashMap;
  */
 
 public class Base  {
-	String url, nom, mdp;
-	Connection con;
+	public String nomfichier, url, mdp, nom;
+	public Connection con;
 
-	public Base(){
+	public Base(String Fichier){
 		con = null;
 		try{
 			Class.forName("org.sqlite.JDBC");
 		}
 		catch(Exception e){System.out.println(e.getMessage());}
+		
+		File monFichier = new File("src/resources/bdd/"+Fichier);
+		if(!monFichier.exists()){
+			try{
+			monFichier.createNewFile();
+			}
+			catch(Exception e){System.out.println("Impossible de créer le fichier : " + e);}
+		}
 
-		url = "jdbc:sqlite:src/resources/bdd/Base.db";
+		url = "jdbc:sqlite:src/resources/bdd/"+Fichier;
 		nom = null;
 		mdp = null;
 	}
