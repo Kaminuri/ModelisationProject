@@ -21,46 +21,89 @@ public class GeometricController {
 		zoomY = -zoom;
 	}
 	
-	
+	/**
+	 * Diminue la valeur du zoom vertical
+	 */
 	public void decreaseZoomY() {
 		zoomY *= 0.9;
 	}
+	
+	/**
+	 * Diminue la valeur du zoom horizontal
+	 */
 	public void decreaseZoomX() {
-
 		zoomX *= 0.9;
 	}
+	
+	/**
+	 * augmente la valeur du zoom horizontal
+	 */
 	public void increaseZoomX() {
-
 		zoomX *= 1.1;
 	}
+	
+	/**
+	 * augmente la valeur du zoom vertical
+	 */
 	public void increaseZoomY() {
 		zoomY *= 1.1;
 	}
+	
+	/**
+	 * Diminue la valeur de transition verticale
+	 */
 	public void decreaseTransY() {
 		transY -= 15;
 	}
+	
+	/**
+	 * Diminue la valeur de transition horizontale
+	 */
 	public void decreaseTransX() {
 		transX -= 15;
 	}
+	
+	/**
+	 * Augmente la valeur de transition verticale
+	 */
 	public void increaseTransY() {
 		transY += 15;
 	}
+	
+	/**
+	 * Augmente la valeur de transition horizontale
+	 */
 	public void increaseTransX() {
 		transX += 15;
 	}
-
+	
+	/**
+	 * Trie la liste des points 
+	 */
 	public void listPointSort() {
-		Collections.sort(it.getPoints(),Collections.reverseOrder());
+		Collections.sort(it.getPoints());
 	}
 	
+	/**
+	 * Retourne la valeur du zoom horizontal
+	 * @return double
+	 */
 	public double getZoomX() {
 		return zoomX;
 	}
 
+	/**
+	 * Retourne la valeur du zoom vertical
+	 * @return double
+	 */
 	public double getZoomY() {
 		return zoomY;
 	}
 	
+	/**
+	 * Applique une rotation du modele sur l'axe X
+	 * @param angle La valeur de la rotation, en double
+	 */
 	public void rotationX(double angle){
 		for(int i = 0;i<it.getPoints().size();i++){
 			double y,z;
@@ -71,6 +114,10 @@ public class GeometricController {
 		}
 	}
 	
+	/**
+	 * Applique une rotation du modele sur l'axe Y
+	 * @param angle La valeur de la rotation, en double
+	 */
 	public void rotationY(double angle){
 		for(int i = 0;i<it.getPoints().size();i++){
 			double x,z;
@@ -80,6 +127,10 @@ public class GeometricController {
 			it.getPoints().get(i).setZ(x*Math.sin(angle)+z*Math.cos(angle));}
 	}
 	
+	/**
+	 * Applique une rotation du modele sur l'axe Z
+	 * @param angle La valeur de la rotation, en double
+	 */
 	public void rotationZ(double angle){
 		for(int i = 0;i<it.getPoints().size();i++){
 			double x,y;
@@ -91,9 +142,18 @@ public class GeometricController {
 		}
 	}
 
+	/**
+	 * Retourne la valeur de la transition sur X
+	 * @return la transition sur X,sous forme d'entier
+	 */
 	public int getTransX() {
 		return transX;
 	}
+	
+	/**
+	 * Retourne la valeur de la transition sur Y
+	 * @return la transition sur Y,sous forme d'entier
+	 */
 	public int getTransY(){
 		return transY;
 	}

@@ -14,10 +14,18 @@ public class Item3D extends Observable{
 	
 	public Item3D(FileParser fp){
 		points = fp.getListPoints();
-		setSegments(fp.getListSegments());
+		segments = fp.getListSegments();
 		faces = fp.getListFaces();
 	}
 	
+	/**
+	 * Retourne un tableau contenant les extremites du modele
+	 * Indice 0 : Extremite minimale sur X
+	 * Indice 1 : Extremite maximale sur X
+	 * Indice 2 : Extremite minimale sur Y
+	 * Indice 3 : Extremite maximale sur Y
+	 * @return un tableau de double contenant les extremites du modele
+	 */
 	public double[] extremites(){
 		//tab[0] -> minX ; tab[1] -> maxX  ; tab[2] -> minY ; tab[3] -> maxY
 		double[] tab=new double[4];
@@ -49,7 +57,6 @@ public class Item3D extends Observable{
 		setChanged();
 		notifyObservers();
 		return points;
-		
 	}
 
 	public void setPoints(ArrayList<Point> points) {
