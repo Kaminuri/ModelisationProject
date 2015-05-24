@@ -25,7 +25,7 @@ public class ImportFrame extends JFrame{
 	private JTextField non,tg, name;
 	public ImportFrame(final File f){
 		JPanel contain = new JPanel();
-		bdd = new Base();
+		bdd = new Base("Base.db");
 		//Label
 		JPanel labelContainer = new JPanel();
 		labelContainer.setLayout(new BoxLayout(labelContainer, BoxLayout.Y_AXIS));

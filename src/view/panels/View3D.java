@@ -50,6 +50,7 @@ public class View3D extends JPanel{
 				listeX[j] = (int)(tab[j].getX()*c.getZoomX() +x0 + c.getTransX());
 				listeY[j] = (int)(tab[j].getY()*c.getZoomY() +y0 + c.getTransY());
 			}
+			System.out.println(tab[0] + " " + tab[1] + " " + tab[2]);
 			g.setColor(setColor(Color.gray, tab[0], tab[1], tab[2]));
 			g.drawPolygon(listeX, listeY, 3);
 		}
