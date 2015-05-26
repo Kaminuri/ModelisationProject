@@ -27,10 +27,10 @@ public class Face {
 		tab[0] = s1.getP1();
 		tab[1] = s1.getP2();
 		if(tab[0].equals(s2.getP1()) || tab[1].equals(s2.getP1())){
-			tab[2] = s2.getP1();
+			tab[2] = s2.getP2();
 		}
 		else{
-			tab[2] = s2.getP2();
+			tab[2] = s2.getP1();
 		}
 		return tab;
 	}
