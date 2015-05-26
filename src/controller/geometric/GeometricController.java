@@ -12,13 +12,18 @@ public class GeometricController {
 	private int transX,transY = -450;
 	private Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 
+	/**
+	 * Cree un GeometricController, permettant d'effectuer les calculs sur le modele
+	 * @param item Le modele sur lequel porteront les calculs
+	 */
 	public GeometricController(Item3D item){
 		it = item;
 		zoomX =  d.width/Math.abs(it.extremites()[2]-it.extremites()[3]);
 		zoomY =  d.height/Math.abs(it.extremites()[0]-it.extremites()[1]);
-		zoom = zoomX > zoomY ? zoomY -50 : zoomX;
+		zoom = zoomX > zoomY ? zoomY -50 : zoomX ;
 		zoomX = zoom;
 		zoomY = -zoom;
+		
 	}
 	
 	/**
