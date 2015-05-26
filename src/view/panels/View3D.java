@@ -2,6 +2,7 @@ package view.panels;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 
@@ -30,7 +31,7 @@ public class View3D extends JPanel{
 
 		//c.listPointSort();
 	}
-	
+
 	/**
 	 * Permet d'afficher la figure
 	 */
@@ -40,40 +41,25 @@ public class View3D extends JPanel{
 		g.setColor(Color.BLACK);
 		listeX = new int[3];
 		listeY = new int[3];
-		
+
 		double x0 = d.width / 2; //Permet d'aligner la figure sur l'axe des x
 		double y0 = d.height - 60; //permet d'aligner la figure sur l'axe des y
-		
+
 		for (Face f : i.getFaces()) {
 			Point[] tab = f.getPoints();
 			for(int j=0;j<3;j++){
 				listeX[j] = (int)(tab[j].getX()*c.getZoomX() +x0 + c.getTransX());
 				listeY[j] = (int)(tab[j].getY()*c.getZoomY() +y0 + c.getTransY());
 			}
-			System.out.println(tab[0] + " " + tab[1] + " " + tab[2]);
-			g.setColor(setColor(Color.gray, tab[0], tab[1], tab[2]));
-			g.drawPolygon(listeX, listeY, 3);
+			Point vector1 = new Point(tab[1].getX() - tab[0].getX(), tab[1].getY() - tab[0].getY(), tab[1].getZ() - tab[0].getZ());
+            Point vector2 = new Point(tab[2].getX() - tab[0].getX(), tab[2].getY() - tab[0].getY(), tab[2].getZ() - tab[0].getZ());
+            final Point Light = new Point(0, 0, 1);
+            int color = (int) (Light.angle(vector1.vectorialProduct(vector2)) * (150 / (Math.PI / 2))) + 25;
+            g.setColor(new Color(color, color, color));
+			g.fillPolygon(listeX, listeY, 3);
 		}
 	}
+
+
 	
-	
-	public Color setColor(Color col, Point a, Point b, Point c){
-        Point ab = new Point(b.getX()-a.getX(),b.getY()-a.getY(),b.getZ()-a.getZ()); //on calcule le vecteur ab directeur du plan
-        Point ac = new Point(c.getX()-a.getX(),c.getY()-a.getY(),c.getZ()-a.getZ()); //on calcule le vecteur ac directeur du plan
-        Point normal = new Point((ab.getY()*ac.getZ()-ab.getZ()*ac.getY()),-(ab.getX()*ac.getZ()-ab.getZ()*ac.getX()),(ab.getX()*ac.getY()-ab.getY()*ac.getX())); //vecteur normal au plan
-        /* un point comporte trois coordonnée x y z comme un vecteur donc je ne redéfini pas une classe vecteur comme elle est
-		identique à la classe point.*/
-        Point lumiere = new Point(0,0,-1); //vecteur directeur des rayons de lumière lumière
-        double percent = normal.getX() * lumiere.getX() + normal.getY() * lumiere.getY() + normal.getZ() * lumiere.getZ();
-        double normen = Math.sqrt(normal.getX() * normal.getX() + normal.getY() * normal.getY() + normal.getZ() * normal.getZ());
-        double normel = Math.sqrt(lumiere.getX() * lumiere.getX() + lumiere.getY() * lumiere.getY() + lumiere.getZ() * lumiere.getZ());
-        percent = percent / (normen * normel); //on divise par la multiplication des deux normes pour un résultat compris entre 0 et 1
-        //System.out.println(normen);
-        float[] hsbCol = new float[]{col.getRed(), col.getGreen(), col.getBlue()}; //on utilise un autre format pour définir une couleur
-        hsbCol[2] = (float) percent; //la colonne 2 permet de jouer sur la brillance de la couleur on peux jour sur la saturation avec la 1 colonne
-       /* System.out.println(hsbCol[0]);
-        System.out.println(hsbCol[1]);
-        System.out.println(hsbCol[2]);*/
-        return Color.getHSBColor(hsbCol[0], hsbCol[1], hsbCol[2]); //et on reconvertit en color
-    }
 }
