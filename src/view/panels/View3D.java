@@ -29,7 +29,6 @@ public class View3D extends JPanel{
 		this.i = i;
 		this.c = c;
 
-		//c.listPointSort();
 	}
 
 	/**
