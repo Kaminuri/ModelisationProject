@@ -19,6 +19,8 @@ public class Point implements Comparable<Point>,Comparator<Point>{
 		return x;
 	}
 	
+	
+	
 	/**
 	 * Renvoie la valeur en y du point
 	 * @return la valeur en y du point sous forme de double
@@ -99,6 +101,8 @@ public class Point implements Comparable<Point>,Comparator<Point>{
 		}
 		return 0;
 	}
+	
+	
 	@Override
 	public int compare(Point p1, Point p2) {
 		if(p1.getZ()<p2.getZ()){
@@ -115,4 +119,32 @@ public class Point implements Comparable<Point>,Comparator<Point>{
 		}
 		return 0;
 	}
+	
+	
+	/**
+     * Calculate the angle between 2 vectors
+     * @param vecteur
+     * @return angle
+     */
+    public double angle(Point vecteur) {
+        double vX = vecteur.getX();
+        double vY = vecteur.getY();
+        double vZ = vecteur.getZ();
+        double normeU = Math.sqrt(x * x + y * y + z * z);
+        double normeV = Math.sqrt(vX * vX + vY * vY + vZ * vZ);
+        double scalaire = x * vX + y * vY + z * vZ;
+        scalaire = Math.sqrt(scalaire * scalaire);
+        return Math.asin(scalaire/(normeU*normeV));
+    }
+	
+    /**Realize a vectorial product between this point and the point in parameter
+     * @param point point to multiply
+     * @return the new point from vectorial product
+     */
+    public Point vectorialProduct (Point point){
+        double x1 = point.getX();
+        double y1 = point.getY();
+        double z1 = point.getZ();
+        return new Point (y*z1 - z*y1, z*x1 - x*z1, x*y1 - y*x1);
+    }
 }
