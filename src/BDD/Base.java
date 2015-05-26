@@ -92,7 +92,6 @@ public class Base  {
 			Statement stmt = con.createStatement();
 			int taille = tags.length;
 			String query = "Select * from Objets where (";
-			System.out.println(query);
 			for(int i = 0; i < taille; i++){
 				for(int j = 1; j < 4+1; j++){
 					query += "Tag" + j +" = '" + tags[i] +"'";
@@ -102,14 +101,11 @@ public class Base  {
 					else{
 						query += " OR ";
 					}
-					System.out.println(query);
 				}
 				if( i < taille - 1){
 					query += " AND (";
 				}
-				System.out.println(query);
 			}
-			System.out.println(query);
 			ResultSet rs = stmt.executeQuery(query);
 			ResultSetMetaData metadata = rs.getMetaData();
 			int nombreColonnes = metadata.getColumnCount();
