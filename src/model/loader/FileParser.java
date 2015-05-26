@@ -16,14 +16,14 @@ import exceptions.ExceptionSegment;
 
 public class FileParser {
 	//private String fileName = "cube.gts";
-	private String fileName = "sphere5.gts";
-	//private String fileName = "x_wing.gts";
+	//private String fileName = "sphere5.gts";
+	private String fileName = "x_wing.gts";
 	//private String fileName = "poney.gts";
 	//private String fileName = "horse.gts";
 	//private String fileName = "space_shuttle.gts";
 	
 	private int nbPoint, nbSeg, nbFace;
-	private Double x, y , z;
+	private Double x, y, z;
 	private Point p1,p2;
 	private Segment s1,s2,s3;
 	private ArrayList<Point> p = new ArrayList<Point>();
@@ -31,9 +31,6 @@ public class FileParser {
 	private ArrayList<Face> f = new ArrayList<Face>();
 
 	public FileParser() throws ExceptionPoint, ExceptionSegment, ExceptionFace {
-		p = new ArrayList<>();
-		s = new ArrayList<>();
-		f = new ArrayList<>();
 		String sta;
 		String currnt;
 		try(BufferedReader br = new BufferedReader(new FileReader("src/resources/models/"+ fileName))){
@@ -69,7 +66,7 @@ public class FileParser {
 				if(s.contains(s1) != true || s.contains(s2) != true || s.contains(s3) != true) {
 					throw new ExceptionFace();
 				}
-				f.add(new Face(s1,s2,s3));
+				f.add(new Face(s1,s2));
 			}
 		}catch(IOException e){
 			e.printStackTrace();
