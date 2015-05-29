@@ -86,7 +86,7 @@ public class GeometricController {
 	 * Trie la liste des points 
 	 */
 	public void listPointSort() {
-		Collections.sort(it.getPoints());
+		Collections.sort(it.getPoints(),Collections.reverseOrder());
 	}
 	
 	/**
