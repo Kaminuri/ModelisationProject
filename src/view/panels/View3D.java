@@ -2,7 +2,6 @@ package view.panels;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 
@@ -13,6 +12,7 @@ import model.geometric.Item3D;
 import model.geometric.Point;
 import controller.geometric.GeometricController;
 
+@SuppressWarnings("serial")
 public class View3D extends JPanel{
 
 	Item3D i;
@@ -29,6 +29,7 @@ public class View3D extends JPanel{
 		this.i = i;
 		this.c = c;
 
+		c.listPointSort();
 	}
 
 	/**
