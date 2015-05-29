@@ -123,8 +123,8 @@ public class Point implements Comparable<Point>,Comparator<Point>{
 	
 	/**
      * Calculate the angle between 2 vectors
-     * @param vecteur
-     * @return angle
+     * @param un point
+     * @return un double correspondant a l'angle
      */
     public double angle(Point vecteur) {
         double vX = vecteur.getX();
@@ -137,11 +137,12 @@ public class Point implements Comparable<Point>,Comparator<Point>{
         return Math.asin(scalaire/(normeU*normeV));
     }
 	
-    /**Realize a vectorial product between this point and the point in parameter
-     * @param point point to multiply
-     * @return the new point from vectorial product
+    /**
+     *  Effectue le calcul du produit vectoriel entre le point actuel et le point passé en parametre
+     * @param le point avec lequel effectuer le produit vectoriel, en plus du point actuel
+     * @return le nouveau point issu du produit vectoriel entre le point actuel et le point en parametre
      */
-    public Point vectorialProduct (Point point){
+    public Point produitVectoriel (Point point){
         double x1 = point.getX();
         double y1 = point.getY();
         double z1 = point.getZ();
