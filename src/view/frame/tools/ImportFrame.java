@@ -136,39 +136,14 @@ public class ImportFrame extends JFrame{
 		}
 	}); 
 		JButton cancel = new JButton("Cancel");
-		cancel.addMouseListener(new MouseListener() {
+		cancel.addActionListener(new ActionListener() {
 			
 			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				dispose();
 				
 			}
 		});
-		
 		buttonContainer.add(next);
 		buttonContainer.add(cancel);
 		

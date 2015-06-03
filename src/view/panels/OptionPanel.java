@@ -3,9 +3,13 @@ package view.panels;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -55,7 +59,7 @@ public class OptionPanel extends JPanel{
 	}
 
 	private void initNZoom(){
-		mZoom.setText("-");
+		//setButIcon(mZoom, "/resources/pictures/Zoom-.jpg");
 		mZoom.addActionListener(new ActionListener() {
 			
 			@Override
@@ -84,7 +88,7 @@ public class OptionPanel extends JPanel{
 	}
 	
 	private void initTranslationH(){
-		translationH.setText("↑");
+		translationH.setText("â†‘");
 		translationH.addActionListener(new ActionListener() {
 			
 			@Override
@@ -96,7 +100,7 @@ public class OptionPanel extends JPanel{
 		
 	}
 	private void initTranslationB(){
-		translationB.setText("↓");
+		translationB.setText("â†“");
 		translationB.addActionListener(new ActionListener() {
 			
 			@Override
@@ -107,7 +111,7 @@ public class OptionPanel extends JPanel{
 		translationB.setSize(new Dimension(10,70));
 	}
 	private void initTranslationG(){
-		translationG.setText("←");
+		translationG.setText("â†�");
 		translationG.addActionListener(new ActionListener() {
 			
 			@Override
@@ -119,7 +123,7 @@ public class OptionPanel extends JPanel{
 		translationG.setSize(new Dimension(10,70));
 	}
 	private void initTranslationD(){
-		translationD.setText("→");
+		translationD.setText("â†’");
 		translationD.addActionListener(new ActionListener() {
 			
 			@Override
@@ -162,5 +166,14 @@ public class OptionPanel extends JPanel{
 			}
 		});
 	}
+	private void setButIcon(JButton b, String path){
+		try {
+		    Image img = ImageIO.read(getClass().getResource(path));
+		    Image newimg = img.getScaledInstance( b.getWidth(), b.getHeight(),  java.awt.Image.SCALE_SMOOTH ) ;
+		    b.setIcon(new ImageIcon(newimg));
+		  } catch (IOException ex) {
+		  }
+	}
+	
 	
 }
