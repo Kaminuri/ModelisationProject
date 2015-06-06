@@ -59,7 +59,7 @@ public class OptionPanel extends JPanel{
 	}
 
 	private void initNZoom(){
-		//setButIcon(mZoom, "/resources/pictures/Zoom-.jpg");
+		setButIcon(mZoom, "/resources/pictures/Zoom-.jpg");
 		mZoom.addActionListener(new ActionListener() {
 			
 			@Override
@@ -73,6 +73,7 @@ public class OptionPanel extends JPanel{
 
 	}
 	private void initPZoom(){
+		setButIcon(pZoom,"/src/resources/pictures/Zoom+.jpg");
 		pZoom.setText("+");
 		pZoom.setSize(new Dimension(10,70));
 		pZoom.addActionListener(new ActionListener() {
@@ -169,7 +170,7 @@ public class OptionPanel extends JPanel{
 	private void setButIcon(JButton b, String path){
 		try {
 		    Image img = ImageIO.read(getClass().getResource(path));
-		    Image newimg = img.getScaledInstance( b.getWidth(), b.getHeight(),  java.awt.Image.SCALE_SMOOTH ) ;
+		    Image newimg = img.getScaledInstance( 44, 40,  java.awt.Image.SCALE_SMOOTH ) ;
 		    b.setIcon(new ImageIcon(newimg));
 		  } catch (IOException ex) {
 		  }
