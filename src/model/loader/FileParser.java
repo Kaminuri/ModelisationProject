@@ -110,4 +110,5 @@ public class FileParser {
 	public ArrayList<Face> getListFaces(){
 		return f;
 	}
+	
 }

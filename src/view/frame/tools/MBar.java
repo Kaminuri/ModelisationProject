@@ -43,6 +43,12 @@ public class MBar extends JMenuBar{
 
 		//Open
 		menuItem = new JMenuItem("Open", KeyEvent.VK_T);
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					new Open();
+			}
+		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("Open a valid document from the Data Base");
 		menu.add(menuItem);
