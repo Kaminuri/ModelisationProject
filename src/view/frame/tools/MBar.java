@@ -7,18 +7,20 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 
 import javax.swing.ImageIcon;
-import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButtonMenuItem;
 import javax.swing.KeyStroke;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MBar extends JMenuBar{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JMenu menu;
 	private JMenuItem menuItem;
 	private JFileChooser chooser;
@@ -186,11 +188,12 @@ public class MBar extends JMenuBar{
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("help");
 		menu.add(menuItem);
-		menu.addActionListener(new ActionListener() {
+		menuItem.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(frame, "L'aide sera disponible dans le prochain DLC");
+				JOptionPane.showMessageDialog(frame,
+					    "L'aide sera disponible dans notre prochain DLC ! N'attendez plus et précommandez le à l'adresse suivante : www.onaimelesdlc.com", "Help", JOptionPane.INFORMATION_MESSAGE);
 				
 			}
 		});
@@ -199,6 +202,16 @@ public class MBar extends JMenuBar{
 		menuItem = new JMenuItem("About", KeyEvent.VK_T);
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("About this project");
+menuItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frame,
+					    "Modélisation 3D vers. 0.01", "Information", JOptionPane.INFORMATION_MESSAGE);
+				
+				
+			}
+		});
 		menu.add(menuItem);
 	}
 }
