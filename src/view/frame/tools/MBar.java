@@ -1,31 +1,31 @@
 package view.frame.tools;
 
 
-import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.KeyStroke;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MBar extends JMenuBar{
-	private JMenu menu, submenu;
+	private JMenu menu;
 	private JMenuItem menuItem;
-	private JRadioButtonMenuItem rbMenuItem;
-	private JCheckBoxMenuItem cbMenuItem;
-	JFileChooser chooser;
+	private JFileChooser chooser;
+	private JFrame frame;
    
-	public MBar(){
+	public MBar(JFrame frame){
+		this.frame = frame;
 		chooser = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Model 3D GTS","gts");
 		chooser.setFileFilter(filter);
@@ -186,6 +186,14 @@ public class MBar extends JMenuBar{
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("help");
 		menu.add(menuItem);
+		menu.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frame, "L'aide sera disponible dans le prochain DLC");
+				
+			}
+		});
 		
 		//A Propos
 		menuItem = new JMenuItem("About", KeyEvent.VK_T);
