@@ -17,9 +17,7 @@ import javax.swing.KeyStroke;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MBar extends JMenuBar{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private JMenu menu;
 	private JMenuItem menuItem;
@@ -193,7 +191,7 @@ public class MBar extends JMenuBar{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(frame,
-					    "L'aide sera disponible dans notre prochain DLC ! N'attendez plus et précommandez le à l'adresse suivante : www.onaimelesdlc.com", "Help", JOptionPane.INFORMATION_MESSAGE);
+					    "L'aide sera disponible dans notre prochain DLC ! N'attendez plus et precommandez le e l'adresse suivante : www.onaimelesdlc.com", "Help", JOptionPane.INFORMATION_MESSAGE);
 				
 			}
 		});
@@ -207,7 +205,7 @@ menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(frame,
-					    "Modélisation 3D vers. 0.01", "Information", JOptionPane.INFORMATION_MESSAGE);
+					    "Modelisation 3D vers. 0.01", "Information", JOptionPane.INFORMATION_MESSAGE);
 				
 				
 			}
