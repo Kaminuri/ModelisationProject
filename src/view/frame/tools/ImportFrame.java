@@ -1,5 +1,8 @@
 package view.frame.tools;
 
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -16,32 +19,36 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import BDD.Base;
 
 public class ImportFrame extends JFrame{
 	protected Base bdd;
-	private JTextField non,tg, name;
+	private JTextField tag, name;
+	public ImportFrame thi;
+	private JTextArea descript;
 	public ImportFrame(final File f){
 		JPanel contain = new JPanel();
 		bdd = new Base("Base.db");
 		//Label
 		JPanel labelContainer = new JPanel();
-		labelContainer.setLayout(new BoxLayout(labelContainer, BoxLayout.Y_AXIS));
+		labelContainer.setLayout(new GridLayout(7,1));
 		name = new JTextField(f.getName());
-		JLabel tag = new JLabel("Tags");
+		JLabel tagz = new JLabel("Tags");
 		JLabel desc = new JLabel("Description");
 		labelContainer.add(name);
-		labelContainer.add(tag);
+		labelContainer.add(tagz);
 		labelContainer.add(desc);
 		
 		//textSetter
 		JPanel textContainer = new JPanel();
 		textContainer.setLayout(new BoxLayout(textContainer, BoxLayout.Y_AXIS));
 		JButton buttonToChangeFile = new JButton(f.getName());
-		non = new JTextField();
-		tg = new JTextField();
+		tag = new JTextField();
+		descript = new JTextArea();
+		descript.setPreferredSize(new Dimension(100,100));
 		buttonToChangeFile.addMouseListener(new MouseListener() {
 			
 			@Override
@@ -72,7 +79,7 @@ public class ImportFrame extends JFrame{
 			public void mouseClicked(MouseEvent arg0) {
 				JFileChooser j = new JFileChooser();
 				j.showOpenDialog(null);
-				if(j.getSelectedFile() != null && !(bdd.estDeja(non.getText()))){
+				if(j.getSelectedFile() != null && !(bdd.estDeja(tag.getText()))){
 					//Utilisable pour l'instant par tout le monde
 					File ImportFileTmp = j.getSelectedFile();
 					new ImportFrame(ImportFileTmp);
@@ -82,26 +89,26 @@ public class ImportFrame extends JFrame{
 		});
 		
 		textContainer.add(buttonToChangeFile);
-		textContainer.add(non);
-		textContainer.add(tg);
+		textContainer.add(tag);
+		textContainer.add(descript);
 		
 		//les buttons
 		JPanel buttonContainer = new JPanel();
 		buttonContainer.setLayout(new BoxLayout(buttonContainer, BoxLayout.Y_AXIS));
-		JButton next = new JButton("Next");
+		JButton next = new JButton("  Next  ");
 		next.addActionListener(new ActionListener() {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String tags = non.getText();
+			String tags = tag.getText();
 			String nam = name.getText();
-			String des =  tg.getText();
+			String des =  descript.getText();
 			String[] tab = tags.split(", ");
 			ArrayList<String> tab2 = new ArrayList<String>() ;
 			if(!bdd.estDeja(nam)){
 				File dest = new File("src\\resources\\models\\" + nam + ".gts");
 				copyFile(f, dest);
-				if(!tg.equals(" ")){
+				if(!descript.equals(" ")){
 					tab2.add(nam);						
 					if(tab.length >= 3){
 						for(int i = 1; i < tab.length; i++){
