@@ -4,16 +4,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
-import java.util.ArrayList;
 
 import javax.swing.JDesktopPane;
-import javax.swing.JPanel;
 
 import model.geometric.Face;
 import model.geometric.Item3D;
 import model.geometric.Point;
 import controller.geometric.GeometricController;
 
+@SuppressWarnings("serial")
 public class View3D extends JDesktopPane{
 
 	Item3D i;
