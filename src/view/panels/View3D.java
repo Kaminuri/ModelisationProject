@@ -29,8 +29,7 @@ public class View3D extends JDesktopPane{
 	public View3D(Item3D i,GeometricController c){
 		this.i = i;
 		this.c = c;
-
-		c.listPointSort();
+		i.algoPainter();
 	}
 
 	/**

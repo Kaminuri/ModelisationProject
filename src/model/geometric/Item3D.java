@@ -1,6 +1,8 @@
 package model.geometric;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Observable;
 
 import model.loader.FileParser;
@@ -78,5 +80,17 @@ public class Item3D extends Observable{
 		notifyObservers();
 		return faces;
 	}
+	/**Classify the faces according to the order where they should be post */
+    public void algoPainter(){
+    	Collections.sort(faces, new Comparateur ());
+    }
+    
+    /**Compare 2 faces for know that which should be post first*/
+    class Comparateur implements Comparator <Face> {
+    @Override
+        public int compare(Face f1, Face f2) {
+            return f1.barycenter().compareTo(f2.barycenter());
+        }
+    }
 
 }

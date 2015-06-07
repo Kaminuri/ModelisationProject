@@ -1,5 +1,7 @@
 package model.geometric;
 
+import java.util.ArrayList;
+
 public class Face {
 	private Segment s1, s2;
 	
@@ -33,5 +35,21 @@ public class Face {
 		}
 		return tab;
 	}
+	
+	/**Calculate the barycenter of the face and return the point of it
+     * @return new Point(x, y, z)*/
+    public Point barycenter(){
+        float x = 0, y = 0, z = 0;
+        Point[] liste = getPoints();
+        for(Point pt : liste){
+            x += pt.getX();
+            y += pt.getY();
+            z += pt.getZ();
+        }
+        x /= 3;
+        y /= 3;
+        z /= 3;
+        return new Point(x, y, z);
+    }
 
 }
