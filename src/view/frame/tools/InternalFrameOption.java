@@ -6,6 +6,7 @@ import view.panels.OptionPanel;
 import controller.geometric.GeometricController;
 
 
+@SuppressWarnings("serial")
 public class InternalFrameOption extends JInternalFrame{
 	public InternalFrameOption(GeometricController cg){
 		super("",false,true,false, true);
