@@ -27,7 +27,6 @@ import BDD.Base;
 public class ImportFrame extends JFrame{
 	protected Base bdd;
 	private JTextField tag, name;
-	public ImportFrame thi;
 	private JTextArea descript;
 	public ImportFrame(final File f){
 		JPanel contain = new JPanel();
