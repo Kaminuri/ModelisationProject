@@ -44,11 +44,11 @@ public class Open extends JFrame{
 		panel5 = new JPanel(null);
 		GridLayout grid1 = new GridLayout(3, 1);
     	GridLayout grid = new GridLayout(4 ,1);
-    	panel2.setLayout(grid1);
+    	panel2.setLayout(new BorderLayout());
     	panel2.setPreferredSize(new Dimension(380, 300));
-    	panel3.setPreferredSize(new Dimension(60, 300));
-    	panel4.setPreferredSize(new Dimension(60, 300));
-    	panel5.setPreferredSize(new Dimension(260, 150));
+    	panel3.setPreferredSize(new Dimension(380, 50));
+    	panel4.setPreferredSize(new Dimension(380, 50));
+    	panel5.setPreferredSize(new Dimension(380, 200));
     	panel2.add(panel3, BorderLayout.NORTH);
     	panel2.add(panel5, BorderLayout.CENTER);
     	panel2.add(panel4, BorderLayout.SOUTH);
@@ -92,11 +92,17 @@ public class Open extends JFrame{
 			String find = recherche.getText();
 			String[] tab = find.split(", ");
 			models = bdd.recherche(tab);
-			
+	  		String [] tab1 = new String [models.size()];
+	  		int i = 0;
+			for(String mapKey : models.keySet()){
+				tab1[i] = models.get(mapKey).get("nom");
+				i ++;
+	  		}
+			list.setListData(tab1);
 			frame.validate();
 			}
  		};
-
+ 		find.addActionListener(listener);
  		des.setPreferredSize(new Dimension(40, 40));
  		panel5.add(des);
 		ListSelectionListener listSelectionListener = new ListSelectionListener() {
@@ -106,17 +112,18 @@ public class Open extends JFrame{
 		    	  points.setText("Points : " + models.get(select).get("points"));
 		    	  segments.setText("Segments : " + models.get(select).get("segments"));
 		    	  faces.setText("Faces : " + models.get(select).get("faces"));
-		    	  des.setText("Description : " + models.get(select).get("des"));
-		  		  String [] tab = new String [models.size()];
-		  		  int i = 0;
-				  for(String mapKey : models.keySet()){
-					tab[i] = models.get(mapKey).get("nom");
-					i ++;
-		  		  }
-  				  frame.validate();
+		    	  des.setText("Description : " + models.get(select).get("Description"));
+		    	  frame.validate();
 		      }
 		    };
 		list.addListSelectionListener(listSelectionListener);
+		
+		JButton delete = new JButton("Delete");
+		JButton export = new JButton("Export");
+		JButton open = new JButton("Open");
+		panel4.add(delete);
+		panel4.add(export);
+		panel4.add(open);
 		frame.pack();
 	    frame.setLocationRelativeTo(null);
 	    frame.setVisible(true);
