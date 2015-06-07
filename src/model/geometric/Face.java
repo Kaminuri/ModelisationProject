@@ -1,6 +1,5 @@
 package model.geometric;
 
-import java.util.ArrayList;
 
 public class Face {
 	private Segment s1, s2;
