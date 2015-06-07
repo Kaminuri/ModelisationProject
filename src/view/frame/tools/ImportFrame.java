@@ -96,7 +96,7 @@ public class ImportFrame extends JFrame{
 			String tags = non.getText();
 			String nam = name.getText();
 			String des =  tg.getText();
-			String[] tab = tags.split(",");
+			String[] tab = tags.split(", ");
 			ArrayList<String> tab2 = new ArrayList<String>() ;
 			if(!bdd.estDeja(nam)){
 				File dest = new File("src\\resources\\models\\" + nam + ".gts");
