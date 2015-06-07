@@ -78,6 +78,12 @@ public class MBar extends JMenuBar{
 		
 		//Delete
 		menuItem = new JMenuItem("Delete", KeyEvent.VK_T);
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Delete();
+			}
+		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("Delete a file from the Data Base");
 		menu.add(menuItem);

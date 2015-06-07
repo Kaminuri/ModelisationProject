@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.HashMap;
 
 import javax.swing.JButton;
@@ -18,15 +19,11 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import exceptions.ExceptionFace;
-import exceptions.ExceptionPoint;
-import exceptions.ExceptionSegment;
-import model.geometric.Item3D;
-import model.loader.FileParser;
 import BDD.Base;
 
-@SuppressWarnings("serial")
-public class Open extends JFrame{
+public class Delete extends JFrame{
+	
+	private static final long serialVersionUID = 1L;
 	protected JFrame frame;
 	protected Base bdd;
 	protected JPanel panel, panel2, panel3, panel4, panel5;
@@ -36,12 +33,10 @@ public class Open extends JFrame{
 	@SuppressWarnings("rawtypes")
 	protected JList list;
 	protected HashMap<String, HashMap<String, String>> models;
-	protected Item3D item;
 
 	@SuppressWarnings("rawtypes")
-	public Open(Item3D i){
+	public Delete(){
 		
-		this.item = i;
 		frame = this;
 		
 		frame.setResizable(false);
@@ -104,7 +99,6 @@ public class Open extends JFrame{
 
 		ListSelectionListener listSelectionListener = new ListSelectionListener() {
 		      public void valueChanged(ListSelectionEvent listSelectionEvent) {
-		    	  JList list = ((JList)listSelectionEvent.getSource());
 		    	  String select = (String)list.getSelectedValue();
 		    	  points.setText("Points : " + models.get(select).get("points"));
 		    	  segments.setText("Segments : " + models.get(select).get("segments"));
@@ -115,10 +109,10 @@ public class Open extends JFrame{
 		    };
 		list.addListSelectionListener(listSelectionListener);
 		
-		JButton open = new JButton("Open");
-		panel4.add(open);
+		JButton delete = new JButton("Delete");
+
 		
-		ActionListener listenerOpen = new ActionListener(){
+		ActionListener listenerDelete = new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg) {
 		    String select = (String)list.getSelectedValue();
@@ -126,20 +120,19 @@ public class Open extends JFrame{
 		    	
 		    }
 		    else{
-		    	frame.dispose();
-		    	String filename = models.get(select).get("adresse");
-		    	try {
-					item.recreateItem(new FileParser(filename));
-				} catch (ExceptionPoint | ExceptionSegment | ExceptionFace e) {
-					
-					e.printStackTrace();
-				}
+		    	String filename = models.get(select).get("adresses");
+		    	bdd.delete(select);
+				models = bdd.select();
+				frame.dispose();
+				File file = new File(filename);
+				file.delete();				
 		    }
-		    	
+		    
 			}
  		};
-		open.addActionListener(listenerOpen);
+		delete.addActionListener(listenerDelete);
 		
+		panel4.add(delete);
 		frame.pack();
 	    frame.setLocationRelativeTo(null);
 	    frame.setVisible(true);

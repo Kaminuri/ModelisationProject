@@ -26,7 +26,7 @@ import model.loader.FileParser;
 import BDD.Base;
 
 @SuppressWarnings("serial")
-public class Open extends JFrame{
+public class Export extends JFrame{
 	protected JFrame frame;
 	protected Base bdd;
 	protected JPanel panel, panel2, panel3, panel4, panel5;
@@ -36,12 +36,11 @@ public class Open extends JFrame{
 	@SuppressWarnings("rawtypes")
 	protected JList list;
 	protected HashMap<String, HashMap<String, String>> models;
-	protected Item3D item;
+
 
 	@SuppressWarnings("rawtypes")
-	public Open(Item3D i){
-		
-		this.item = i;
+	public Export(){
+	
 		frame = this;
 		
 		frame.setResizable(false);
@@ -163,4 +162,3 @@ public class Open extends JFrame{
 		list.setListData(tab);
 	}
 }
-	

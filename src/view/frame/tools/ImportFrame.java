@@ -8,6 +8,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.FileOutputStream;
 
@@ -98,7 +100,7 @@ public class ImportFrame extends JFrame{
 		next.addActionListener(new ActionListener() {
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e){
 			String tags = tag.getText();
 			String nam = name.getText();
 			String des =  descript.getText();
@@ -130,7 +132,16 @@ public class ImportFrame extends JFrame{
 						tab2.add("null");
 					}
 				}
-				bdd.insert(nam, nam + ".gts", tab2.get(0), tab2.get(1), tab2.get(2), tab2.get(3), 0, 0, 0, des);
+				Scanner scan = null;
+				try {
+					scan = new Scanner(f);
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				}
+				int sommets = Integer.parseInt(scan.next());
+				int segments = Integer.parseInt(scan.next());
+				int faces = Integer.parseInt(scan.next());
+				bdd.insert(nam, nam + ".gts", tab2.get(0), tab2.get(1), tab2.get(2), tab2.get(3), sommets, segments, faces, des);
 				dispose();
 				JOptionPane.showMessageDialog(new JFrame(), "L'importation a ete effectuee avec succes");
 			}
