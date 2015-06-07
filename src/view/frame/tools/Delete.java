@@ -120,7 +120,7 @@ public class Delete extends JFrame{
 		    	
 		    }
 		    else{
-		    	String filename = models.get(select).get("adresses");
+		    	String filename = models.get(select).get("adresse");
 		    	bdd.delete(select);
 				models = bdd.select();
 				frame.dispose();
