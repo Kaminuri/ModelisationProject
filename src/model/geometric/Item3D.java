@@ -14,12 +14,16 @@ public class Item3D extends Observable{
 	private ArrayList<Face> faces;
 	public FileParser fp;
 	
+	/**
+	 * Cree un Item3D,contenant les points,segments et faces du modele
+	 * @param fp Le fileparser contenant les donnees du modele
+	 */
 	public Item3D(FileParser fp){
 		points = fp.getListPoints();
 		segments = fp.getListSegments();
 		faces = fp.getListFaces();
 	}
-	
+
 	/**
 	 * Retourne un tableau contenant les extremites du modele
 	 * Indice 0 : Extremite minimale sur X
@@ -29,7 +33,6 @@ public class Item3D extends Observable{
 	 * @return un tableau de double contenant les extremites du modele
 	 */
 	public double[] extremites(){
-		//tab[0] -> minX ; tab[1] -> maxX  ; tab[2] -> minY ; tab[3] -> maxY
 		double[] tab=new double[4];
 		tab[0] = points.get(0).getX();
 		tab[1] = points.get(0).getX();
@@ -55,59 +58,87 @@ public class Item3D extends Observable{
 		return tab;
 	}
 	
+	/**
+	 * Affecte un setchanged() et notifyObservers(),  et retourne une arraylist contenant les points du modele
+	 * @return ArrayList des points du modele
+	 */
 	public ArrayList<Point> getPoints() {
 		setChanged();
 		notifyObservers();
 		return points;
 	}
-
+	
+	/**
+	 * Definit les points du modele a partir d'une arraylist de points
+	 * @param points L'arraylist contenant les points du modele
+	 */
 	public void setPoints(ArrayList<Point> points) {
 		this.points = points;
 		setChanged();
 		notifyObservers();
 	}
 
+
+	/**
+	 * Retourne la liste des Segments du modele
+	 * @return ArrayList des Segments du modele
+	 */
 	public ArrayList<Segment> getSegments() {
 		return segments;
 	}
-
+	
+	/**
+	 * 
+	 * @param segments
+	 */
 	public void setSegments(ArrayList<Segment> segments) {
 		this.segments = segments;
 	}
 
+	/**
+	 * Retourne la liste des Faces du modele
+	 * @return ArrayList des Faces du modele
+	 */
 	public ArrayList<Face> getFaces() {
 		setChanged();
 		notifyObservers();
 		return faces;
 	}
-	/**Classify the faces according to the order where they should be post */
-    public void algoPainter(){
-    	Collections.sort(faces, new Comparateur ());
-    }
-    
-    /**Compare 2 faces for know that which should be post first*/
-    class Comparateur implements Comparator <Face> {
-    @Override
-        public int compare(Face f1, Face f2) {
-            return f1.barycenter().compareTo(f2.barycenter());
-        }
-    }
-    /**Return the barycenter of the object
-     * @return new Point(pointX, pointY, pointZ)*/
-    public Point barycenter() {
-        double pointX = 0;
-        double pointY = 0;
-        double pointZ = 0;
-        for (int i = 0; i < points.size(); i++) {
-            pointX += points.get(i).getX();
-            pointY += points.get(i).getY();
-            pointZ += points.get(i).getZ();
-        }
-        pointX /= points.size();
-        pointY /= points.size();
-        pointZ /= points	.size();
-        return new Point(pointX, pointY, pointZ);
-    }
+	
+	/**
+	 * Trie les faces en fonction de l'ordre dans lequel elles doivent etre affichees
+	 */
+	public void algoPainter(){
+		Collections.sort(faces, new Comparateur ());
+	}
+
+	
+	class Comparateur implements Comparator <Face> {
+		@Override
+		public int compare(Face f1, Face f2) {
+			return f1.barycentre().compareTo(f2.barycentre());
+		}
+	}
+
+
+	/**
+	 * Calcule le barycentre du modele et le retourne sous forme de point
+	 * @return Le point correspondant au barycentre du modele 
+	 */
+	public Point barycentre() {
+		double pointX = 0;
+		double pointY = 0;
+		double pointZ = 0;
+		for (int i = 0; i < points.size(); i++) {
+			pointX += points.get(i).getX();
+			pointY += points.get(i).getY();
+			pointZ += points.get(i).getZ();
+		}
+		pointX /= points.size();
+		pointY /= points.size();
+		pointZ /= points	.size();
+		return new Point(pointX, pointY, pointZ);
+	}
 
 
 }
