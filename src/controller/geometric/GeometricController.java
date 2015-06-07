@@ -93,7 +93,7 @@ public class GeometricController {
 	
 	/**
 	 * Retourne la valeur du zoom horizontal
-	 * @return double
+	 * @return zoom horizontal, sous forme de double
 	 */
 	public double getZoomX() {
 		return zoomX;
@@ -101,7 +101,7 @@ public class GeometricController {
 
 	/**
 	 * Retourne la valeur du zoom vertical
-	 * @return double
+	 * @return zoom vertical, sous forme de double
 	 */
 	public double getZoomY() {
 		return zoomY;
