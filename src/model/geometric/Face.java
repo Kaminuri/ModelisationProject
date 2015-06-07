@@ -6,7 +6,7 @@ public class Face {
 	private Segment s1, s2;
 	
 	/**
-	 * Cree une face avec 3 segments
+	 * Cree une face avec 2 segments
 	 * @param s1 le premier segment
 	 * @param s2 le deuxieme segment
 	 */
@@ -36,9 +36,12 @@ public class Face {
 		return tab;
 	}
 	
-	/**Calculate the barycenter of the face and return the point of it
-     * @return new Point(x, y, z)*/
-    public Point barycenter(){
+	
+	/**
+	 * Calcule le barycentre de la face et le retourne sous forme de point
+	 * @return Le point correspondant au barycentre de la face 
+	 */
+    public Point barycentre(){
         float x = 0, y = 0, z = 0;
         Point[] liste = getPoints();
         for(Point pt : liste){
