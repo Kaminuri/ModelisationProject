@@ -19,13 +19,13 @@ import javax.swing.KeyStroke;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MBar extends JMenuBar{
-	private JMenu menu, submenu;
+	private JMenu menu;
 	private JMenuItem menuItem;
-	private JRadioButtonMenuItem rbMenuItem;
-	private JCheckBoxMenuItem cbMenuItem;
-	JFileChooser chooser;
+	private JFileChooser chooser;
+	private JFrame frame;
    
-	public MBar(){
+	public MBar(JFrame frame){
+		this.frame = frame;
 		chooser = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Model 3D GTS","gts");
 		chooser.setFileFilter(filter);
@@ -190,7 +190,6 @@ public class MBar extends JMenuBar{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JFrame frame = new JFrame();
 				JOptionPane.showMessageDialog(frame, "L'aide sera disponible dans le prochain DLC");
 				
 			}
