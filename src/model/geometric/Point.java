@@ -5,6 +5,13 @@ import java.util.Comparator;
 
 public class Point implements Comparable<Point>,Comparator<Point>{
 	private double x, y, z;
+	
+	/**
+	 * Cree un point,possedant trois doubles 
+	 * @param x La valeur du point en x
+	 * @param y La valeur du point en y
+	 * @param z La valeur du point en z
+	 */
 	public Point(double x, double y, double z){
 		this.x = x;
 		this.y = y;
@@ -76,15 +83,27 @@ public class Point implements Comparable<Point>,Comparator<Point>{
 	public boolean equals(Point p){
 		return x == p.x && y == p.y && z == p.z;
 	}
+	
+	/**
+	 * Retour le produit scalaire entre le point actuel et le point passe en parametre
+	 * @param p Le deuxieme point, avec lequel on fera le produit scalaire
+	 * @return valeur du produit scalaire, sous forme de double
+	 */
 	public double scalarProduct(Point p){
 		return x*p.x+y*p.y+z*p.z;
 	}
 
+	/**
+	 * Multiplie les valeurs du point actuel par un entier 
+	 * @param m l'entier qui multipliera les valeurs
+	 */
 	public void multiply(int m){
 		x*=m;
 		y*=m;
 		z*=m;
 	}
+	
+	
 	@Override
 	public int compareTo(Point p) {
 		if(p.getZ()<this.getZ()){
