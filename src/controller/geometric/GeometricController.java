@@ -2,6 +2,8 @@ package controller.geometric;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.util.Collections;
 
 import model.geometric.Item3D;
@@ -161,6 +163,19 @@ public class GeometricController {
 	 */
 	public int getTransY(){
 		return transY;
+	}
+
+	public MouseWheelListener getZoomListener() {
+		return new MouseWheelListener() {
+			
+			@Override
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				if(e.getWheelRotation() < 0 && zoom > 0)
+		            zoom *= 0.99;
+		        else if(e.getWheelRotation() > 0)
+		            zoom *= 1.01;
+			}
+		};
 	}
 	
 }

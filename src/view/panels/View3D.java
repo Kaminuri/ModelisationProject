@@ -30,6 +30,7 @@ public class View3D extends JDesktopPane{
 		this.i = i;
 		this.c = c;
 		i.algoPainter();
+		addMouseWheelListener(c.getZoomListener());
 	}
 
 	/**

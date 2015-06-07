@@ -92,5 +92,22 @@ public class Item3D extends Observable{
             return f1.barycenter().compareTo(f2.barycenter());
         }
     }
+    /**Return the barycenter of the object
+     * @return new Point(pointX, pointY, pointZ)*/
+    public Point barycenter() {
+        double pointX = 0;
+        double pointY = 0;
+        double pointZ = 0;
+        for (int i = 0; i < points.size(); i++) {
+            pointX += points.get(i).getX();
+            pointY += points.get(i).getY();
+            pointZ += points.get(i).getZ();
+        }
+        pointX /= points.size();
+        pointY /= points.size();
+        pointZ /= points	.size();
+        return new Point(pointX, pointY, pointZ);
+    }
+
 
 }
