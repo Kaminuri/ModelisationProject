@@ -16,6 +16,8 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import model.geometric.Item3D;
+
 public class MBar extends JMenuBar{
 	/**
 	 * 
@@ -25,9 +27,11 @@ public class MBar extends JMenuBar{
 	private JMenuItem menuItem;
 	private JFileChooser chooser;
 	private JFrame frame;
+	private Item3D i;
    
-	public MBar(JFrame frame){
+	public MBar(JFrame frame, Item3D i){
 		this.frame = frame;
+		this.i = i;
 		chooser = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Model 3D GTS","gts");
 		chooser.setFileFilter(filter);
@@ -48,7 +52,7 @@ public class MBar extends JMenuBar{
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					new Open();
+					new Open(i);
 			}
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.ALT_MASK));

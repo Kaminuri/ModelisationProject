@@ -139,6 +139,12 @@ public class Item3D extends Observable{
 		pointZ /= points	.size();
 		return new Point(pointX, pointY, pointZ);
 	}
+	
+	public void recreateItem(FileParser fp){
+		points = fp.getListPoints();
+		segments = fp.getListSegments();
+		faces = fp.getListFaces();
+	}
 
 
 }

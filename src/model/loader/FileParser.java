@@ -18,7 +18,7 @@ import exceptions.ExceptionSegment;
 public class FileParser {
 	//private String fileName = "cube.gts";
 	//private String fileName = "sphere5.gts";
-	private String fileName = "x_wing.gts";
+	//private String fileName = "x_wing.gts";
 	//private String fileName = "poney.gts";
 	//private String fileName = "horse.gts";
 	//private String fileName = "space_shuttle.gts";
@@ -38,10 +38,10 @@ public class FileParser {
 	 * @throws ExceptionSegment si il y a une probleme avec les segments
 	 * @throws ExceptionFace si il y a une probleme avec les faces
 	 */
-	public FileParser() throws ExceptionPoint, ExceptionSegment, ExceptionFace {
+	public FileParser(String filename) throws ExceptionPoint, ExceptionSegment, ExceptionFace {
 		String sta;
 		String currnt;
-		try(BufferedReader br = new BufferedReader(new FileReader("src/resources/models/"+ fileName))){
+		try(BufferedReader br = new BufferedReader(new FileReader(filename))){
 			sta = br.readLine();
 			initNbs(sta);
 			for(int i = 0 ; i < nbPoint ; i++) {

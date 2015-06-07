@@ -20,6 +20,13 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import view.frame.Interface;
+import controller.geometric.GeometricController;
+import exceptions.ExceptionFace;
+import exceptions.ExceptionPoint;
+import exceptions.ExceptionSegment;
+import model.geometric.Item3D;
+import model.loader.FileParser;
 import BDD.Base;
 
 public class Open extends JFrame{
@@ -31,8 +38,11 @@ public class Open extends JFrame{
 	protected JTextField recherche;
 	protected JList list;
 	protected HashMap<String, HashMap<String, String>> models;
-	public Open(){
+	protected Item3D item;
+
+	public Open(Item3D i){
 		
+		this.item = i;
 		frame = this;
 		frame.setPreferredSize(new Dimension(500, 300));
 		frame.setResizable(false);
@@ -59,11 +69,11 @@ public class Open extends JFrame{
 		bdd = new Base("Base.db");
 		models = bdd.select();
 		String [] tab = new String [models.size()];
-		int i = 0;
+		int i1 = 0;
 		
 		for(String mapKey : models.keySet()){
-			tab[i] = models.get(mapKey).get("nom");
-			i ++;
+			tab[i1] = models.get(mapKey).get("nom");
+			i1 ++;
 		}
 		
 		list = new JList(tab);
@@ -83,7 +93,7 @@ public class Open extends JFrame{
  		recherche = new JTextField();
  		panel3.add(recherche, BorderLayout.WEST);
  		recherche.setPreferredSize(new Dimension(200, 25));
- 		JButton find = new JButton("Recherche");
+ 		JButton find = new JButton("Search");
  		panel3.add(find, BorderLayout.EAST);
  		
  		ActionListener listener = new ActionListener(){
@@ -121,9 +131,32 @@ public class Open extends JFrame{
 		JButton delete = new JButton("Delete");
 		JButton export = new JButton("Export");
 		JButton open = new JButton("Open");
+		ActionListener listenerOpen = new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg) {
+		    String select = (String)list.getSelectedValue();
+		    if(select == null){
+		    	
+		    }
+		    else{
+		    	frame.dispose();
+		    	String filename = models.get(select).get("adresse");
+		    	try {
+					item.recreateItem(new FileParser(filename));
+				} catch (ExceptionPoint | ExceptionSegment | ExceptionFace e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    }
+		    	
+			}
+ 		};
+		open.addActionListener(listenerOpen);
+		
 		panel4.add(delete);
 		panel4.add(export);
 		panel4.add(open);
+		
 		frame.pack();
 	    frame.setLocationRelativeTo(null);
 	    frame.setVisible(true);
