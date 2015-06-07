@@ -2,16 +2,21 @@ package controller.geometric;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.util.Collections;
 
 import model.geometric.Item3D;
+import model.geometric.Point;
 
 public class GeometricController {
 	private Item3D it;
-	private double zoomX,zoomY,zoom;
+	private double zoomX,zoomY,zoom, x, y;
 	private int transX,transY = -450;
+	private Point barycenter;
 	private Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 
 	/**
@@ -25,7 +30,8 @@ public class GeometricController {
 		zoom = zoomX > zoomY ? zoomY -50 : zoomX ;
 		zoomX = zoom;
 		zoomY = -zoom;
-		
+		x = d.getWidth() /2;
+		y = d.getHeight() /2;
 	}
 	
 	/**
@@ -170,10 +176,45 @@ public class GeometricController {
 			
 			@Override
 			public void mouseWheelMoved(MouseWheelEvent e) {
-				if(e.getWheelRotation() < 0 && zoom > 0)
-		            zoom *= 0.99;
-		        else if(e.getWheelRotation() > 0)
-		            zoom *= 1.01;
+				if(e.getWheelRotation() < 0){
+					increaseZoomX();
+		            increaseZoomY();
+				}else if(e.getWheelRotation() > 0){
+					decreaseZoomX();
+					decreaseZoomY();
+				}
+			}
+		
+		};
+	}
+
+	public MouseMotionListener getTransRotaListener() {
+		return new MouseMotionListener() {
+			
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseDragged(MouseEvent e) {
+		        double x1 = e.getX();
+		        double y1 = e.getY();
+		        double distanceX = x1 - x;
+		        double distanceY = y1 - y;
+		        if (distanceX >= 1 || distanceX <= -1 || distanceY >= 1 || distanceY <= -1) {
+		            for (Point p : it.getPoints()) {
+		                double x2 = p.getX() + (distanceX) / zoomX;
+		                double y2 = p.getY() + (distanceY) / zoomY;
+		                p.setX(x2);
+		                p.setY(y2);
+		                x = x1;
+		                y = y1;
+		                barycenter = it.barycentre();
+		            }
+		        }
+
 			}
 		};
 	}

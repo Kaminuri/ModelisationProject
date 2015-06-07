@@ -1,6 +1,5 @@
 package view.frame.tools;
 
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -24,6 +23,7 @@ import javax.swing.JTextField;
 
 import BDD.Base;
 
+@SuppressWarnings("serial")
 public class ImportFrame extends JFrame{
 	protected Base bdd;
 	private JTextField tag, name;
@@ -132,7 +132,7 @@ public class ImportFrame extends JFrame{
 				}
 				bdd.insert(nam, nam + ".gts", tab2.get(0), tab2.get(1), tab2.get(2), tab2.get(3), 0, 0, 0, des);
 				dispose();
-				JOptionPane.showMessageDialog(new JFrame(), "L'importation a été effectuée avec succee");
+				JOptionPane.showMessageDialog(new JFrame(), "L'importation a ete effectuee avec succes");
 			}
 				
 			else {

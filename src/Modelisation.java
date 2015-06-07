@@ -4,6 +4,10 @@ import model.loader.FileParser;
 import controller.geometric.GeometricController;
 
 public class Modelisation {
+	
+	/**
+	 * Cree un objet modelisation, contenant un item3D, un GeometricController et une interface
+	 */
 	public Modelisation(){
 		
 		Item3D item=null;
