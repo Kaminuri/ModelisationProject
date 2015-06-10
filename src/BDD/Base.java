@@ -132,7 +132,7 @@ public class Base  {
 		try{
 			con = DriverManager.getConnection(this.url,this.nom,this.mdp);
 			Statement stmt = con.createStatement();
-			String query = "Insert into Objets values ('" + nom + "','src\\resources\\models\\" + nomfichier + "','" + tag1 + "','" + tag2 + "','" + tag3 + "','" + tag4 + "','"  + points + "','" + segments + "','" + faces + "','" + des + "')";
+			String query = "Insert into Objets values ('" + nom + "','src/resources/models/" + nomfichier + "','" + tag1 + "','" + tag2 + "','" + tag3 + "','" + tag4 + "','"  + points + "','" + segments + "','" + faces + "','" + des + "')";
 			stmt.executeUpdate(query);
 		}
 		catch(Exception e){System.out.println(e.getMessage());}
