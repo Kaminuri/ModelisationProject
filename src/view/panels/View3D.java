@@ -28,7 +28,7 @@ public class View3D extends JDesktopPane{
 	public View3D(Item3D i,GeometricController c){
 		this.i = i;
 		this.c = c;
-		i.algoPainter();
+		
 		addMouseWheelListener(c.getZoomListener());
 		addMouseMotionListener(c.getTransRotaListener());
 	}
@@ -37,6 +37,7 @@ public class View3D extends JDesktopPane{
 	 * Permet d'afficher la figure
 	 */
 	public void paintComponent(Graphics g){
+		i.algoPainter();
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, d.width+50,d.height);
 		g.setColor(Color.BLACK);
@@ -54,8 +55,13 @@ public class View3D extends JDesktopPane{
 			}
 			Point vector1 = new Point(tab[1].getX() - tab[0].getX(), tab[1].getY() - tab[0].getY(), tab[1].getZ() - tab[0].getZ());
             Point vector2 = new Point(tab[2].getX() - tab[0].getX(), tab[2].getY() - tab[0].getY(), tab[2].getZ() - tab[0].getZ());
-            final Point Light = new Point(0, 0, 1);
-            int color = (int) (Light.angle(vector1.produitVectoriel(vector2)) * (150 / (Math.PI / 2))) + 25;
+            final Point Light = new Point(1, 1, 1);
+            
+            final int LIGHTCOLOR = 50;
+            final int DARKCOLOR = 200;
+            int color = (int) (Math.abs(Light.cosine(vector1.produitVectoriel(vector2))*(DARKCOLOR-LIGHTCOLOR))+0.5) + LIGHTCOLOR ;
+            //double ps = Light.cosine(vector1.produitVectoriel(vector2));
+            //int color = ps>0?(int)(ps*(DARKCOLOR-LIGHTCOLOR)+0.5)+LIGHTCOLOR:LIGHTCOLOR;
             g.setColor(new Color(color, color, color));
 			g.fillPolygon(listeX, listeY, 3);
 		}

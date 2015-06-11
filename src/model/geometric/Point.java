@@ -146,16 +146,23 @@ public class Point implements Comparable<Point>,Comparator<Point>{
      * @return un double correspondant a l'angle
      */
     public double angle(Point vecteur) {
+        return Math.acos(cosine(vecteur));
+    }
+    
+    /**
+     * Calculate the cosine of the angle between 2 vectors
+     * @param un point
+     * @return un double correspondant a l'angle
+     */
+    public double cosine(Point vecteur) {
         double vX = vecteur.getX();
         double vY = vecteur.getY();
         double vZ = vecteur.getZ();
         double normeU = Math.sqrt(x * x + y * y + z * z);
         double normeV = Math.sqrt(vX * vX + vY * vY + vZ * vZ);
         double scalaire = x * vX + y * vY + z * vZ;
-        scalaire = Math.sqrt(scalaire * scalaire);
-        return Math.asin(scalaire/(normeU*normeV));
+        return scalaire/(normeU*normeV);
     }
-	
     /**
      *  Effectue le calcul du produit vectoriel entre le point actuel et le point passé en parametre
      * @param le point avec lequel effectuer le produit vectoriel, en plus du point actuel

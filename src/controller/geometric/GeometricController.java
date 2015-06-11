@@ -137,7 +137,8 @@ public class GeometricController {
 			x = it.getPoints().get(i).getX();
 			z = it.getPoints().get(i).getZ();
 			it.getPoints().get(i).setX(x*Math.cos(angle)+z*-Math.sin(angle));
-			it.getPoints().get(i).setZ(x*Math.sin(angle)+z*Math.cos(angle));}
+			it.getPoints().get(i).setZ(x*Math.sin(angle)+z*Math.cos(angle));
+		}
 	}
 	
 	/**
@@ -150,8 +151,8 @@ public class GeometricController {
 			x = it.getPoints().get(i).getX();
 			y = it.getPoints().get(i).getY();
 			
-			it.getPoints().get(i).setX(x*Math.cos(angle)+y*Math.sin(angle));
-			it.getPoints().get(i).setY(x*-Math.sin(angle)+y*Math.cos(angle));
+			it.getPoints().get(i).setX(x*Math.cos(angle)+y*-Math.sin(angle));
+			it.getPoints().get(i).setY(x*Math.sin(angle)+y*Math.cos(angle));
 		}
 	}
 
