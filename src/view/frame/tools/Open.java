@@ -115,6 +115,16 @@ public class Open extends JFrame{
 		    };
 		list.addListSelectionListener(listSelectionListener);
 		
+		JButton cancel = new JButton("Cancel");
+		ActionListener listenerCancel = new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg) {
+				frame.dispose();
+			}
+		};
+		cancel.addActionListener(listenerCancel);
+		panel4.add(cancel);
+		
 		JButton open = new JButton("Open");
 		panel4.add(open);
 		

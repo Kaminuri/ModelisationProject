@@ -12,7 +12,7 @@ public class Modelisation {
 		
 		Item3D item=null;
 		try{
-			item = new Item3D(new FileParser("src/resources/models/x_wing.gts"));
+			item = new Item3D(new FileParser("src/resources/models/.gts"));
 		}catch(Exception e){
 			
 		}
