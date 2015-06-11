@@ -90,6 +90,12 @@ public class MBar extends JMenuBar{
 		
 		//Export
 		menuItem = new JMenuItem("Export", KeyEvent.VK_T);
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Export();
+			}
+		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("Export a File from data base to documents");
 		menu.add(menuItem);

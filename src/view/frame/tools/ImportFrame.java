@@ -27,16 +27,19 @@ import BDD.Base;
 
 @SuppressWarnings("serial")
 public class ImportFrame extends JFrame{
+	
 	protected Base bdd;
 	private JTextField tag, name;
 	private JTextArea descript;
+	
 	public ImportFrame(final File f){
 		JPanel contain = new JPanel();
 		bdd = new Base("Base.db");
 		//Label
 		JPanel labelContainer = new JPanel();
 		labelContainer.setLayout(new GridLayout(7,1));
-		name = new JTextField(f.getName());
+		String nomFile = f.getName().split(".gts")[0];
+		name = new JTextField(nomFile);
 		JLabel tagz = new JLabel("Tags");
 		JLabel desc = new JLabel("Description");
 		labelContainer.add(name);
@@ -46,7 +49,7 @@ public class ImportFrame extends JFrame{
 		//textSetter
 		JPanel textContainer = new JPanel();
 		textContainer.setLayout(new BoxLayout(textContainer, BoxLayout.Y_AXIS));
-		JButton buttonToChangeFile = new JButton(f.getName());
+		JButton buttonToChangeFile = new JButton("Fichiers");
 		tag = new JTextField();
 		descript = new JTextArea();
 		descript.setPreferredSize(new Dimension(100,100));
@@ -107,7 +110,7 @@ public class ImportFrame extends JFrame{
 			String[] tab = tags.split(", ");
 			ArrayList<String> tab2 = new ArrayList<String>() ;
 			if(!bdd.estDeja(nam)){
-				File dest = new File("src\\resources\\models\\" + nam + ".gts");
+				File dest = new File("src/resources/models/" + nam + ".gts");
 				copyFile(f, dest);
 				if(!descript.equals(" ")){
 					tab2.add(nam);						
