@@ -1,5 +1,7 @@
 package model.geometric;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -13,6 +15,9 @@ public class Item3D extends Observable{
 	private ArrayList<Segment> segments;
 	private ArrayList<Face> faces;
 	public FileParser fp;
+	private double zoomX,zoomY,zoom, x, y;
+	private int transX,transY = -450;
+	private Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 	
 	/**
 	 * Cree un Item3D,contenant les points,segments et faces du modele
@@ -22,6 +27,166 @@ public class Item3D extends Observable{
 		points = fp.getListPoints();
 		segments = fp.getListSegments();
 		faces = fp.getListFaces();
+		zoomX =  d.width/Math.abs(this.extremites()[2]-this.extremites()[3]);
+		zoomY =  d.height/Math.abs(this.extremites()[0]-this.extremites()[1]);
+		zoom = zoomX > zoomY ? zoomY -50 : zoomX ;
+		zoomX = zoom;
+		zoomY = -zoom;
+		x = d.getWidth() /2;
+		y = d.getHeight() /2;
+	}
+	
+	public double getPosXItem(){
+		return x;
+	}
+	public double getPosYItem(){
+		return y;
+	}
+	
+	public void setPosXY(double x, double y){
+		this.x = x;
+		this.y = y;
+	}
+	
+	/**
+	 * Diminue la valeur du zoom vertical
+	 */
+	public void decreaseZoomY() {
+		zoomY *= 0.9;
+	}
+	public Dimension getScreenSize(){
+		return d;
+	}
+	
+	/**
+	 * Diminue la valeur du zoom horizontal
+	 */
+	public void decreaseZoomX() {
+		zoomX *= 0.9;
+	}
+	
+	/**
+	 * augmente la valeur du zoom horizontal
+	 */
+	public void increaseZoomX() {
+		zoomX *= 1.1;
+	}
+	
+	/**
+	 * augmente la valeur du zoom vertical
+	 */
+	public void increaseZoomY() {
+		zoomY *= 1.1;
+	}
+	
+	/**
+	 * Diminue la valeur de transition verticale
+	 */
+	public void decreaseTransY() {
+		transY -= 15;
+	}
+	
+	/**
+	 * Diminue la valeur de transition horizontale
+	 */
+	public void decreaseTransX() {
+		transX -= 15;
+	}
+	
+	/**
+	 * Augmente la valeur de transition verticale
+	 */
+	public void increaseTransY() {
+		transY += 15;
+	}
+	
+	/**
+	 * Augmente la valeur de transition horizontale
+	 */
+	public void increaseTransX() {
+		transX += 15;
+	}
+	
+	/**
+	 * Trie la liste des points 
+	 */
+	public void listPointSort() {
+		Collections.sort(points,Collections.reverseOrder());
+	}
+	
+	/**
+	 * Retourne la valeur du zoom horizontal
+	 * @return zoom horizontal, sous forme de double
+	 */
+	public double getZoomX() {
+		return zoomX;
+	}
+
+	/**
+	 * Retourne la valeur du zoom vertical
+	 * @return zoom vertical, sous forme de double
+	 */
+	public double getZoomY() {
+		return zoomY;
+	}
+	
+	/**
+	 * Applique une rotation du modele sur l'axe X
+	 * @param angle La valeur de la rotation, en double
+	 */
+	public void rotationX(double angle){
+		for(int i = 0;i<points.size();i++){
+			double y,z;
+			y = points.get(i).getY();
+			z = points.get(i).getZ();
+			points.get(i).setY(y*Math.cos(angle)+z*-Math.sin(angle));
+			points.get(i).setZ(y*Math.sin(angle)+z*Math.cos(angle));
+		}
+	}
+	
+	/**
+	 * Applique une rotation du modele sur l'axe Y
+	 * @param angle La valeur de la rotation, en double
+	 */
+	public void rotationY(double angle){
+		for(int i = 0;i<points.size();i++){
+			double x,z;
+			x = points.get(i).getX();
+			z = points.get(i).getZ();
+			points.get(i).setX(x*Math.cos(angle)+z*-Math.sin(angle));
+			points.get(i).setZ(x*Math.sin(angle)+z*Math.cos(angle));
+		}
+	}
+	
+	/**
+	 * Applique une rotation du modele sur l'axe Z
+	 * @param angle La valeur de la rotation, en double
+	 */
+	public void rotationZ(double angle){
+		for(int i = 0;i<points.size();i++){
+			double x,y;
+			x = points.get(i).getX();
+			y = points.get(i).getY();
+			
+			points.get(i).setX(x*Math.cos(angle)+y*-Math.sin(angle));
+			points.get(i).setY(x*Math.sin(angle)+y*Math.cos(angle));
+		}
+	}
+
+	/**
+	 * Retourne la valeur de la transition sur X
+	 * @return la transition sur X,sous forme d'entier
+	 */
+	public int getTransX() {
+		return transX;
+	}
+	
+	/**
+	 * Retourne la valeur de la transition sur Y
+	 * @return la transition sur Y,sous forme d'entier
+	 */
+	public int getTransY(){
+		return transY;
 	}
 
 	/**

@@ -60,14 +60,7 @@ public class OptionPanel extends JPanel{
 
 	private void initNZoom(){
 		setButIcon(mZoom, "resources/pictures/Zoom-Minus-icon.png");
-		mZoom.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				gc.decreaseZoomY();
-				gc.decreaseZoomX();			
-			}
-		});
+		mZoom.addActionListener(gc.getMinusZoomListener());
 		mZoom.setSize(new Dimension(10,70));
 
 
@@ -76,96 +69,46 @@ public class OptionPanel extends JPanel{
 		setButIcon(pZoom,"resources/pictures/Zoom-Plus-icon.png");
 		pZoom.setText("+");
 		pZoom.setSize(new Dimension(10,70));
-		pZoom.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				gc.increaseZoomX();
-				gc.increaseZoomY();
-			}
-		}); 
+		pZoom.addActionListener(gc.getPlusZoomListener());
 
 
 	}
 	
 	private void initTranslationH(){
 		translationH.setText("â†‘");
-		translationH.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				gc.decreaseTransY();
-			}
-		});
+		translationH.addActionListener(gc.getTranslationHautListener());
 		translationH.setSize(new Dimension(10,70));
 		
 	}
 	private void initTranslationB(){
 		translationB.setText("â†“");
-		translationB.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				gc.increaseTransY();
-			}
-		});
+		translationB.addActionListener(gc.getTranslationBasListener());
 		translationB.setSize(new Dimension(10,70));
 	}
 	private void initTranslationG(){
 		translationG.setText("â†�");
-		translationG.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				gc.decreaseTransX();
-				
-			}
-		});
+		translationG.addActionListener(gc.getTranslationGaucheListener());
 		translationG.setSize(new Dimension(10,70));
 	}
 	private void initTranslationD(){
 		translationD.setText("â†’");
-		translationD.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				gc.increaseTransX();
-			}
-		});
+		translationD.addActionListener(gc.getTranslationDroiteListener());
 		translationD.setSize(new Dimension(10,70));
 	}
 
 	private void rotationX(){
 		rotationX.setText("Rot X");
-		rotationX.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				gc.rotationX(Math.PI/32);
-			}
-		});
+		rotationX.addActionListener(gc.getRotationXListener());
 	}
 	
 	private void rotationY(){
 		rotationY.setText("Rot Y");
-		rotationY.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				gc.rotationY(Math.PI/32);
-			}
-		});
+		rotationY.addActionListener(gc.getRotationYListener());
 	}
 	
 	private void rotationZ(){
 		rotationZ.setText("Rot Z");
-		rotationZ.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				gc.rotationZ(Math.PI/32);
-			}
-		});
+		rotationZ.addActionListener(gc.getRotationZListener());
 	}
 	private void setButIcon(JButton b, String path){
 		try {

@@ -15,10 +15,9 @@ import controller.geometric.GeometricController;
 @SuppressWarnings("serial")
 public class View3D extends JDesktopPane{
 
-	Item3D i;
-	GeometricController c;
-	int[] listeX,listeY;
-	Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+	private Item3D i;
+	private GeometricController c;
+	private int[] listeX,listeY;
 
 	/**
 	 * Cree un View3D a partir d'un item3D et d'un GeometricController
@@ -39,19 +38,19 @@ public class View3D extends JDesktopPane{
 	public void paintComponent(Graphics g){
 		i.algoPainter();
 		g.setColor(Color.WHITE);
-		g.fillRect(0, 0, d.width+50,d.height);
+		g.fillRect(0, 0, i.getScreenSize().width+50,i.getScreenSize().height);
 		g.setColor(Color.BLACK);
 		listeX = new int[3];
 		listeY = new int[3];
 
-		double x0 = d.width / 2; //Permet d'aligner la figure sur l'axe des x
-		double y0 = d.height - 60; //permet d'aligner la figure sur l'axe des y
+		double x0 = i.getScreenSize().width / 2; //Permet d'aligner la figure sur l'axe des x
+		double y0 = i.getScreenSize().height - 60; //permet d'aligner la figure sur l'axe des y
 		for (int j = i.getFaces().size()-1; j>= 0 ; j--) {
 			Face f = i.getFaces().get(j);
 			Point[] tab = f.getPoints();
 			for(int h=0;h<3;h++){
-				listeX[h] = (int)(tab[h].getX()*c.getZoomX() +x0 + c.getTransX());
-				listeY[h] = (int)(tab[h].getY()*c.getZoomY() +y0 + c.getTransY());
+				listeX[h] = (int)(tab[h].getX()*i.getZoomX() +x0 + i.getTransX());
+				listeY[h] = (int)(tab[h].getY()*i.getZoomY() +y0 + i.getTransY());
 			}
 			Point vector1 = new Point(tab[1].getX() - tab[0].getX(), tab[1].getY() - tab[0].getY(), tab[1].getZ() - tab[0].getZ());
             Point vector2 = new Point(tab[2].getX() - tab[0].getX(), tab[2].getY() - tab[0].getY(), tab[2].getZ() - tab[0].getZ());
