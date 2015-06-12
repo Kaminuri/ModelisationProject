@@ -136,7 +136,6 @@ public class TestBDD {
 		assertFalse(bdd.estDeja("test"));
 	}
 	
-	
 
 	@After
 	public void fin(){

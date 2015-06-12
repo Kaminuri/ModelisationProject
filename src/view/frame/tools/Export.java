@@ -24,11 +24,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import exceptions.ExceptionFace;
-import exceptions.ExceptionPoint;
-import exceptions.ExceptionSegment;
-import model.geometric.Item3D;
-import model.loader.FileParser;
 import BDD.Base;
 
 @SuppressWarnings("serial")
