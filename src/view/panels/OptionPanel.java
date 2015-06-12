@@ -4,8 +4,6 @@ package view.panels;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -24,6 +22,7 @@ public class OptionPanel extends JPanel{
 	public OptionPanel(GeometricController gc){
 		this.gc = gc;
 		this.setLayout(new GridLayout(1,8));
+		
 		mZoom = new JButton();
 		pZoom = new JButton();
 		rotationX = new JButton();
@@ -33,8 +32,8 @@ public class OptionPanel extends JPanel{
 		translationB = new JButton();
 		translationG = new JButton();
 		translationD = new JButton();
-		initNZoom();
 		
+		initNZoom();
 		initPZoom();
 		initTranslationH();
 		initTranslationB();
@@ -62,16 +61,12 @@ public class OptionPanel extends JPanel{
 		setButIcon(mZoom, "resources/pictures/Zoom-Minus-icon.png");
 		mZoom.addActionListener(gc.getMinusZoomListener());
 		mZoom.setSize(new Dimension(10,70));
-
-
 	}
 	private void initPZoom(){
 		setButIcon(pZoom,"resources/pictures/Zoom-Plus-icon.png");
 		pZoom.setText("+");
 		pZoom.setSize(new Dimension(10,70));
 		pZoom.addActionListener(gc.getPlusZoomListener());
-
-
 	}
 	
 	private void initTranslationH(){

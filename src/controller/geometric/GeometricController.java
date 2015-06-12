@@ -1,7 +1,5 @@
 package controller.geometric;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -9,15 +7,13 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
-import java.util.Collections;
 
 import model.geometric.Item3D;
 import model.geometric.Point;
 
 public class GeometricController {
 	private Item3D it;
-	private Point barycenter;
-	
+	private boolean ok;
 
 	/**
 	 * Cree un GeometricController, permettant d'effectuer les calculs sur le modele
@@ -44,7 +40,45 @@ public class GeometricController {
 		
 		};
 	}
-
+	public MouseListener getTranslationListener(){
+		return new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+			
+				if(e.getButton() == MouseEvent.BUTTON1){
+					ok =true;
+				}else if(e.getButton() == MouseEvent.BUTTON3){
+					ok = false;
+				}
+				it.setPosXY(e.getX(), e.getY());
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		};
+	}
 	public MouseMotionListener getTransRotaListener() {
 		return new MouseMotionListener() {
 			
@@ -56,20 +90,35 @@ public class GeometricController {
 			
 			@Override
 			public void mouseDragged(MouseEvent e) {
-		        double x1 = e.getX();
-		        double y1 = e.getY();
-		        double distanceX = x1 - it.getPosXItem();
-		        double distanceY = y1 - it.getPosYItem();
-		        if (distanceX >= 1 || distanceX <= -1 || distanceY >= 1 || distanceY <= -1) {
-		            for (Point p : it.getPoints()) {
-		                double x2 = p.getX() + (distanceX) / it.getZoomX();
-		                double y2 = p.getY() + (distanceY) / it.getZoomY();
-		                p.setX(x2);
-		                p.setY(y2);
-		                it.setPosXY(x1, x2);
-		                barycenter = it.barycentre();
-		            }
-		        }
+				if(!ok){
+					double x1 = e.getX();
+			        double y1 = e.getY();
+			        double distanceX = x1 - it.getPosXItem();
+			        double distanceY = y1 - it.getPosYItem();
+			        if (distanceX >= 1 || distanceX <= -1 || distanceY >= 1 || distanceY <= -1) {
+			            for (Point p : it.getPoints()) {
+			                double x2 = p.getX() + (distanceX / 450);
+			                double y2 = p.getY() + (distanceY / 450);
+			                p.setX(x2);
+			                p.setY(y2);
+			                it.setPosXY(x1, x2);
+			            }
+			        }
+			        ok = false;
+				}else if(ok){
+			        double x2 = e.getX();
+			        double y2 = e.getY();
+			        double angleY = x2 - it.getPosXItem();
+			        double angleX = y2 - it.getPosYItem();
+			        double px, py;
+			        //barycenter = this.barycenter();
+			        if (angleX >= 1 || angleX <= -1 || angleY >= 1 || angleY <= -1) {
+			            angleX *= -(2.0 * Math.PI) / 360.0;
+			            angleY *= (2.0 * Math.PI) / 360.0;
+			            it.rotationY(angleY, it.barycentre());
+			            it.rotationX(angleX, it.barycentre());
+			        }
+			    }
 
 			}
 		};
@@ -144,7 +193,7 @@ public class GeometricController {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				it.rotationX(Math.PI/32);
+				it.rotationX(Math.PI/32, null);
 			}
 		};
 	}
@@ -155,7 +204,7 @@ public class GeometricController {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				it.rotationY(Math.PI/32);
+				it.rotationY(Math.PI/32,null);
 			}
 		};
 	}

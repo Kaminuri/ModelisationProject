@@ -15,10 +15,11 @@ public class Item3D extends Observable{
 	private ArrayList<Segment> segments;
 	private ArrayList<Face> faces;
 	public FileParser fp;
-	private double zoomX,zoomY,zoom, x, y;
+	private double zoomX,zoomY,zoom, posX, posY;
 	private int transX,transY = -450;
 	private Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-	
+	private double xCentring, yCentring;
+	private Point barycenter;
 	/**
 	 * Cree un Item3D,contenant les points,segments et faces du modele
 	 * @param fp Le fileparser contenant les donnees du modele
@@ -32,20 +33,23 @@ public class Item3D extends Observable{
 		zoom = zoomX > zoomY ? zoomY -50 : zoomX ;
 		zoomX = zoom;
 		zoomY = -zoom;
-		x = d.getWidth() /2;
-		y = d.getHeight() /2;
+		xCentring = (this.extremites()[2] + extremites()[3])/2;
+        yCentring = (extremites()[0] + extremites()[1])/2;
+        barycenter = barycentre();
+		posX = 0;
+		posY = 0;
 	}
 	
 	public double getPosXItem(){
-		return x;
+		return posX;
 	}
 	public double getPosYItem(){
-		return y;
+		return posY;
 	}
 	
 	public void setPosXY(double x, double y){
-		this.x = x;
-		this.y = y;
+		posX = x;
+		posY = y;
 	}
 	
 	/**
@@ -134,13 +138,14 @@ public class Item3D extends Observable{
 	 * Applique une rotation du modele sur l'axe X
 	 * @param angle La valeur de la rotation, en double
 	 */
-	public void rotationX(double angle){
+	public void rotationX(double angle, Point bary){
+		barycenter = bary;
 		for(int i = 0;i<points.size();i++){
 			double y,z;
 			y = points.get(i).getY();
 			z = points.get(i).getZ();
-			points.get(i).setY(y*Math.cos(angle)+z*-Math.sin(angle));
-			points.get(i).setZ(y*Math.sin(angle)+z*Math.cos(angle));
+			points.get(i).setY((y-barycenter.getY())*Math.cos(angle)+(z-barycenter.getZ())*-Math.sin(angle));
+			points.get(i).setZ((y-barycenter.getY())*Math.sin(angle)+(z-barycenter.getZ())*Math.cos(angle));
 		}
 	}
 	
@@ -148,13 +153,14 @@ public class Item3D extends Observable{
 	 * Applique une rotation du modele sur l'axe Y
 	 * @param angle La valeur de la rotation, en double
 	 */
-	public void rotationY(double angle){
+	public void rotationY(double angle, Point bary){
+		barycenter = bary;
 		for(int i = 0;i<points.size();i++){
 			double x,z;
 			x = points.get(i).getX();
 			z = points.get(i).getZ();
-			points.get(i).setX(x*Math.cos(angle)+z*-Math.sin(angle));
-			points.get(i).setZ(x*Math.sin(angle)+z*Math.cos(angle));
+			points.get(i).setX((x-barycenter.getX())*Math.cos(angle)+(z-barycenter.getZ())*-Math.sin(angle));
+			points.get(i).setZ((x-barycenter.getX())*Math.sin(angle)+(z-barycenter.getZ())*Math.cos(angle));
 		}
 	}
 	
@@ -301,7 +307,7 @@ public class Item3D extends Observable{
 		}
 		pointX /= points.size();
 		pointY /= points.size();
-		pointZ /= points	.size();
+		pointZ /= points.size();
 		return new Point(pointX, pointY, pointZ);
 	}
 	
@@ -309,6 +315,20 @@ public class Item3D extends Observable{
 		points = fp.getListPoints();
 		segments = fp.getListSegments();
 		faces = fp.getListFaces();
+	}
+
+	public double getXCentring() {
+		return xCentring;
+	}
+
+	public double getYCentring() {
+		
+		return yCentring;
+	}
+
+	public double getZoom() {
+		
+		return zoom;
 	}
 
 

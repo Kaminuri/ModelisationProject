@@ -1,9 +1,7 @@
 package view.panels;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Toolkit;
 
 import javax.swing.JDesktopPane;
 
@@ -16,7 +14,6 @@ import controller.geometric.GeometricController;
 public class View3D extends JDesktopPane{
 
 	private Item3D i;
-	private GeometricController c;
 	private int[] listeX,listeY;
 
 	/**
@@ -26,10 +23,9 @@ public class View3D extends JDesktopPane{
 	 */
 	public View3D(Item3D i,GeometricController c){
 		this.i = i;
-		this.c = c;
-		
 		addMouseWheelListener(c.getZoomListener());
 		addMouseMotionListener(c.getTransRotaListener());
+		addMouseListener(c.getTranslationListener());
 	}
 
 	/**
@@ -44,7 +40,7 @@ public class View3D extends JDesktopPane{
 		listeY = new int[3];
 
 		double x0 = i.getScreenSize().width / 2; //Permet d'aligner la figure sur l'axe des x
-		double y0 = i.getScreenSize().height - 60; //permet d'aligner la figure sur l'axe des y
+		double y0 = i.getScreenSize().height /2; //permet d'aligner la figure sur l'axe des y
 		for (int j = i.getFaces().size()-1; j>= 0 ; j--) {
 			Face f = i.getFaces().get(j);
 			Point[] tab = f.getPoints();
