@@ -18,7 +18,7 @@ public class Base  {
 		}
 		catch(Exception e){System.out.println(e.getMessage());}
 		
-		File monFichier = new File("src/resources/bdd/"+Fichier);
+		File monFichier = new File("resources/bdd/"+Fichier);
 		if(!monFichier.exists()){
 			try{
 			monFichier.createNewFile();
@@ -26,7 +26,7 @@ public class Base  {
 			catch(Exception e){System.out.println("Impossible de créer le fichier : " + e);}
 		}
 
-		url = "jdbc:sqlite:src/resources/bdd/"+Fichier;
+		url = "jdbc:sqlite:resources/bdd/"+Fichier;
 		nom = null;
 		mdp = null;
 	}
@@ -132,7 +132,7 @@ public class Base  {
 		try{
 			con = DriverManager.getConnection(this.url,this.nom,this.mdp);
 			Statement stmt = con.createStatement();
-			String query = "Insert into Objets values ('" + nom + "','src/resources/models/" + nomfichier + "','" + tag1 + "','" + tag2 + "','" + tag3 + "','" + tag4 + "','"  + points + "','" + segments + "','" + faces + "','" + des + "')";
+			String query = "Insert into Objets values ('" + nom + "','resources/models/" + nomfichier + "','" + tag1 + "','" + tag2 + "','" + tag3 + "','" + tag4 + "','"  + points + "','" + segments + "','" + faces + "','" + des + "')";
 			stmt.executeUpdate(query);
 		}
 		catch(Exception e){System.out.println(e.getMessage());}
