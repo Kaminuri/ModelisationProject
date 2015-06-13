@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 import org.junit.After;
 import org.junit.Before;
@@ -80,7 +81,7 @@ public class TestBDD {
 		bdd.insert("test2", "test2", "test2", "test3", "testx", "test4", 20, 10, 5, "test");
 		String [] tab = new String [1];
 		tab[0] = "test2";
-		HashMap<String, HashMap<String, String>> resultat = bdd.recherche(tab);
+		TreeMap<String, HashMap<String, String>> resultat = bdd.recherche(tab);
 		assertTrue(resultat.containsKey("test2"));
 	}
 	
@@ -90,7 +91,7 @@ public class TestBDD {
 		String [] tab = new String [2];
 		tab[0] = "test2";
 		tab[1] = "test3";
-		HashMap<String, HashMap<String, String>> resultat = bdd.recherche(tab);
+		TreeMap<String, HashMap<String, String>> resultat = bdd.recherche(tab);
 		assertTrue(resultat.containsKey("test2"));
 	}
 	
@@ -100,7 +101,7 @@ public class TestBDD {
 		String [] tab = new String [2];
 		tab[0] = "test2";
 		tab[1] = "test6";
-		HashMap<String, HashMap<String, String>> resultat = bdd.recherche(tab);
+		TreeMap<String, HashMap<String, String>> resultat = bdd.recherche(tab);
 		assertFalse(resultat.containsKey("test2"));
 	}
 	
@@ -108,7 +109,7 @@ public class TestBDD {
 	public void testSelect() {
 		bdd.insert("test", "test", "test", "test1", "test2", "test3", 20, 10, 5, "test");
 		bdd.insert("test2", "test2", "test2", "test3", "testx", "test4", 20, 10, 5, "test");
-		HashMap<String, HashMap<String, String>> resultat = bdd.select();
+		TreeMap<String, HashMap<String, String>> resultat = bdd.select();
 		assertNotNull(resultat);
 		assertTrue(resultat.containsKey("test"));
 		assertTrue(resultat.containsKey("test2"));
@@ -118,7 +119,7 @@ public class TestBDD {
 	@Test
 	public void testDelete() {
 		bdd.insert("test", "test", "test", "test1", "test2", "test3", 20, 10, 5, "test");
-		HashMap<String, HashMap<String, String>> resultat = bdd.select();
+		TreeMap<String, HashMap<String, String>> resultat = bdd.select();
 		assertTrue(resultat.containsKey("test"));
 		bdd.delete("test");
 		resultat = bdd.select();

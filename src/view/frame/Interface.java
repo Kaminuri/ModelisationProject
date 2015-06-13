@@ -21,7 +21,7 @@ public class Interface implements Observer{
 	private JFrame f;
 	private Dimension screenSize;
 	public Interface(GeometricController gc, Item3D i){
-		f = new JFrame();
+		f = new JFrame("Modelisation");
 		view = new View3D(i, gc);
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		screenSize.width -= 42;

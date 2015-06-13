@@ -2,6 +2,7 @@ package BDD;
 import java.io.File;
 import java.sql.*;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 /**
  * @author Eric Lefebvre 
@@ -55,8 +56,8 @@ public class Base  {
 	 * Renvoie toutes les informations de la Base de donnee
 	 * @return une hasmap de hasmap ayant comme cle le nom du fichier.
 	 */
-	public HashMap<String, HashMap<String, String>> select(){
-		HashMap<String, HashMap<String, String>> liste = new HashMap<String, HashMap<String, String>>();
+	public TreeMap<String, HashMap<String, String>> select(){
+		TreeMap<String, HashMap<String, String>> liste = new TreeMap<String, HashMap<String, String>>();
 		try{
 			con = DriverManager.getConnection(this.url,this.nom,this.mdp);
 			Statement stmt = con.createStatement();
@@ -77,6 +78,7 @@ public class Base  {
 		finally {
 			try{con.close();} catch (Exception e){System.out.println(e.getMessage());}
 		}
+		System.out.println(liste);
 		return liste;
 	}
 	
@@ -85,8 +87,8 @@ public class Base  {
 	 * @return une hasmap de hasmap ayant pour le cle le nom du fichier
 	 */
 	
-	public HashMap<String, HashMap<String, String>> recherche(String[] tags){
-		HashMap<String, HashMap<String, String>> liste = new HashMap<String, HashMap<String, String>>();
+	public TreeMap<String, HashMap<String, String>> recherche(String[] tags){
+		TreeMap<String, HashMap<String, String>> liste = new TreeMap<String, HashMap<String, String>>();
 		try{
 			con = DriverManager.getConnection(this.url,this.nom,this.mdp);
 			Statement stmt = con.createStatement();

@@ -54,7 +54,7 @@ public class MBar extends JMenuBar{
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					new ImportFrame();
+					new Import();
 			}
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, ActionEvent.ALT_MASK));
@@ -91,6 +91,12 @@ public class MBar extends JMenuBar{
 		
 		//Quit
 		menuItem = new JMenuItem("Quit", KeyEvent.VK_T);
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("Quit a application");
 		menu.add(menuItem);
