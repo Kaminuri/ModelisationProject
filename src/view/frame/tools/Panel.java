@@ -62,7 +62,7 @@ public class Panel extends JFrame {
 
 		panel5.setLayout(grid);
 		panel6.setLayout(grid1);
-		panel7.setLayout(grid1);
+		//panel7.setLayout(grid2);
 
 		bdd = new Base("Base.db");
 		list = new JList();
@@ -82,7 +82,7 @@ public class Panel extends JFrame {
 		description.setLineWrap(true);
 		description.setWrapStyleWord(true);
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setPreferredSize(new Dimension(200, 100));
+		scrollPane.setPreferredSize(new Dimension(150, 80));
 		scrollPane.setViewportView(description);
 
 		panel6.add(points);
@@ -102,6 +102,7 @@ public class Panel extends JFrame {
 		ActionListener listener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg) {
+				list.setSelectedIndex(-1);
 				String find = recherche.getText();
 				if (find.indexOf(')') != -1 || find.indexOf('+') != -1
 						|| find.indexOf('-') != -1 || find.indexOf('(') != -1) {
@@ -110,7 +111,12 @@ public class Panel extends JFrame {
 									new JFrame(),
 									"Il y a des caracteres interdit : +-() \nExemple de systaxe correcte : mot, mot2,");
 				}
-				modifieList("recherche", find);
+				System.out.println(find);
+				if (find.equals("")) {
+					modifieList("select", null);
+				} else {
+					modifieList("recherche", find);
+				}
 				validate();
 			}
 		};
@@ -118,14 +124,17 @@ public class Panel extends JFrame {
 
 		ListSelectionListener listSelectionListener = new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent listSelectionEvent) {
-				JList list = ((JList) listSelectionEvent.getSource());
-				String select = (String) list.getSelectedValue();
-				points.setText("Points : " + models.get(select).get("points"));
-				segments.setText("Segments : "
-						+ models.get(select).get("segments"));
-				faces.setText("Faces : " + models.get(select).get("faces"));
-				description.setText(models.get(select).get("Description"));
-				validate();
+				if (list.getSelectedIndex() != -1) {
+					JList list = ((JList) listSelectionEvent.getSource());
+					String select = (String) list.getSelectedValue();
+					points.setText("Points : "
+							+ models.get(select).get("points"));
+					segments.setText("Segments : "
+							+ models.get(select).get("segments"));
+					faces.setText("Faces : " + models.get(select).get("faces"));
+					description.setText(models.get(select).get("Description"));
+					validate();
+				}
 			}
 		};
 		list.addListSelectionListener(listSelectionListener);
