@@ -362,7 +362,6 @@ public class Item3D extends Observable{
 		zoomY = -zoom;
 		xCentring = (extremites()[1] + extremites()[0])/2;
         yCentring = (extremites()[3] + extremites()[2])/2;
-        System.out.println(yCentring);
         barycenter = barycentre();
 	}
 
