@@ -35,9 +35,6 @@ public class View3D extends JDesktopPane{
 	 * Permet d'afficher la figure
 	 */
 	public void paintComponent(Graphics g){
-		Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(new ImageIcon("resources/pictures/wallpaper.jpg").getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
-
 		i.algoPainter();
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, i.getScreenSize().width+50,i.getScreenSize().height);

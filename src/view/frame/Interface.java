@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import model.geometric.Item3D;
 import view.frame.tools.InternalFrameOption;
 import view.frame.tools.MBar;
+import view.frame.tools.Open;
 import view.panels.View3D;
 import controller.geometric.GeometricController;
 
@@ -39,6 +40,7 @@ public class Interface implements Observer{
 	    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    f.setVisible(true);
 	    i.addObserver(this);
+	    new Open(i);
 	}
 	@Override
 	public void update(Observable arg0, Object arg1) {
