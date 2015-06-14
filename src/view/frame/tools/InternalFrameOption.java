@@ -18,9 +18,9 @@ public class InternalFrameOption extends JInternalFrame{
 		super("",false,true,false, true);
 		OptionPanel op = new OptionPanel(cg);
 		setContentPane(op);
-		setSize(400,70);
 		setLocation(50, 50);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	   	setVisible(true);
+	   	pack();
 	}
 }
