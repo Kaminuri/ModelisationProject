@@ -9,7 +9,6 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
 import model.geometric.Item3D;
-import model.geometric.Point;
 
 public class GeometricController {
 	private Item3D it;
@@ -112,7 +111,11 @@ public class GeometricController {
 			}
 		};
 	}
-
+	
+	/**
+	 * Creation d'un listener pour le zoom arriere 
+	 * @return ActionListener
+	 */
 	public ActionListener getMinusZoomListener() {
 		return new ActionListener() {
 			@Override
@@ -123,7 +126,10 @@ public class GeometricController {
 			}
 		};
 	}
-
+	/**
+	 * Creation d'un listener pour le zoom avant
+	 * @return ActionListener
+	 */
 	public ActionListener getPlusZoomListener() {
 		return new ActionListener() {
 
@@ -134,7 +140,11 @@ public class GeometricController {
 			}
 		}; 
 	}
-
+	
+	/**
+	 * Creation d'un listener pour la translation vers le haut 
+	 * @return ActionListener
+	 */
 	public ActionListener getTranslationHautListener() {
 		return new ActionListener() {
 			
@@ -145,6 +155,10 @@ public class GeometricController {
 		};
 	}
 
+	/**
+	 * Creation d'un listener pour la translation vers le bas
+	 * @return ActionListener
+	 */
 	public ActionListener getTranslationBasListener() {
 		return new ActionListener() {
 			
@@ -155,6 +169,10 @@ public class GeometricController {
 		};
 	}
 
+	/**
+	 * Creation d'un listener pour la translation vers la gauche 
+	 * @return ActionListener
+	 */
 	public ActionListener getTranslationGaucheListener() {
 		return new ActionListener() {
 			
@@ -166,6 +184,10 @@ public class GeometricController {
 		};
 	}
 
+	/**
+	 * Creation d'un listener pour la translation vers la droite
+	 * @return ActionListener
+	 */
 	public ActionListener getTranslationDroiteListener() {
 		return new ActionListener() {
 			
@@ -176,6 +198,10 @@ public class GeometricController {
 		};
 	}
 
+	/**
+	 * Creation d'un listener pour la rotation sur X
+	 * @return ActionListener
+	 */
 	public ActionListener getRotationXListener() {
 		// TODO Auto-generated method stub
 		return new ActionListener() {
@@ -187,6 +213,10 @@ public class GeometricController {
 		};
 	}
 
+	/**
+	 * Creation d'un listener pour la rotation sur Y
+	 * @return ActionListener
+	 */
 	public ActionListener getRotationYListener() {
 		// TODO Auto-generated method stub
 		return new ActionListener() {
@@ -198,6 +228,10 @@ public class GeometricController {
 		};
 	}
 
+	/**
+	 * Creation d'un listener pour la rotation sur Z
+	 * @return ActionListener
+	 */
 	public ActionListener getRotationZListener() {
 		// TODO Auto-generated method stub
 		return new ActionListener() {
