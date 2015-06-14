@@ -37,7 +37,6 @@ public class GeometricController {
 					it.decreaseZoomY();
 				}
 			}
-		
 		};
 	}
 	public MouseListener getTranslationListener(){
@@ -209,7 +208,7 @@ public class GeometricController {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				it.rotationX(Math.PI/32, null);
+				it.rotationX(Math.PI/32);
 			}
 		};
 	}
@@ -220,7 +219,7 @@ public class GeometricController {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				it.rotationY(Math.PI/32,null);
+				it.rotationY(Math.PI/32);
 			}
 		};
 	}
