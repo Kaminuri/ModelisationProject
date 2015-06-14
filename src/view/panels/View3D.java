@@ -59,7 +59,12 @@ public class View3D extends JDesktopPane{
             int color = (int) (Math.abs(Light.cosine(vector1.produitVectoriel(vector2))*(DARKCOLOR-LIGHTCOLOR))+0.5) + LIGHTCOLOR ;
             // On recupere la couleur
             g.setColor(new Color(color, color, color)); //On affecte la couleur au Graphics g
-			g.fillPolygon(listeX, listeY, 3); //on dessine la face
+            if(i.getFilsDeFer()){
+            	g.drawPolygon(listeX, listeY, 3); //on dessine la face
+            }else{
+            	g.fillPolygon(listeX, listeY, 3); //on dessine la face
+            }
+			
 		}
 	}
 

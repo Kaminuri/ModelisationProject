@@ -20,11 +20,13 @@ public class Item3D extends Observable{
 	private Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 	private double xCentring, yCentring;
 	private Point barycenter;
+	private boolean filsdefer;
 	/**
 	 * Cree un Item3D,contenant les points,segments et faces du modele
 	 * @param fp Le fileparser contenant les donnees du modele
 	 */
 	public Item3D(FileParser fp){
+		filsdefer = false;
 		points = fp.getListPoints();
 		segments = fp.getListSegments();
 		faces = fp.getListFaces();
@@ -37,7 +39,13 @@ public class Item3D extends Observable{
         yCentring = (extremites()[0] + extremites()[1])/2;
         barycenter = barycentre();
 	}
+	public void setFilsDefer(){
+		filsdefer = true;
+	}
 	
+	public boolean getFilsDeFer(){
+		return filsdefer;
+	}
 	/**
 	 * Renvoie la position en X du barycentre de l'item
 	 * @return double posX, la position en X
