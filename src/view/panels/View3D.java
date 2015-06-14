@@ -42,9 +42,11 @@ public class View3D extends JDesktopPane{
 		double x0 = i.getScreenSize().width / 2; //Permet d'aligner la figure sur l'axe des x
 		double y0 = i.getScreenSize().height /2; //permet d'aligner la figure sur l'axe des y
 		for (int j = i.getFaces().size()-1; j>= 0 ; j--) {
+			//Pour chaque face du modele
 			Face f = i.getFaces().get(j);
 			Point[] tab = f.getPoints();
 			for(int h=0;h<3;h++){
+				//Pour chaque point de la face, on recupere le x et le y
 				listeX[h] = (int)(tab[h].getX()*i.getZoomX() +x0 + i.getTransX());
 				listeY[h] = (int)(tab[h].getY()*i.getZoomY() +y0 + i.getTransY());
 			}
@@ -55,10 +57,9 @@ public class View3D extends JDesktopPane{
             final int LIGHTCOLOR = 50;
             final int DARKCOLOR = 200;
             int color = (int) (Math.abs(Light.cosine(vector1.produitVectoriel(vector2))*(DARKCOLOR-LIGHTCOLOR))+0.5) + LIGHTCOLOR ;
-            //double ps = Light.cosine(vector1.produitVectoriel(vector2));
-            //int color = ps>0?(int)(ps*(DARKCOLOR-LIGHTCOLOR)+0.5)+LIGHTCOLOR:LIGHTCOLOR;
-            g.setColor(new Color(color, color, color));
-			g.fillPolygon(listeX, listeY, 3);
+            // On recupere la couleur
+            g.setColor(new Color(color, color, color)); //On affecte la couleur au Graphics g
+			g.fillPolygon(listeX, listeY, 3); //on dessine la face
 		}
 	}
 
