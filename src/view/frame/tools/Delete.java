@@ -12,7 +12,9 @@ public class Delete extends Panel{
 	
 	private static final long serialVersionUID = 1L;
 
-
+	/**
+	 * Ajoute un listener sur le bouton delete
+	 */
 	public Delete(){
 		super();
 		JButton delete = new JButton("Delete");
@@ -22,7 +24,7 @@ public class Delete extends Panel{
 			public void actionPerformed(ActionEvent arg) {
 		    String select = (String)list.getSelectedValue();
 		    if(select == null){
-		    	JOptionPane.showMessageDialog(new JFrame(), "Vous n'avez selectionner aucun element");
+		    	JOptionPane.showMessageDialog(new JFrame(), "Vous n'avez selectionne aucun element");
 		    }
 		    else{
 		    	String filename = models.get(select).get("adresse");
