@@ -32,12 +32,9 @@ public class FileParser {
 	/**
 	 * Verifie que le fichier en lecture existe et est conforme
 	 * 
-	 * @throws ExceptionPoint
-	 *             si il y a une probleme avec les points
-	 * @throws ExceptionSegment
-	 *             si il y a une probleme avec les segments
-	 * @throws ExceptionFace
-	 *             si il y a une probleme avec les faces
+	 * @throws ExceptionPoint si il y a une probleme avec les points
+	 * @throws ExceptionSegment si il y a une probleme avec les segments
+	 * @throws ExceptionFace si il y a une probleme avec les faces
 	 */
 	public FileParser(String filename) throws ExceptionPoint, ExceptionSegment, ExceptionFace {
 		String sta;
@@ -102,8 +99,7 @@ public class FileParser {
 	/**
 	 * Determine le nombre de points,de segments et de faces du modele
 	 * 
-	 * @param sta
-	 *            String , premiere ligne du bufferReader
+	 * @param sta String , premiere ligne du bufferReader
 	 */
 	private void initNbs(String sta) throws NullPointerException {
 		try{
@@ -120,8 +116,7 @@ public class FileParser {
 	/**
 	 * Determine les points de la figure
 	 * 
-	 * @param currnt
-	 *            la ligne actuelle du bufferReader
+	 * @param currnt la ligne actuelle du bufferReader
 	 */
 	private void initPoints(String currnt) {
 		String words[] = currnt.split(" ");
@@ -133,8 +128,7 @@ public class FileParser {
 	/**
 	 * Determine les segments de la figure
 	 * 
-	 * @param currnt
-	 *            la ligne actuelle du bufferReader
+	 * @param currnt la ligne actuelle du bufferReader
 	 */
 	private void initSegs(String currnt) {
 		String words[] = currnt.split(" ");
@@ -145,8 +139,7 @@ public class FileParser {
 	/**
 	 * Determine les faces de la figure
 	 * 
-	 * @param currnt
-	 *            la ligne actuelle du bufferReader
+	 * @param currnt la ligne actuelle du bufferReader
 	 */
 	private void initFace(String currnt) {
 		String words[] = currnt.split(" ");
