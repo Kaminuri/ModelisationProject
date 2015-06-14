@@ -403,15 +403,15 @@ public class Item3D extends Observable{
             for (Point p : getPoints()) {
                 //rotation selon y
                 px = p.getX();
-                p.setX((p.getX() - barycenter.getX()) * (Math.cos(angleY)) + (p.getZ() - barycenter.getZ()) * (Math.sin(angleY)));
-                p.setZ((px - barycenter.getX()) * -(Math.sin(angleY)) + (p.getZ() - barycenter.getZ()) * (Math.cos(angleY)));
+                p.setX((p.getX() - barycenter.getX()) * (Math.cos(angleY)) + (p.getZ() - barycenter.getZ()) * (-Math.sin(angleY)));
+                p.setZ((px - barycenter.getX()) * (Math.sin(angleY)) + (p.getZ() - barycenter.getZ()) * (Math.cos(angleY)));
                 p.setX(p.getX() + barycenter.getX());
                 p.setZ(p.getZ() + barycenter.getZ());
 
                 //rotation selon x
                 py = p.getY();
-                p.setY(((p.getY() - barycenter.getY())* Math.cos(angleX)) + ((p.getZ() - barycenter.getZ())* Math.sin(angleX)));
-                p.setZ(((py - barycenter.getY())* (-Math.sin(angleX))) + ((p.getZ() - barycenter.getZ())* Math.cos(angleX)));
+                p.setY(((p.getY() - barycenter.getY())* Math.cos(angleX)) + ((p.getZ() - barycenter.getZ())* -Math.sin(angleX)));
+                p.setZ(((py - barycenter.getY())* (Math.sin(angleX))) + ((p.getZ() - barycenter.getZ())* Math.cos(angleX)));
                 p.setY(p.getY() + barycenter.getY());
                 p.setZ(p.getZ() + barycenter.getZ());
                 setPosXY(x2, y2);
