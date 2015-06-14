@@ -1,6 +1,6 @@
 package test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import model.geometric.Point;
 
 import org.junit.Test;
@@ -44,7 +44,7 @@ public class TestPoint {
 		Point p = new Point(12,4,28);
 		Point m = new Point(12,4,28);
 		boolean b = p.equals(m);
-		assertEquals(b,true);
+		assertTrue(b);
 	}
 	
 	@Test
@@ -52,7 +52,7 @@ public class TestPoint {
 		Point p = new Point(12,4,28);
 		Point m = new Point(11,4,28);
 		boolean b = p.equals(m);
-		assertEquals(b,false);
+		assertFalse(b);
 	}
 }
 

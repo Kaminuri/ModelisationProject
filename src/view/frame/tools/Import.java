@@ -22,6 +22,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import exceptions.ExceptionFace;
+import exceptions.ExceptionPoint;
+import exceptions.ExceptionSegment;
+import model.loader.FileParser;
 import BDD.Base;
 
 @SuppressWarnings("serial")
@@ -44,6 +48,13 @@ public class Import extends JFrame {
 						.substring(f.getName().lastIndexOf("."));
 				System.out.println(ext);
 				if (ext.equals(".gts")) {
+					System.out.println(f.getPath());
+					try {
+						new FileParser(f.getPath());
+					} catch (ExceptionPoint | ExceptionSegment | ExceptionFace e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
 					bdd = new Base("Base.db");
 					JPanel panel = new JPanel();
 					this.add(panel);

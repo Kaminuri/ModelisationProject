@@ -26,8 +26,6 @@ public class Point implements Comparable<Point>,Comparator<Point>{
 		return x;
 	}
 	
-	
-	
 	/**
 	 * Renvoie la valeur en y du point
 	 * @return la valeur en y du point sous forme de double

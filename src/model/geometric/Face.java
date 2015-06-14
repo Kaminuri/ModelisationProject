@@ -41,7 +41,7 @@ public class Face {
 	 * @return Le point correspondant au barycentre de la face 
 	 */
     public Point barycentre(){
-        float x = 0, y = 0, z = 0;
+        double x = 0, y = 0, z = 0;
         Point[] liste = getPoints();
         for(Point pt : liste){
             x += pt.getX();
