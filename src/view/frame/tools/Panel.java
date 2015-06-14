@@ -36,6 +36,9 @@ public class Panel extends JFrame {
 	protected TreeMap<String, HashMap<String, String>> models;
 
 	@SuppressWarnings("rawtypes")
+	/**
+	 * Cree les panels 
+	 */
 	public Panel() {
 		this.setResizable(false);
 		panel = new JPanel(false);
