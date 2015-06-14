@@ -40,13 +40,16 @@ public class MBar extends JMenuBar{
 	 * Ajoute les onglets a la MBar
 	 */
 	private void addFiles(){
-		//File
+		//Fichier
 		menu = new JMenu("Fichier");
 		menu.setMnemonic(KeyEvent.VK_F);
 		menu.getAccessibleContext().setAccessibleDescription("Fichier");
 		this.add(menu);
 
-		//Open
+		
+		
+		
+		//Ouvrir
 		menuItem = new JMenuItem("Ouvrir", KeyEvent.VK_O);
 		menuItem.addActionListener(new ActionListener() {
 			@Override
@@ -58,7 +61,13 @@ public class MBar extends JMenuBar{
 		menuItem.getAccessibleContext().setAccessibleDescription("Ouvre un document valide depuis la base de donnees");
 		menu.add(menuItem);
 		
-		//Import
+		
+		
+		
+		
+		
+		
+		//Importer
 		menuItem = new JMenuItem("Importer", KeyEvent.VK_I);
 		menuItem.addActionListener(new ActionListener() {
 			@Override
@@ -70,9 +79,15 @@ public class MBar extends JMenuBar{
 		menuItem.getAccessibleContext().setAccessibleDescription("Importe un fichier depuis les documents de l'utilisateur");
 		menu.add(menuItem);
 		
+		
+		
+		
+		
 		menu.addSeparator();
 		
-		//Delete
+		
+		
+		//Supprimer
 		menuItem = new JMenuItem("Supprimer", KeyEvent.VK_S);
 		menuItem.addActionListener(new ActionListener() {
 			@Override
@@ -84,7 +99,12 @@ public class MBar extends JMenuBar{
 		menuItem.getAccessibleContext().setAccessibleDescription("Supprime un fichier dans la base de donnees");
 		menu.add(menuItem);
 		
-		//Export
+		
+		
+		
+		
+		
+		//Exporter
 		menuItem = new JMenuItem("Exporter", KeyEvent.VK_E);
 		menuItem.addActionListener(new ActionListener() {
 			@Override
@@ -96,9 +116,19 @@ public class MBar extends JMenuBar{
 		menuItem.getAccessibleContext().setAccessibleDescription("Exporte un fichier de la base de donnees aux documents de l'utilisateur");
 		menu.add(menuItem);
 		
+		
+		
+		
+		
 		menu.addSeparator();
 		
-		//Quit
+		
+		
+		
+		
+		
+		
+		//Quitter
 		menuItem = new JMenuItem("Quitter", KeyEvent.VK_Q);
 		menuItem.addActionListener(new ActionListener() {
 			@Override
@@ -115,15 +145,27 @@ public class MBar extends JMenuBar{
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Cree l'onglet views
 	 */
 	private void addView(){
-		//File
+		//Vues
 		menu = new JMenu("Vues");
 		menu.setMnemonic(KeyEvent.VK_A);
 		menu.getAccessibleContext().setAccessibleDescription("Panel vue");
 		
+		
+		//Fil de fer
 		menuItem = new JMenuItem("Dessin fil de fer");
 		menuItem.addActionListener(new ActionListener() {
 			@Override
@@ -135,6 +177,9 @@ public class MBar extends JMenuBar{
 		menu.add(menuItem);
 		
 		
+		
+		
+		//Rempli
 		menuItem = new JMenuItem("Dessin rempli");
 		menuItem.addActionListener(new ActionListener() {
 			@Override
@@ -146,7 +191,7 @@ public class MBar extends JMenuBar{
 		menu.add(menuItem);
 		
 		
-		//Show
+		//Afficher la fenetre des options si elle a ete formee
 		menuItem = new JMenuItem("Afficher options", KeyEvent.VK_T);
 		menuItem.addActionListener(new ActionListener() {
 			@Override
