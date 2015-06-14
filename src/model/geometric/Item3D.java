@@ -136,14 +136,14 @@ public class Item3D extends Observable{
 	 * Applique une rotation du modele sur l'axe X
 	 * @param angle La valeur de la rotation, en double
 	 */
-	public void rotationX(double angle, Point bary){
-		barycenter = bary;
+	public void rotationX(double angle){
+		
 		for(int i = 0;i<points.size();i++){
 			double y,z;
 			y = points.get(i).getY();
 			z = points.get(i).getZ();
-			points.get(i).setY((y-barycenter.getY())*Math.cos(angle)+(z-barycenter.getZ())*-Math.sin(angle));
-			points.get(i).setZ((y-barycenter.getY())*Math.sin(angle)+(z-barycenter.getZ())*Math.cos(angle));
+			points.get(i).setY((y)*Math.cos(angle)+(z)*-Math.sin(angle));
+			points.get(i).setZ((y)*Math.sin(angle)+(z)*Math.cos(angle));
 		}
 	}
 	
@@ -151,14 +151,13 @@ public class Item3D extends Observable{
 	 * Applique une rotation du modele sur l'axe Y
 	 * @param angle La valeur de la rotation, en double
 	 */
-	public void rotationY(double angle, Point bary){
-		barycenter = bary;
+	public void rotationY(double angle){
 		for(int i = 0;i<points.size();i++){
 			double x,z;
 			x = points.get(i).getX();
 			z = points.get(i).getZ();
-			points.get(i).setX((x-barycenter.getX())*Math.cos(angle)+(z-barycenter.getZ())*-Math.sin(angle));
-			points.get(i).setZ((x-barycenter.getX())*Math.sin(angle)+(z-barycenter.getZ())*Math.cos(angle));
+			points.get(i).setX((x)*Math.cos(angle)+(z)*-Math.sin(angle));
+			points.get(i).setZ((x)*Math.sin(angle)+(z)*Math.cos(angle));
 		}
 	}
 	
