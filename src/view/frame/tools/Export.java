@@ -50,6 +50,12 @@ public class Export extends Panel{
 		export.addActionListener(listenerExport);
 	}
 	
+	/**
+	 * Copie le contenu d'un fichier (source) dans un autre fichier (dest)
+	 * @param source le fichier source
+	 * @param dest le fichier de destination
+	 * @return True si la copie a marche
+	 */
 	private static boolean copyFile(File source, File dest){
 		try{
 			// Declaration et ouverture des flux
