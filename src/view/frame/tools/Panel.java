@@ -53,7 +53,7 @@ public class Panel extends JFrame {
 		panel2.setPreferredSize(new Dimension(380, 300));
 		panel3.setPreferredSize(new Dimension(380, 50));
 		panel4.setPreferredSize(new Dimension(380, 50));
-		panel5.setPreferredSize(new Dimension(350, 200));
+		panel5.setPreferredSize(new Dimension(350, 50));
 
 		panel2.setLayout(new BorderLayout());
 		panel2.add(panel3, BorderLayout.NORTH);
@@ -85,11 +85,11 @@ public class Panel extends JFrame {
 		scrollPane.setPreferredSize(new Dimension(150, 80));
 		scrollPane.setViewportView(description);
 
-		panel6.add(points);
-		panel6.add(faces);
-		panel6.add(segments);
+		panel6.add(points, BorderLayout.CENTER);
+		panel6.add(faces, BorderLayout.CENTER);
+		panel6.add(segments, BorderLayout.CENTER);
 		panel7.add(des, BorderLayout.CENTER);
-		panel7.add(scrollPane);
+		panel7.add(scrollPane, BorderLayout.CENTER);
 		panel5.add(panel6);
 		panel5.add(panel7);
 
