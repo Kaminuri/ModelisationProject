@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import model.geometric.Item3D;
-import view.panels.OptionPanel;
 
 public class MBar extends JMenuBar{
 	
@@ -23,6 +22,11 @@ public class MBar extends JMenuBar{
 	private JFrame frame;
 	private Item3D i;
    
+	/**
+	 * Cree une MBar
+	 * @param frame La frame sur laquelle mettre la MBar
+	 * @param i l'Item3D sur lequel affecter la MBar
+	 */
 	public MBar(JFrame frame, Item3D i){
 		this.frame = frame;
 		this.i = i;
@@ -31,6 +35,9 @@ public class MBar extends JMenuBar{
 		addHelp();
 	}
 	
+	/**
+	 * Ajoute les onglets a la MBar
+	 */
 	private void addFiles(){
 		//File
 		menu = new JMenu("File");
@@ -102,6 +109,11 @@ public class MBar extends JMenuBar{
 		menuItem.getAccessibleContext().setAccessibleDescription("Quit a application");
 		menu.add(menuItem);
 	}
+	
+	
+	/**
+	 * Ajoute la vue
+	 */
 	private void addView(){
 		//File
 		menu = new JMenu("Views");
@@ -184,6 +196,9 @@ public class MBar extends JMenuBar{
 		this.add(menu);
 	}
 	
+	/**
+	 * Ajoute l'aide a la MBar
+	 */
 	private void addHelp(){
 		//?
 		menu = new JMenu("?");
