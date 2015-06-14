@@ -41,13 +41,13 @@ public class MBar extends JMenuBar{
 	 */
 	private void addFiles(){
 		//File
-		menu = new JMenu("File");
-		menu.setMnemonic(KeyEvent.VK_A);
-		menu.getAccessibleContext().setAccessibleDescription("File");
+		menu = new JMenu("Fichier");
+		menu.setMnemonic(KeyEvent.VK_F);
+		menu.getAccessibleContext().setAccessibleDescription("Fichier");
 		this.add(menu);
 
 		//Open
-		menuItem = new JMenuItem("Open", KeyEvent.VK_T);
+		menuItem = new JMenuItem("Ouvrir", KeyEvent.VK_O);
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -55,11 +55,11 @@ public class MBar extends JMenuBar{
 			}
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.ALT_MASK));
-		menuItem.getAccessibleContext().setAccessibleDescription("Open a valid document from the Data Base");
+		menuItem.getAccessibleContext().setAccessibleDescription("Ouvre un document valide depuis la base de donnees");
 		menu.add(menuItem);
 		
 		//Import
-		menuItem = new JMenuItem("Import", KeyEvent.VK_T);
+		menuItem = new JMenuItem("Importer", KeyEvent.VK_I);
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -67,25 +67,25 @@ public class MBar extends JMenuBar{
 			}
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, ActionEvent.ALT_MASK));
-		menuItem.getAccessibleContext().setAccessibleDescription("Try to import a File from your documents");
+		menuItem.getAccessibleContext().setAccessibleDescription("Importe un fichier depuis les documents de l'utilisateur");
 		menu.add(menuItem);
 		
 		menu.addSeparator();
 		
 		//Delete
-		menuItem = new JMenuItem("Delete", KeyEvent.VK_T);
+		menuItem = new JMenuItem("Supprimer", KeyEvent.VK_S);
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new Delete();
 			}
 		});
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.ALT_MASK));
-		menuItem.getAccessibleContext().setAccessibleDescription("Delete a file from the Data Base");
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.ALT_MASK));
+		menuItem.getAccessibleContext().setAccessibleDescription("Supprime un fichier dans la base de donnees");
 		menu.add(menuItem);
 		
 		//Export
-		menuItem = new JMenuItem("Export", KeyEvent.VK_T);
+		menuItem = new JMenuItem("Exporter", KeyEvent.VK_E);
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -93,13 +93,13 @@ public class MBar extends JMenuBar{
 			}
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.ALT_MASK));
-		menuItem.getAccessibleContext().setAccessibleDescription("Export a File from data base to documents");
+		menuItem.getAccessibleContext().setAccessibleDescription("Exporte un fichier de la base de donnees aux documents de l'utilisateur");
 		menu.add(menuItem);
 		
 		menu.addSeparator();
 		
 		//Quit
-		menuItem = new JMenuItem("Quit", KeyEvent.VK_T);
+		menuItem = new JMenuItem("Quitter", KeyEvent.VK_Q);
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -107,7 +107,7 @@ public class MBar extends JMenuBar{
 			}
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
-		menuItem.getAccessibleContext().setAccessibleDescription("Quit a application");
+		menuItem.getAccessibleContext().setAccessibleDescription("Quitte l'application");
 		menu.add(menuItem);
 	}
 	
