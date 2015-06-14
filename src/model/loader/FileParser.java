@@ -43,7 +43,12 @@ public class FileParser {
 		String currnt;
 		try(BufferedReader br = new BufferedReader(new FileReader(filename))){
 			sta = br.readLine();
+			try{
 			initNbs(sta);
+			}
+			catch(Exception e){
+				System.out.println("error");
+			}
 			for(int i = 0 ; i < nbPoint ; i++) {
 				currnt = br.readLine();
 				this.x = null;
@@ -85,7 +90,7 @@ public class FileParser {
 	 * Determine le nombre de points,de segments et de faces du modele
 	 * @param sta String , premiere ligne du bufferReader
 	 */
-	private void initNbs(String sta) {
+	private void initNbs(String sta) throws NullPointerException {
 		String words[] = sta.split(" ");
 		nbPoint = Integer.parseInt(words[0]);
 		nbSeg = Integer.parseInt(words[1]);
