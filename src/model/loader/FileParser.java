@@ -1,7 +1,5 @@
 package model.loader;
 
-
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,31 +12,33 @@ import exceptions.ExceptionFace;
 import exceptions.ExceptionPoint;
 import exceptions.ExceptionSegment;
 
-
 public class FileParser {
-	//private String fileName = "cube.gts";
-	//private String fileName = "sphere5.gts";
-	//private String fileName = "x_wing.gts";
-	//private String fileName = "poney.gts";
-	//private String fileName = "horse.gts";
-	//private String fileName = "space_shuttle.gts";
-	
+	// private String fileName = "cube.gts";
+	// private String fileName = "sphere5.gts";
+	// private String fileName = "x_wing.gts";
+	// private String fileName = "poney.gts";
+	// private String fileName = "horse.gts";
+	// private String fileName = "space_shuttle.gts";
+
 	private int nbPoint, nbSeg, nbFace;
 	private Double x, y, z;
-	private Point p1,p2;
-	private Segment s1,s2,s3;
+	private Point p1, p2;
+	private Segment s1, s2, s3;
 	private ArrayList<Point> p = new ArrayList<Point>();
 	private ArrayList<Segment> s = new ArrayList<Segment>();
 	private ArrayList<Face> f = new ArrayList<Face>();
 
-	
 	/**
 	 * Verifie que le fichier en lecture existe et est conforme
-	 * @throws ExceptionPoint si il y a une probleme avec les points
-	 * @throws ExceptionSegment si il y a une probleme avec les segments
-	 * @throws ExceptionFace si il y a une probleme avec les faces
+	 * 
+	 * @throws ExceptionPoint
+	 *             si il y a une probleme avec les points
+	 * @throws ExceptionSegment
+	 *             si il y a une probleme avec les segments
+	 * @throws ExceptionFace
+	 *             si il y a une probleme avec les faces
 	 */
-	public FileParser(String filename) throws ExceptionPoint, ExceptionSegment, ExceptionFace {
+	public FileParser(String filename) throws ExceptionPoint, ExceptionSegment, ExceptionFace, NullPointerException {
 		String sta;
 		String currnt;
 		try(BufferedReader br = new BufferedReader(new FileReader(filename))){
@@ -46,10 +46,6 @@ public class FileParser {
 			try{
 			initNbs(sta);
 			//On definit le nombre de points
-			}
-			catch(Exception e){
-				System.out.println("error");
-			}
 			for(int i = 0 ; i < nbPoint ; i++) {
 				//Pour tous les points :
 				currnt = br.readLine();
@@ -95,14 +91,20 @@ public class FileParser {
 				//sinon on ajoute la face a la liste des faces
 				f.add(new Face(s1,s2));
 			}
+			}
+		catch(Exception e){
+			
+		}
 		}catch(IOException e){
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Determine le nombre de points,de segments et de faces du modele
-	 * @param sta String , premiere ligne du bufferReader
+	 * 
+	 * @param sta
+	 *            String , premiere ligne du bufferReader
 	 */
 	private void initNbs(String sta) throws NullPointerException {
 		String words[] = sta.split(" ");
@@ -110,10 +112,12 @@ public class FileParser {
 		nbSeg = Integer.parseInt(words[1]);
 		nbFace = Integer.parseInt(words[2]);
 	}
-	
+
 	/**
 	 * Determine les points de la figure
-	 * @param currnt la ligne actuelle du bufferReader
+	 * 
+	 * @param currnt
+	 *            la ligne actuelle du bufferReader
 	 */
 	private void initPoints(String currnt) {
 		String words[] = currnt.split(" ");
@@ -121,50 +125,57 @@ public class FileParser {
 		y = Double.parseDouble(words[1]);
 		z = Double.parseDouble(words[2]);
 	}
-	
+
 	/**
 	 * Determine les segments de la figure
-	 * @param currnt la ligne actuelle du bufferReader
+	 * 
+	 * @param currnt
+	 *            la ligne actuelle du bufferReader
 	 */
 	private void initSegs(String currnt) {
 		String words[] = currnt.split(" ");
-		p1 = p.get(Integer.parseInt(words[0])-1);
-		p2 = p.get(Integer.parseInt(words[1])-1);
+		p1 = p.get(Integer.parseInt(words[0]) - 1);
+		p2 = p.get(Integer.parseInt(words[1]) - 1);
 	}
-	
+
 	/**
 	 * Determine les faces de la figure
-	 * @param currnt la ligne actuelle du bufferReader
+	 * 
+	 * @param currnt
+	 *            la ligne actuelle du bufferReader
 	 */
 	private void initFace(String currnt) {
 		String words[] = currnt.split(" ");
-		s1 = s.get(Integer.parseInt(words[0])-1);
-		s2 = s.get(Integer.parseInt(words[1])-1);
-		s3 = s.get(Integer.parseInt(words[2])-1);
+		s1 = s.get(Integer.parseInt(words[0]) - 1);
+		s2 = s.get(Integer.parseInt(words[1]) - 1);
+		s3 = s.get(Integer.parseInt(words[2]) - 1);
 	}
-	
+
 	/**
 	 * Renvoie la liste des points de la figure
+	 * 
 	 * @return ArrayList des points de la figure
 	 */
-	public ArrayList<Point> getListPoints(){
+	public ArrayList<Point> getListPoints() {
 		return p;
 	}
 
 	/**
 	 * Renvoie la liste des segments de la figure
+	 * 
 	 * @return ArrayList des segments de la figure
 	 */
-	public ArrayList<Segment> getListSegments(){
+	public ArrayList<Segment> getListSegments() {
 		return s;
 	}
-	
+
 	/**
 	 * Renvoie la liste des faces de la figure
+	 * 
 	 * @return ArrayList des faces de la figure
 	 */
-	public ArrayList<Face> getListFaces(){
+	public ArrayList<Face> getListFaces() {
 		return f;
 	}
-	
+
 }
