@@ -23,7 +23,11 @@ public class GeometricController {
 		it = item;
 		
 	}
-
+	
+	/**
+	 * Recupere un MouseWheelListener pour le zoom sur l'item3D associe
+	 * @return MouseWheelListener
+	 */
 	public MouseWheelListener getZoomListener() {
 		return new MouseWheelListener() {
 			
@@ -39,6 +43,11 @@ public class GeometricController {
 			}
 		};
 	}
+	
+	/**
+	 * Recupere un MouseWheelListener pour la translation sur l'item3D associe
+	 * @return MouseWheelListener
+	 */
 	public MouseListener getTranslationListener(){
 		return new MouseListener() {
 			
@@ -78,6 +87,11 @@ public class GeometricController {
 			}
 		};
 	}
+	
+	/**
+	 * Recupere un MouseWheelListener pour la  sur l'item3D associe
+	 * @return MouseWheelListener
+	 */
 	public MouseMotionListener getTransRotaListener() {
 		return new MouseMotionListener() {
 			
