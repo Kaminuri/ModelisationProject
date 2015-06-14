@@ -15,7 +15,7 @@ import exceptions.ExceptionFace;
 import exceptions.ExceptionPoint;
 import exceptions.ExceptionSegment;
 
-public class testItem3D extends Observable{
+public class TestItem3D extends Observable{
 
 	@Test
 	public void testItem3d() {
@@ -149,6 +149,31 @@ public class testItem3D extends Observable{
 		assertEquals(transY, item.getTransY());		
 	}
 	
+	@Test
+	public void testGetFilsDeFer(){
+		FileParser file = null;
+		try {
+			file = new FileParser("resources/models/x_wing.gts");
+		} catch (ExceptionPoint | ExceptionSegment | ExceptionFace e) {
+			e.printStackTrace();
+		}
+		Item3D item = new Item3D(file);
+		assertFalse(item.getFilsDeFer());
+	}
+	
+	
+	@Test
+	public void testSetFilsDeFer(){
+		FileParser file = null;
+		try {
+			file = new FileParser("resources/models/x_wing.gts");
+		} catch (ExceptionPoint | ExceptionSegment | ExceptionFace e) {
+			e.printStackTrace();
+		}
+		Item3D item = new Item3D(file);
+		item.setFilsDefer(true);
+		assertTrue(item.getFilsDeFer());
+	}
 	
 	
 

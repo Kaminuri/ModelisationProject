@@ -173,7 +173,8 @@ public class TestPoint {
 	public void testAngle() {
 		Point p = new Point(1,2,3);
 		Point m = new Point(2,3,4);
-		assertEquals(7.252, p.angle(m),0.001);
+		double res = p.cosine(m);
+		assertEquals(Math.acos(res), p.angle(m),0.001);
 	}
 	
 	@Test
@@ -181,7 +182,9 @@ public class TestPoint {
 		Point p = new Point(1,2,3);
 		Point m = new Point(4,5,6);
 		Point f = new Point(-3,6,-3);
-		assertEquals(f, p.produitVectoriel(m));
+		assertEquals(f.getX(), p.produitVectoriel(m).getX(), 0.01);
+		assertEquals(f.getY(), p.produitVectoriel(m).getY(), 0.01);
+		assertEquals(f.getZ(), p.produitVectoriel(m).getZ(), 0.01);
 	}
 	
 	
