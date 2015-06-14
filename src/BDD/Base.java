@@ -32,18 +32,34 @@ public class Base  {
 		mdp = null;
 	}
 	
+	/**
+	 * Renvoie l'url de la base
+	 * @return l'url de la base sous forme de String
+	 */
 	public String getUrl(){
 		return url;
 	}
 	
+	/**
+	 * Renvoie le mot de passe de l'utilisateur sous forme de string
+	 * @return le mot de passe en String
+	 */
 	public String getMdp(){
 		return mdp;
 	}
 	
+	/**
+	 * Renvoie le nom de l'utilisateur sous forme de string
+	 * @return le nom en String
+	 */
 	public String getNom(){
 		return nom;
 	}
 	
+	/**
+	 * Renvoie la connexion a la base
+	 * @return Connection a la base
+	 */
 	public Connection getCon(){
 		return con;
 	}
@@ -128,6 +144,7 @@ public class Base  {
 
 	/**
 	 * Permet d'inserer un nouveau fichier dans la base de donnees
+	 * 
 	 */
 	public void insert(String nom, String nomfichier, String tag1, String tag2, String tag3, String tag4, int points, int segments, int faces, String des){
 		try{
@@ -143,6 +160,7 @@ public class Base  {
 	}
 	
 	/**
+	 * @param nom le nom du fichier a supprimer
 	 *Permet de supprimer un fichier de la base de donnee 
 	 */
 	
@@ -161,9 +179,9 @@ public class Base  {
 	
 	/**
 	 * Permet de verifier si le nom existe deja.
+	 * @param nom Le nom de l'objet
 	 * @return vrai si le nom existe
 	 */
-	
 	public boolean estDeja(String nom){
 		boolean deja = false;
 		try{
