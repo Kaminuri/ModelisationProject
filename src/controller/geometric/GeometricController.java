@@ -104,51 +104,11 @@ public class GeometricController {
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				if(ok){
-					double x1 = e.getX();
-			        double y1 = e.getY();
-			        double distanceX = x1 - it.getPosXItem();
-			        double distanceY = y1 - it.getPosYItem();
-			        if (distanceX >= 1 || distanceX <= -1 || distanceY >= 1 || distanceY <= -1) {
-			            for (Point p : it.getPoints()) {
-			                double x2 = p.getX() - (distanceX / 450);
-			                double y2 = p.getY() - (distanceY / 450);
-			                p.setX(x2);
-			                p.setY(y2);
-			                it.setPosXY(x1, x2);
-			            }
-			        }
+					it.translateByMouse(e);
 			        ok = true;
 				}else if(!ok){
-			        double x2 = e.getX();
-			        double y2 = e.getY();
-			        double angleY = x2 - it.getPosXItem();
-			        double angleX = y2 - it.getPosYItem();
-			        double px, py;
-			        Point barycenter = it.barycentre();
-			        if (angleX >= 1 || angleX <= -1 || angleY >= 1 || angleY <= -1) {
-			            angleX *= -(2.0 * Math.PI) / 4500;
-			            angleY *= (2.0 * Math.PI) / 4500;
-			            for (Point p : it.getPoints()) {
-
-			                //rotation selon y
-			                px = p.getX();
-			                p.setX((p.getX() - barycenter.getX()) * (Math.cos(angleY)) + (p.getZ() - barycenter.getZ()) * (-Math.sin(angleY)));
-			                p.setZ((px - barycenter.getX()) * (Math.sin(angleY)) + (p.getZ() - barycenter.getZ()) * (Math.cos(angleY)));
-			                p.setX(p.getX() + barycenter.getX());
-			                p.setZ(p.getZ() + barycenter.getZ());
-
-			                //rotation selon x
-			                py = p.getY();
-			                p.setY(((p.getY() - barycenter.getY())* Math.cos(angleX)) + ((p.getZ() - barycenter.getZ())* Math.sin(angleX)));
-			                p.setZ(((py - barycenter.getY())* (-Math.sin(angleX))) + ((p.getZ() - barycenter.getZ())* Math.cos(angleX)));
-			                p.setY(p.getY() + barycenter.getY());
-			                p.setZ(p.getZ() + barycenter.getZ());
-			                it.setPosXY(x2, y2);
-			            }
-
-			        }
-			    }
-
+			        it.rotateByMouse(e);
+				}
 			}
 		};
 	}
