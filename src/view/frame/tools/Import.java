@@ -52,17 +52,7 @@ public class Import extends JFrame {
 					if (ext.equals(".gts")) {
 						try {
 							new FileParser(f.getPath());
-						} catch (ExceptionPoint e2) {
-							// TODO Auto-generated catch block
-							e2.printStackTrace();
-						} catch (ExceptionSegment e2) {
-							// TODO Auto-generated catch block
-							e2.printStackTrace();
-						} catch (ExceptionFace e2) {
-							// TODO Auto-generated catch block
-							e2.printStackTrace();
-						}
-						bdd = new Base("Base.db");
+							bdd = new Base("Base.db");
 						JPanel panel = new JPanel();
 						this.add(panel);
 						this.setTitle("Import");
@@ -182,7 +172,19 @@ public class Import extends JFrame {
 								}
 							}
 						});
-					} else {
+					} 
+					 catch (ExceptionPoint e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					} catch (ExceptionSegment e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					} catch (ExceptionFace e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+					}
+					else {
 						JOptionPane.showMessageDialog(new JFrame(),
 								"Le fichier selectionne n'est pas de type gts", "Warning",
 						        JOptionPane.WARNING_MESSAGE);
