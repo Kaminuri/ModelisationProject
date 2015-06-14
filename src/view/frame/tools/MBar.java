@@ -172,7 +172,6 @@ public class MBar extends JMenuBar{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ifo.setVisible(true);
-				
 			}
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.ALT_MASK));
