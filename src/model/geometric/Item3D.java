@@ -36,8 +36,6 @@ public class Item3D extends Observable{
 		xCentring = (this.extremites()[2] + extremites()[3])/2;
         yCentring = (extremites()[0] + extremites()[1])/2;
         barycenter = barycentre();
-		posX = 0;
-		posY = 0;
 	}
 	
 	public double getPosXItem(){

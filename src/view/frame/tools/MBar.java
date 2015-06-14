@@ -21,13 +21,15 @@ public class MBar extends JMenuBar{
 	private JMenuItem menuItem;
 	private JFrame frame;
 	private Item3D i;
-   
+	private InternalFrameOption ifo;
 	/**
 	 * Cree une MBar
 	 * @param frame La frame sur laquelle mettre la MBar
 	 * @param i l'Item3D sur lequel affecter la MBar
+	 * @param ifo 
 	 */
-	public MBar(JFrame frame, Item3D i){
+	public MBar(JFrame frame, Item3D i, InternalFrameOption ifo){
+		this.ifo = ifo;
 		this.frame = frame;
 		this.i = i;
 		addFiles();
@@ -163,36 +165,21 @@ public class MBar extends JMenuBar{
 		
 		menu.addSeparator();
 		
-		//Front
-		menuItem = new JMenuItem("Front view", KeyEvent.VK_T);
+		//Show
+		menuItem = new JMenuItem("Show Option Frame", KeyEvent.VK_T);
+		menuItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ifo.setVisible(true);
+				
+			}
+		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("Front view");
 		menu.add(menuItem);
 			
-		//Top
-		menuItem = new JMenuItem("Top view", KeyEvent.VK_T);
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.ALT_MASK));
-		menuItem.getAccessibleContext().setAccessibleDescription("Top view");
-		menu.add(menuItem);
 		
-		//Bot
-		menuItem = new JMenuItem("Bottom view", KeyEvent.VK_T);
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, ActionEvent.ALT_MASK));
-		menuItem.getAccessibleContext().setAccessibleDescription("Bottom view");
-		menu.add(menuItem);
-		
-		//Left
-		menuItem = new JMenuItem("Left view", KeyEvent.VK_T);
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.ALT_MASK));
-		menuItem.getAccessibleContext().setAccessibleDescription("Left view");
-		menu.add(menuItem);
-		
-		
-		//Right
-		menuItem = new JMenuItem("Right view", KeyEvent.VK_T);
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
-		menuItem.getAccessibleContext().setAccessibleDescription("right view");
-		menu.add(menuItem);
 		this.add(menu);
 	}
 	

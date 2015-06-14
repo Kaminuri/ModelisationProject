@@ -1,5 +1,6 @@
 package view.frame.tools;
 
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
 import view.panels.OptionPanel;
@@ -19,6 +20,7 @@ public class InternalFrameOption extends JInternalFrame{
 		setContentPane(op);
 		setSize(400,70);
 		setLocation(50, 50);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	   	setVisible(true);
 	}
 }

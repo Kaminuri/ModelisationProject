@@ -33,7 +33,7 @@ public class Interface implements Observer{
 	    view.add(ifo);
 	    f.setContentPane(view);
 	    
-		menuBar = new MBar(f, i);
+		menuBar = new MBar(f, i, ifo);
 		f.setJMenuBar(menuBar);
 		f.pack();
 	    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
