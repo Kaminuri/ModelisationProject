@@ -4,7 +4,6 @@ package view.frame.tools;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -113,62 +112,43 @@ public class MBar extends JMenuBar{
 	}
 	
 	
+	
+	
+	
 	/**
-	 * Ajoute la vue
+	 * Cree l'onglet views
 	 */
 	private void addView(){
 		//File
-		menu = new JMenu("Views");
+		menu = new JMenu("Vues");
 		menu.setMnemonic(KeyEvent.VK_A);
-		menu.getAccessibleContext().setAccessibleDescription("Views Panels");
+		menu.getAccessibleContext().setAccessibleDescription("Panel vue");
 		
-		//Normal Zoom
-		menuItem = new JMenuItem("Normal Zoom",new ImageIcon("pictures/translationIcone.jpg") );
-		/*menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.ALT_MASK));
-		menuItem.getAccessibleContext().setAccessibleDescription("Delete a file from the Data Base");*/
+		menuItem = new JMenuItem("Dessin fil de fer");
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				i.setFilsDefer(true);
+			}
+		});
+		menuItem.getAccessibleContext().setAccessibleDescription("Dessiner le modele en fil de fer");
 		menu.add(menuItem);
 		
 		
-		//+Zoom
-		menuItem = new JMenuItem("+ Zoom",new ImageIcon("pictures/translationIcone.jpg") );
-		/*menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.ALT_MASK));
-		menuItem.getAccessibleContext().setAccessibleDescription("Delete a file from the Data Base");*/
+		menuItem = new JMenuItem("Dessin rempli");
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				i.setFilsDefer(false);
+			}
+		});
+		menuItem.getAccessibleContext().setAccessibleDescription("Dessiner le modele avec les faces remplies");
 		menu.add(menuItem);
 		
-		
-		//-Zoom
-		menuItem = new JMenuItem("- Zoom",new ImageIcon("pictures/translationIcone.jpg") );
-		/*menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.ALT_MASK));
-		menuItem.getAccessibleContext().setAccessibleDescription("Delete a file from the Data Base");*/
-		menu.add(menuItem);
-		
-		menu.addSeparator();
-		//Translation
-		menuItem = new JMenuItem("Translation",new ImageIcon("pictures/translationIcone.jpg") );
-		/*menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.ALT_MASK));
-		menuItem.getAccessibleContext().setAccessibleDescription("Delete a file from the Data Base");*/
-		menu.add(menuItem);
-		
-		//Rotation
-		menuItem = new JMenuItem("Rotation", KeyEvent.VK_T);
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.ALT_MASK));
-		menuItem.getAccessibleContext().setAccessibleDescription("Delete a file from the Data Base");
-		menu.add(menuItem);
-		
-		menu.addSeparator();
-		
-		//Coupe
-		menuItem = new JMenuItem("Sectional view", KeyEvent.VK_T);
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.ALT_MASK));
-		menuItem.getAccessibleContext().setAccessibleDescription("Delete a file from the Data Base");
-		menu.add(menuItem);
-		
-		menu.addSeparator();
 		
 		//Show
-		menuItem = new JMenuItem("Show Option Frame", KeyEvent.VK_T);
+		menuItem = new JMenuItem("Afficher options", KeyEvent.VK_T);
 		menuItem.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ifo.setVisible(true);
@@ -177,7 +157,8 @@ public class MBar extends JMenuBar{
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("Front view");
 		menu.add(menuItem);
-			
+		//Ajoute le sous-onglet Show option frame
+
 		
 		this.add(menu);
 	}
@@ -186,14 +167,13 @@ public class MBar extends JMenuBar{
 	 * Ajoute l'aide a la MBar
 	 */
 	private void addHelp(){
-		//?
 		menu = new JMenu("?");
 		menu.setMnemonic(KeyEvent.VK_A);
 		menu.getAccessibleContext().setAccessibleDescription("File");
 		this.add(menu);
 		
 		//help
-		menuItem = new JMenuItem("Help", KeyEvent.VK_T);
+		menuItem = new JMenuItem("Aide", KeyEvent.VK_T);
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("help");
 		menu.add(menuItem);
@@ -202,13 +182,13 @@ public class MBar extends JMenuBar{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(frame,
-					    "L'aide sera disponible dans notre prochain DLC ! N'attendez plus et precommandez le e l'adresse suivante : www.onaimelesdlc.com", "Help", JOptionPane.INFORMATION_MESSAGE);
+					    "Pour choisir le modele, cliquez sur vue", "Help", JOptionPane.INFORMATION_MESSAGE);
 				
 			}
 		});
 		
 		//A Propos
-		menuItem = new JMenuItem("About", KeyEvent.VK_T);
+		menuItem = new JMenuItem("A propos", KeyEvent.VK_T);
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("About this project");
 menuItem.addActionListener(new ActionListener() {
