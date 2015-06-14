@@ -21,7 +21,7 @@ public class OptionPanel extends JPanel{
 	private GeometricController gc;
 	public OptionPanel(GeometricController gc){
 		this.gc = gc;
-		this.setLayout(new GridLayout(1,8));
+		this.setLayout(new GridLayout(1,9));
 		
 		mZoom = new JButton();
 		pZoom = new JButton();
@@ -59,35 +59,34 @@ public class OptionPanel extends JPanel{
 	
 	
 	private void initNZoom(){
-		setButIcon(mZoom, "resources/pictures/Zoom-Minus-icon.png");
-		mZoom.addActionListener(gc.getMinusZoomListener());
+		mZoom.setText("-");
 		mZoom.setSize(new Dimension(10,70));
+		mZoom.addActionListener(gc.getMinusZoomListener());
 	}
 	private void initPZoom(){
-		setButIcon(pZoom,"resources/pictures/Zoom-Plus-icon.png");
 		pZoom.setText("+");
 		pZoom.setSize(new Dimension(10,70));
 		pZoom.addActionListener(gc.getPlusZoomListener());
 	}
 	
 	private void initTranslationH(){
-		translationH.setText("â†‘");
+		translationH.setText("▲");
 		translationH.addActionListener(gc.getTranslationHautListener());
 		translationH.setSize(new Dimension(10,70));
 		
 	}
 	private void initTranslationB(){
-		translationB.setText("â†“");
+		translationB.setText("▼");
 		translationB.addActionListener(gc.getTranslationBasListener());
-		translationB.setSize(new Dimension(10,70));
+		//translationB.setSize(new Dimension(10,70));
 	}
 	private void initTranslationG(){
-		translationG.setText("â†�");
+		translationG.setText("◄");
 		translationG.addActionListener(gc.getTranslationGaucheListener());
 		translationG.setSize(new Dimension(10,70));
 	}
 	private void initTranslationD(){
-		translationD.setText("â†’");
+		translationD.setText("►");
 		translationD.addActionListener(gc.getTranslationDroiteListener());
 		translationD.setSize(new Dimension(10,70));
 	}
@@ -96,7 +95,7 @@ public class OptionPanel extends JPanel{
 		rotationX.setText("Rot X");
 		rotationX.addActionListener(gc.getRotationXListener());
 	}
-	
+
 	private void rotationY(){
 		rotationY.setText("Rot Y");
 		rotationY.addActionListener(gc.getRotationYListener());
