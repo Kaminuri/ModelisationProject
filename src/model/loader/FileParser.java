@@ -27,6 +27,7 @@ public class FileParser {
 	private ArrayList<Point> p = new ArrayList<Point>();
 	private ArrayList<Segment> s = new ArrayList<Segment>();
 	private ArrayList<Face> f = new ArrayList<Face>();
+	private boolean error = false;
 
 	/**
 	 * Verifie que le fichier en lecture existe et est conforme
@@ -38,62 +39,60 @@ public class FileParser {
 	 * @throws ExceptionFace
 	 *             si il y a une probleme avec les faces
 	 */
-	public FileParser(String filename) throws ExceptionPoint, ExceptionSegment, ExceptionFace, NullPointerException {
+	public FileParser(String filename) throws ExceptionPoint, ExceptionSegment, ExceptionFace {
 		String sta;
 		String currnt;
 		try(BufferedReader br = new BufferedReader(new FileReader(filename))){
 			sta = br.readLine();
-			try{
-				initNbs(sta);
-				//On definit le nombre de points
-				for(int i = 0 ; i < nbPoint ; i++) {
-					//Pour tous les points :
-					currnt = br.readLine();
-					this.x = null;
-					this.y = null;
-					this.z = null;
-					initPoints(currnt);
-					//On initialise le point
-					if(x == null || y == null || z == null) {//Si le point a au moins une coordonnee null
-						//on throw une ExceptionPoint
-						throw new ExceptionPoint();
-					}
-					//Sinon on ajoute le point a la liste de points
-					p.add(new Point(x,y,z));
+			initNbs(sta);
+			//On definit le nombre de points
+			for(int i = 0 ; i < nbPoint ; i++) {
+				//Pour tous les points :
+				currnt = br.readLine();
+				this.x = null;
+				this.y = null;
+				this.z = null;
+				initPoints(currnt);
+				//On initialise le point
+				if(x == null || y == null || z == null) {//Si le point a au moins une coordonnee null
+					//on throw une ExceptionPoint
+					error = true;
+					throw new ExceptionPoint();
 				}
-
-				for(int j = 0 ; j < nbSeg; j++) {	
-					//Pour tous les segments
-					currnt = br.readLine();
-					this.p1 = null;
-					this.p2 = null;
-					initSegs(currnt);
-					//On initialise le segment
-
-					if(p.contains(p1) != true || p.contains(p2) != true) {//Si au moins un point a null
-						//ExceptionSegment
-						throw new ExceptionSegment();
-					}
-					//Sinon on ajoute le segment a la liste des segments
-					s.add(new Segment(p1,p2));
-				}
-				for(int k = 0 ; k < nbFace ; k++) {
-					//Pour toutes les faces
-					currnt = br.readLine();
-					this.s1 = null;
-					this.s2 = null;
-					this.s3 = null;
-					initFace(currnt);
-					//On initialise la face
-					if(s.contains(s1) != true || s.contains(s2) != true || s.contains(s3) != true) { //Si au moins un segment a null
-						throw new ExceptionFace();
-					}
-					//sinon on ajoute la face a la liste des faces
-					f.add(new Face(s1,s2));
-				}
+				//Sinon on ajoute le point a la liste de points
+				p.add(new Point(x,y,z));
 			}
-			catch(Exception e){
-				e.printStackTrace();
+			
+			for(int j = 0 ; j < nbSeg; j++) {	
+				//Pour tous les segments
+				currnt = br.readLine();
+				this.p1 = null;
+				this.p2 = null;
+				initSegs(currnt);
+				//On initialise le segment
+				
+				if(p.contains(p1) != true || p.contains(p2) != true) {//Si au moins un point a null
+					//ExceptionSegment
+					error = true;
+					throw new ExceptionSegment();
+				}
+				//Sinon on ajoute le segment a la liste des segments
+				s.add(new Segment(p1,p2));
+			}
+			for(int k = 0 ; k < nbFace ; k++) {
+				//Pour toutes les faces
+				currnt = br.readLine();
+				this.s1 = null;
+				this.s2 = null;
+				this.s3 = null;
+				initFace(currnt);
+				//On initialise la face
+				if(s.contains(s1) != true || s.contains(s2) != true || s.contains(s3) != true) { //Si au moins un segment a null
+					error = true;
+					throw new ExceptionFace();
+				}
+				//sinon on ajoute la face a la liste des faces
+				f.add(new Face(s1,s2));
 			}
 		}catch(IOException e){
 			e.printStackTrace();
@@ -103,19 +102,26 @@ public class FileParser {
 	/**
 	 * Determine le nombre de points,de segments et de faces du modele
 	 * 
-	 * @param sta String , premiere ligne du bufferReader
+	 * @param sta
+	 *            String , premiere ligne du bufferReader
 	 */
 	private void initNbs(String sta) throws NullPointerException {
+		try{
 		String words[] = sta.split(" ");
 		nbPoint = Integer.parseInt(words[0]);
 		nbSeg = Integer.parseInt(words[1]);
 		nbFace = Integer.parseInt(words[2]);
+		}
+		catch(Exception e){
+			error = true;
+		}
 	}
 
 	/**
 	 * Determine les points de la figure
 	 * 
-	 * @param currnt la ligne actuelle du bufferReader
+	 * @param currnt
+	 *            la ligne actuelle du bufferReader
 	 */
 	private void initPoints(String currnt) {
 		String words[] = currnt.split(" ");
@@ -127,7 +133,8 @@ public class FileParser {
 	/**
 	 * Determine les segments de la figure
 	 * 
-	 * @param currnt la ligne actuelle du bufferReader
+	 * @param currnt
+	 *            la ligne actuelle du bufferReader
 	 */
 	private void initSegs(String currnt) {
 		String words[] = currnt.split(" ");
@@ -138,7 +145,8 @@ public class FileParser {
 	/**
 	 * Determine les faces de la figure
 	 * 
-	 * @param currnt la ligne actuelle du bufferReader
+	 * @param currnt
+	 *            la ligne actuelle du bufferReader
 	 */
 	private void initFace(String currnt) {
 		String words[] = currnt.split(" ");
@@ -172,6 +180,14 @@ public class FileParser {
 	 */
 	public ArrayList<Face> getListFaces() {
 		return f;
+	}
+	
+	/**
+	 * Retourne si il y a eu un erreur de l'initialisation du FileParser
+	 * @return un boolean vrai si il y a une erreur sino faux
+	 */
+	public boolean getError(){
+		return error;
 	}
 
 }
