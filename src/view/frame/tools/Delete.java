@@ -17,7 +17,8 @@ public class Delete extends Panel{
 	 */
 	public Delete(){
 		super();
-		JButton delete = new JButton("Delete");
+		setTitle("Supprimer");
+		JButton delete = new JButton("Supprimer");
 
 		ActionListener listenerDelete = new ActionListener(){
 			@Override

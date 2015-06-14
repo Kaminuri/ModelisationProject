@@ -19,9 +19,10 @@ public class Open extends Panel{
 	 */
 	public Open(Item3D i){
 		super();
+		setTitle("Ouvrir");
 		this.item = i;
 
-		JButton open = new JButton("Open");
+		JButton open = new JButton("Ouvrir");
 		panel4.add(open);
 
 		ActionListener listenerOpen = new ActionListener(){

@@ -65,7 +65,6 @@ public class Panel extends JFrame {
 
 		panel5.setLayout(grid);
 		panel6.setLayout(grid1);
-		//panel7.setLayout(grid2);
 
 		bdd = new Base("Base.db");
 		list = new JList();
@@ -99,7 +98,7 @@ public class Panel extends JFrame {
 		recherche = new JTextField();
 		panel3.add(recherche, BorderLayout.WEST);
 		recherche.setPreferredSize(new Dimension(200, 25));
-		JButton find = new JButton("Search");
+		JButton find = new JButton("Rechercher");
 		panel3.add(find, BorderLayout.EAST);
 
 		ActionListener listener = new ActionListener() {
@@ -142,7 +141,7 @@ public class Panel extends JFrame {
 		};
 		list.addListSelectionListener(listSelectionListener);
 
-		JButton cancel = new JButton("Cancel");
+		JButton cancel = new JButton("Annuler");
 		ActionListener listenerCancel = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg) {

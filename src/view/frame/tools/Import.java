@@ -41,6 +41,7 @@ public class Import extends JFrame {
 	 * Cree un import pour les fichiers
 	 */
 	public Import() throws NullPointerException {
+		setTitle("Import");
 		JFileChooser chooser = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(
 				"Model 3D GTS", "gts");
@@ -92,9 +93,9 @@ public class Import extends JFrame {
 									.setPreferredSize(new Dimension(150, 100));
 							scrollPane.setViewportView(des);
 							panel.add(scrollPane, BorderLayout.CENTER);
-							JButton newFile = new JButton("New File");
-							JButton cancel = new JButton("Cancel");
-							JButton next = new JButton("Next");
+							JButton newFile = new JButton("Nouveau Fichier");
+							JButton cancel = new JButton("Annuler");
+							JButton next = new JButton("Suivant");
 							panel.add(cancel);
 							panel.add(newFile);
 							panel.add(next);

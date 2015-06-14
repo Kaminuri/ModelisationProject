@@ -21,6 +21,7 @@ public class Export extends Panel{
 	 */
 	public Export(){
 		super();
+		setTitle("Export");
 		JButton export = new JButton("Export");
 		panel4.add(export);
 		
