@@ -16,26 +16,12 @@ public class TestPoint {
 	}
 	
 	@Test
-	public void testMultiplyX() {
+	public void testMultiply() {
 		Point p = new Point(12,4,28);
 		int m = 4;
 		p.multiply(m);
 		assertEquals(p.getX(),48,1);
-	}
-	
-	@Test
-	public void testMultiplyY() {
-		Point p = new Point(12,4,28);
-		int m = 4;
-		p.multiply(m);
 		assertEquals(p.getY(),16,1);
-	}
-	
-	@Test
-	public void testMultiplyZ() {
-		Point p = new Point(12,4,28);
-		int m = 4;
-		p.multiply(m);
 		assertEquals(p.getZ(),112,1);
 	}
 	
