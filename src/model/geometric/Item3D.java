@@ -38,13 +38,27 @@ public class Item3D extends Observable{
         barycenter = barycentre();
 	}
 	
+	/**
+	 * Renvoie la position en X du barycentre de l'item
+	 * @return double posX, la position en X
+	 */
 	public double getPosXItem(){
 		return posX;
 	}
+	
+	/**
+	 * Renvoie la position en Y du barycentre de l'item
+	 * @return double posY, la position en Y
+	 */
 	public double getPosYItem(){
 		return posY;
 	}
 	
+	/**
+	 * Definit la position en x et y du barycentre de l'item3D
+	 * @param x La position en x
+	 * @param y la position en y
+	 */
 	public void setPosXY(double x, double y){
 		posX = x;
 		posY = y;
@@ -56,6 +70,11 @@ public class Item3D extends Observable{
 	public void decreaseZoomY() {
 		zoomY *= 0.9;
 	}
+	
+	/**
+	 * Retourne la taille de l'ecran sous forme d'une dimension
+	 * @return Dimension d, la taille de l'ecran
+	 */
 	public Dimension getScreenSize(){
 		return d;
 	}
@@ -210,16 +229,16 @@ public class Item3D extends Observable{
 		for (Face f2 : faces) {
 			Point[] t = f2.getPoints();
 			for(Point p : t){
-				if(tab[0] > p.getX()){
+				if(tab[0] > p.getX()){//Si le point actuel a une valeur en x inferieure a celle dans tab[0]
 					tab[0] = p.getX();
 				}
-				if(tab[1] < p.getX()){
+				if(tab[1] < p.getX()){//Si le point actuel a une valeur en x superieure a celle dans tab[1]
 					tab[1] = p.getX();
 				}
-				if(tab[2] > p.getY()){
+				if(tab[2] > p.getY()){//Si le point actuel a une valeur en y inferieure a celle dans tab[2]
 					tab[2] = p.getY();
 				}
-				if(tab[3] < p.getY()){
+				if(tab[3] < p.getY()){//Si le point actuel a une valeur en y superieure a celle dans tab[3]
 					tab[3] = p.getY();
 				}
 			}
@@ -309,23 +328,37 @@ public class Item3D extends Observable{
 		return new Point(pointX, pointY, pointZ);
 	}
 	
+	/**
+	 * Recree l'item
+	 * @param fp le fileparser contenant les informations de l'item
+	 */
 	public void recreateItem(FileParser fp){
 		points = fp.getListPoints();
 		segments = fp.getListSegments();
 		faces = fp.getListFaces();
 	}
 
+	/**
+	 * renvoie le centre en X
+	 * @return xCentring , le centre en X de l'item3D
+	 */
 	public double getXCentring() {
 		return xCentring;
 	}
 
+	/**
+	 * renvoie le centre en Y
+	 * @return yCentring , le centre en Y de l'item3D
+	 */
 	public double getYCentring() {
-		
 		return yCentring;
 	}
 
+	/**
+	 * Renvoie le zoom
+	 * @return double zoom
+	 */
 	public double getZoom() {
-		
 		return zoom;
 	}
 
