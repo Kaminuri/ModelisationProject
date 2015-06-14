@@ -218,8 +218,8 @@ public class MBar extends JMenuBar{
 		this.add(menu);
 		
 		//help
-		menuItem = new JMenuItem("Aide", KeyEvent.VK_T);
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.ALT_MASK));
+		menuItem = new JMenuItem("Aide", KeyEvent.VK_A);
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("help");
 		menu.add(menuItem);
 		menuItem.addActionListener(new ActionListener() {
@@ -227,16 +227,28 @@ public class MBar extends JMenuBar{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(frame,
-					    "Pour choisir le modele, cliquez sur vue", "Help", JOptionPane.INFORMATION_MESSAGE);
+					    "Pour choisir le modele, cliquez sur fichier, puis dans Ouvrir ou Importer suivant ce que vous souhaitez faire.\n"
+					    + "Choisissez ensuite le modele de votre choix.\n"
+					    + "\nPour deplacer le modele,vous pouvez utiliser :\n-le clic gauche + deplacement de la souris.\n"
+					    + "-Les boutons en forme de fleches de la fenetre de controle.\n\n"
+					    + "Pour faire une rotation, vous pouvez utiliser :\n-Le clic droit + deplacement de la souris.\n"
+					    + "-Les boutons marques Rot X,Rot Y et Rot Z de la fenetre de controle. \n\n"
+					    + "Pour le zoom avant ou arriere, vous pouvez utiliser :\n-La molette de la souris.\n"
+					    + "-Les boutons + et - de la fenetre de controle.\n\n"
+					    + "Pour afficher la fenetre de controle, allez dans le menu \"Vues\",puis cliquez sur \"Afficher options\".\n\n"
+					    + "Vous pouvez choisir entre l'affichage en fil de fer ou l'affichage plein dans le menu \"vues\".\n\n"
+					    + "Vous pouvez supprimer ou exporter le modele a partir de l'onglet \"Fichier\".\n\n"
+					    + "Si vous souhaitez quitter l'application,il vous suffit de cliquer sur la croix en haut a droite de la fenetre de l'application,\n"
+					    + "ou de vous rendre dans l'onglet \"Fichier\",puis de cliquer sur le bouton \"Quitter\".", "Manuel d'utilisation", JOptionPane.INFORMATION_MESSAGE);
 				
 			}
 		});
 		
 		//A Propos
-		menuItem = new JMenuItem("A propos", KeyEvent.VK_T);
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.ALT_MASK));
+		menuItem = new JMenuItem("A propos", KeyEvent.VK_P);
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("About this project");
-menuItem.addActionListener(new ActionListener() {
+		menuItem.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
