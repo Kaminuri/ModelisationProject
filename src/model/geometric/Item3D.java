@@ -33,11 +33,12 @@ public class Item3D extends Observable{
 		faces = fp.getListFaces();
 		zoomX =  d.width/Math.abs(this.extremites()[2]-this.extremites()[3]);
 		zoomY =  d.height/Math.abs(this.extremites()[0]-this.extremites()[1]);
-		zoom = zoomX > zoomY ? zoomY : zoomX ;
+		zoom = zoomX > zoomY ? zoomY - 15 : zoomX ;
 		zoomX = zoom;
 		zoomY = -zoom;
-		xCentring = (this.extremites()[2] + extremites()[3])/2;
-        yCentring = (extremites()[0] + extremites()[1])/2;
+		xCentring = (extremites()[1] + extremites()[0])/2;
+        yCentring = (extremites()[3] + extremites()[2])/2;
+        
         barycenter = barycentre();
 	}
 	
@@ -342,7 +343,7 @@ public class Item3D extends Observable{
 		pointX /= points.size();
 		pointY /= points.size();
 		pointZ /= points.size();
-		return new Point(pointX, pointY, pointZ);
+		return new Point(pointX+transX, pointY+transY, pointZ);
 	}
 	
 	/**
@@ -350,9 +351,19 @@ public class Item3D extends Observable{
 	 * @param fp le fileparser contenant les informations de l'item
 	 */
 	public void recreateItem(FileParser fp){
+		filsdefer = false;
 		points = fp.getListPoints();
 		segments = fp.getListSegments();
 		faces = fp.getListFaces();
+		zoomX =  d.width/Math.abs(this.extremites()[2]-this.extremites()[3]);
+		zoomY =  d.height/Math.abs(this.extremites()[0]-this.extremites()[1]);
+		zoom = zoomX > zoomY ? zoomY - 15 : zoomX ;
+		zoomX = zoom;
+		zoomY = -zoom;
+		xCentring = (extremites()[1] + extremites()[0])/2;
+        yCentring = (extremites()[3] + extremites()[2])/2;
+        System.out.println(yCentring);
+        barycenter = barycentre();
 	}
 
 	/**
@@ -412,18 +423,20 @@ public class Item3D extends Observable{
 	public void translateByMouse(MouseEvent e) {
 		double x1 = e.getX();
         double y1 = e.getY();
-        double distanceX = x1 - getPosXItem();
-        double distanceY = y1 - getPosYItem();
+        double distanceX = x1 - posX;
+        double distanceY = y1 - posY;
         if (distanceX >= 1 || distanceX <= -1 || distanceY >= 1 || distanceY <= -1) {
             for (Point p : getPoints()) {
-                double x2 = p.getX() - (distanceX / 450);
-                double y2 = p.getY() - (distanceY / 450);
+                double x2 = p.getX() + (distanceX) / zoom;
+                double y2 = p.getY() - (distanceY) / zoom;
                 p.setX(x2);
                 p.setY(y2);
-                //System.out.println("X : ");
-                setPosXY(x1, x2);
+                setPosXY(x1, y1); 
+                barycenter = barycentre();
             }
         }
+
+        
 	}
 
 
