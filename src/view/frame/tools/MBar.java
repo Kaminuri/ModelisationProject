@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import model.geometric.Item3D;
+import view.panels.OptionPanel;
 
 public class MBar extends JMenuBar{
 	
@@ -221,5 +222,6 @@ menuItem.addActionListener(new ActionListener() {
 		});
 		menu.add(menuItem);
 	}
+	
 }
 

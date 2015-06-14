@@ -19,7 +19,6 @@ public class TestFace {
 
 		@Test
 		public void testGetPoints() {
-			//Pas fini
 			Point[]t = new Point[3];
 			Point p1 = new Point(4,5,7);
 			Point p2 = new Point(7,5,4);
