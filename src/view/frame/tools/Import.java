@@ -22,6 +22,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import exceptions.ExceptionFace;
+import exceptions.ExceptionPoint;
+import exceptions.ExceptionSegment;
+import model.loader.FileParser;
 import BDD.Base;
 
 @SuppressWarnings("serial")
@@ -44,14 +48,25 @@ public class Import extends JFrame {
 			f = chooser.getSelectedFile();
 			if (f.exists()) {
 				if (f.getName().lastIndexOf(".") > 0) {
-					String ext = f.getName().substring(
-							f.getName().lastIndexOf("."));
+					String ext = f.getName().substring(	f.getName().lastIndexOf("."));
 					if (ext.equals(".gts")) {
+						try {
+							new FileParser(f.getPath());
+						} catch (ExceptionPoint e2) {
+							// TODO Auto-generated catch block
+							e2.printStackTrace();
+						} catch (ExceptionSegment e2) {
+							// TODO Auto-generated catch block
+							e2.printStackTrace();
+						} catch (ExceptionFace e2) {
+							// TODO Auto-generated catch block
+							e2.printStackTrace();
+						}
 						bdd = new Base("Base.db");
 						JPanel panel = new JPanel();
 						this.add(panel);
 						this.setTitle("Import");
-						this.setPreferredSize(new Dimension(250, 300));
+						this.setPreferredSize(new Dimension(250, 260));
 						panel.add(new JLabel("Nom : "), BorderLayout.CENTER);
 						name = new JTextField(f.getName().split(".gts")[0]);
 						name.setPreferredSize(new Dimension(150, 25));
@@ -61,7 +76,7 @@ public class Import extends JFrame {
 						tag.setPreferredSize(new Dimension(150, 25));
 						panel.add(tag, BorderLayout.CENTER);
 						panel.add(new JLabel(
-								"(3 tags maxi s�par� par des virgules ',')"),
+								"(3 tags maxi separer par des virgules ',')"),
 								BorderLayout.CENTER);
 						panel.add(new JLabel("Description : "),
 								BorderLayout.CENTER);
@@ -72,15 +87,6 @@ public class Import extends JFrame {
 						scrollPane.setPreferredSize(new Dimension(150, 100));
 						scrollPane.setViewportView(des);
 						panel.add(scrollPane, BorderLayout.CENTER);
-
-
-					panel.add(new JLabel("Tags : "), BorderLayout.CENTER);
-					tag = new JTextField();
-					tag.setPreferredSize(new Dimension(150, 25));
-					panel.add(tag, BorderLayout.CENTER);
-					panel.add(new JLabel(
-							"(3 tags maxi separes par des virgules ',')"),
-							BorderLayout.CENTER);
 						JButton newFile = new JButton("New File");
 						JButton cancel = new JButton("Cancel");
 						JButton next = new JButton("Next");

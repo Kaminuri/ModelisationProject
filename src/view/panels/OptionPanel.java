@@ -56,7 +56,8 @@ public class OptionPanel extends JPanel{
 		add(translationD);
 
 	}
-
+	
+	
 	private void initNZoom(){
 		setButIcon(mZoom, "resources/pictures/Zoom-Minus-icon.png");
 		mZoom.addActionListener(gc.getMinusZoomListener());
