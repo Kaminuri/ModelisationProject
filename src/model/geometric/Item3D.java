@@ -17,7 +17,7 @@ public class Item3D extends Observable{
 	private ArrayList<Face> faces;
 	public FileParser fp;
 	private double zoomX,zoomY,zoom, posX, posY;
-	private int transX,transY = -450;
+	private int transX,transY = 0;
 	private Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 	private double xCentring, yCentring;
 	private Point barycenter;
@@ -33,7 +33,7 @@ public class Item3D extends Observable{
 		faces = fp.getListFaces();
 		zoomX =  d.width/Math.abs(this.extremites()[2]-this.extremites()[3]);
 		zoomY =  d.height/Math.abs(this.extremites()[0]-this.extremites()[1]);
-		zoom = zoomX > zoomY ? zoomY -50 : zoomX ;
+		zoom = zoomX > zoomY ? zoomY : zoomX ;
 		zoomX = zoom;
 		zoomY = -zoom;
 		xCentring = (this.extremites()[2] + extremites()[3])/2;
@@ -420,6 +420,7 @@ public class Item3D extends Observable{
                 double y2 = p.getY() - (distanceY / 450);
                 p.setX(x2);
                 p.setY(y2);
+                //System.out.println("X : ");
                 setPosXY(x1, x2);
             }
         }
