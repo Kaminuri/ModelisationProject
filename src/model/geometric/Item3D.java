@@ -39,10 +39,19 @@ public class Item3D extends Observable{
         yCentring = (extremites()[0] + extremites()[1])/2;
         barycenter = barycentre();
 	}
-	public void setFilsDefer(){
-		filsdefer = true;
+	
+	/**
+	 * Modifie la valeur du boolean filsdefer
+	 * @param b la nouvelle valeur du boolean
+	 */
+	public void setFilsDefer(boolean b){
+		filsdefer = b;
 	}
 	
+	/**
+	 * Renvoie la valeur du boolean filsdefer
+	 * @return boolean filsdefer
+	 */
 	public boolean getFilsDeFer(){
 		return filsdefer;
 	}
