@@ -139,17 +139,17 @@ public class Point implements Comparable<Point>,Comparator<Point>{
 	
 	
 	/**
-     * Calculate the angle between 2 vectors
-     * @param un point
-     * @return un double correspondant a l'angle
+     * Calcule l'angle entre deux vecteurs
+     * @param vecteur le deuxieme point a partir duquel calculer l'angle
+     * @return double correspondant a l'angle
      */
     public double angle(Point vecteur) {
         return Math.acos(cosine(vecteur));
     }
     
     /**
-     * Calculate the cosine of the angle between 2 vectors
-     * @param un point
+     * Calcule la valeur du cosinus de l'angle entre deux vecteurs
+     * @param vecteur le deuxieme point a partir duquel calculer le cosinus
      * @return un double correspondant a l'angle
      */
     public double cosine(Point vecteur) {
@@ -163,7 +163,7 @@ public class Point implements Comparable<Point>,Comparator<Point>{
     }
     /**
      *  Effectue le calcul du produit vectoriel entre le point actuel et le point passé en parametre
-     * @param le point avec lequel effectuer le produit vectoriel, en plus du point actuel
+     * @param point avec lequel effectuer le produit vectoriel, en plus du point actuel
      * @return le nouveau point issu du produit vectoriel entre le point actuel et le point en parametre
      */
     public Point produitVectoriel (Point point){
