@@ -3,11 +3,6 @@ package view.panels;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -19,6 +14,11 @@ public class OptionPanel extends JPanel{
 	
 	private JButton mZoom , pZoom, rotationX, rotationY, rotationZ, translationH, translationB, translationG, translationD ;
 	private GeometricController gc;
+	
+	/**
+	 * Cree un OptionPanel, couple a un GeometricController
+	 * @param gc le GeometricController qui permettra d'effectuer les actions sur un modele, definit dans le GeometricController
+	 */
 	public OptionPanel(GeometricController gc){
 		this.gc = gc;
 		this.setLayout(new GridLayout(1,9));
@@ -33,7 +33,7 @@ public class OptionPanel extends JPanel{
 		translationG = new JButton();
 		translationD = new JButton();
 		
-		initNZoom();
+		initMZoom();
 		initPZoom();
 		initTranslationH();
 		initTranslationB();
@@ -57,64 +57,86 @@ public class OptionPanel extends JPanel{
 
 	}
 	
-	
-	private void initNZoom(){
+	/**
+	 * Ajoute un texte,un listener et definit la taille du bouton mZoom
+	 */
+	private void initMZoom(){
 		mZoom.setText("-");
 		mZoom.setSize(new Dimension(10,70));
 		mZoom.addActionListener(gc.getMinusZoomListener());
 	}
+	
+	/**
+	 * Ajoute un texte,un listener et definit la taille du bouton pZoom
+	 */
 	private void initPZoom(){
 		pZoom.setText("+");
 		pZoom.setSize(new Dimension(10,70));
 		pZoom.addActionListener(gc.getPlusZoomListener());
 	}
 	
+	/**
+	 * Ajoute un texte,un listener et definit la taille du bouton translationH
+	 */
 	private void initTranslationH(){
 		translationH.setText("▲");
 		translationH.addActionListener(gc.getTranslationHautListener());
 		translationH.setSize(new Dimension(10,70));
 		
 	}
+	
+	/**
+	 * Ajoute un texte,un listener et definit la taille du bouton translationB
+	 */
 	private void initTranslationB(){
 		translationB.setText("▼");
 		translationB.addActionListener(gc.getTranslationBasListener());
 		//translationB.setSize(new Dimension(10,70));
 	}
+	
+	/**
+	 * Ajoute un texte,un listener et definit la taille du bouton translationG
+	 */
 	private void initTranslationG(){
 		translationG.setText("◄");
 		translationG.addActionListener(gc.getTranslationGaucheListener());
 		translationG.setSize(new Dimension(10,70));
 	}
+	
+	/**
+	 * Ajoute un texte,un listener et definit la taille du bouton translationD
+	 */
 	private void initTranslationD(){
 		translationD.setText("►");
 		translationD.addActionListener(gc.getTranslationDroiteListener());
 		translationD.setSize(new Dimension(10,70));
 	}
 
+	/**
+	 * Ajoute un texte,un listener et definit la taille du bouton rotationX
+	 */
 	private void rotationX(){
 		rotationX.setText("Rot X");
 		rotationX.addActionListener(gc.getRotationXListener());
 	}
 
+	/**
+	 * Ajoute un texte,un listener et definit la taille du bouton rotationY
+	 */
 	private void rotationY(){
 		rotationY.setText("Rot Y");
 		rotationY.addActionListener(gc.getRotationYListener());
 	}
 	
+	/**
+	 * Ajoute un texte,un listener et definit la taille du bouton rotationZ
+	 */
 	private void rotationZ(){
 		rotationZ.setText("Rot Z");
 		rotationZ.addActionListener(gc.getRotationZListener());
 	}
-	private void setButIcon(JButton b, String path){
-		try {
-			//BufferedImage img = ImageIO.read(this.getClass().getResource(path));
-		    Image img = ImageIO.read(new File(path));
-		    Image newimg = img.getScaledInstance( 40, 36,  java.awt.Image.SCALE_SMOOTH ) ;
-		    b.setIcon(new ImageIcon(newimg));
-		  } 
-		catch (IOException ex) {
-		  }
-	}
+
+
 	
 	
 }
