@@ -162,7 +162,7 @@ public class Point implements Comparable<Point>,Comparator<Point>{
         return scalaire/(normeU*normeV);
     }
     /**
-     *  Effectue le calcul du produit vectoriel entre le point actuel et le point passé en parametre
+     * Effectue le calcul du produit vectoriel entre le point actuel et le point passé en parametre
      * @param point avec lequel effectuer le produit vectoriel, en plus du point actuel
      * @return le nouveau point issu du produit vectoriel entre le point actuel et le point en parametre
      */
