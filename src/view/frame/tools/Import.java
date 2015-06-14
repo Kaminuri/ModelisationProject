@@ -32,6 +32,9 @@ public class Import extends JFrame {
 	private JTextArea des;
 	private File f;
 
+	/**
+	 * Cree un import pour les fichiers
+	 */
 	public Import() {
 		JFileChooser chooser = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(
@@ -58,7 +61,7 @@ public class Import extends JFrame {
 						tag.setPreferredSize(new Dimension(150, 25));
 						panel.add(tag, BorderLayout.CENTER);
 						panel.add(new JLabel(
-								"(3 tags maxi séparé par des virgules ',')"),
+								"(3 tags maxi sï¿½parï¿½ par des virgules ',')"),
 								BorderLayout.CENTER);
 						panel.add(new JLabel("Description : "),
 								BorderLayout.CENTER);
@@ -70,6 +73,14 @@ public class Import extends JFrame {
 						scrollPane.setViewportView(des);
 						panel.add(scrollPane, BorderLayout.CENTER);
 
+
+					panel.add(new JLabel("Tags : "), BorderLayout.CENTER);
+					tag = new JTextField();
+					tag.setPreferredSize(new Dimension(150, 25));
+					panel.add(tag, BorderLayout.CENTER);
+					panel.add(new JLabel(
+							"(3 tags maxi separes par des virgules ',')"),
+							BorderLayout.CENTER);
 						JButton newFile = new JButton("New File");
 						JButton cancel = new JButton("Cancel");
 						JButton next = new JButton("Next");
@@ -180,6 +191,12 @@ public class Import extends JFrame {
 		}
 	}
 
+	/**
+	 * Copie le contenu d'un fichier (source) dans un autre fichier (dest)
+	 * @param source le fichier source
+	 * @param dest le fichier de destination
+	 * @return True si la copie a marche
+	 */
 	public static boolean copyFile(File source, File dest) {
 		try {
 			// Declaration et ouverture des flux
